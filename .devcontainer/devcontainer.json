@@ -1,0 +1,19 @@
+{
+    "name": "Js-Dev",
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    "service": "code",
+    "workspaceFolder": "/var/www",
+    "shutdownAction": "none",
+    "settings": {
+        //"workbench.colorTheme": "Quiet Light",
+        "npm.enableScriptExplorer": true
+    },
+    //"postCreateCommand": "uname -a",
+    "extensions": [
+        "eamodio.gitlens",
+        "msjsdiag.vscode-react-native",
+        "esbenp.prettier-vscode"
+    ]
+}
