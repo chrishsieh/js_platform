@@ -20,7 +20,9 @@ class Index extends React.Component<Props> {
           <link
             rel="stylesheet"
             href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
-          />
+				/>
+          <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+          <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
         </Head>
         <Button basic color='teal'>{this.props.query}</Button>
       </div>
