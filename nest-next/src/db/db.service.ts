@@ -13,4 +13,17 @@ export class PersonPerService {
   findAll(): Promise<person_per[]> {
     return this.PersonPerRepository.find();
   }
+
+  findById(id: number): Promise<person_per> {
+    return this.PersonPerRepository.findOneOrFail(id);
+  }
+
+  getFirst(): Promise<person_per[]> {
+    let person = this.PersonPerRepository.createQueryBuilder('person') // 别名，必填项，用来指定本次查询
+      .where('per_Gender=2')
+      .orderBy('per_ID', 'DESC')
+      .take(10)
+      .getMany();
+    return person;
+  }
 }
