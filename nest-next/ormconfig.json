@@ -1,0 +1,13 @@
+[
+  {
+    "name": "default",
+    "type": "mariadb",
+    "host": "db",
+    "port": 3306,
+    "username": "churchcrm",
+    "password": "changeme",
+    "database": "churchcrm",
+    "synchronize": false,
+    "entities": ["entities/*{.ts,.js}"]
+  }
+]

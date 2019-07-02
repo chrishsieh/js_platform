@@ -1,7 +1,8 @@
 {
   "watch": [
     "src/**/*",
-    "pages/**/*"
+	"pages/**/*",
+	"entities/**/*"
   ],
   "ext": "ts,tsx",
   "execMap": {
