@@ -35,6 +35,9 @@
       ],
       "@src/*": [
         "pages/*"
+	  ],
+	  "@entities/*": [
+        "entities/*"
       ]
     },
 

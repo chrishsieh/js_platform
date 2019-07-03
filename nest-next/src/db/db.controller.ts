@@ -1,10 +1,24 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  UseInterceptors,
+  CacheInterceptor,
+  Render,
+} from '@nestjs/common';
 import { PersonPerService } from './db.service';
-import { person_per } from '../../entities/person_per';
+import { person_per } from '@entities/person_per';
 
-@Controller('person_per')
+@UseInterceptors(CacheInterceptor)
+@Controller('person')
 export class PersonPerController {
   constructor(private readonly personperService: PersonPerService) {}
+
+  @Get()
+  @Render('Person')
+  getFirst(): any {
+    return this.personperService.getUsers();
+  }
 
   @Get(':ID')
   getPerson(@Param('ID') person_ID: number) {
@@ -12,13 +26,8 @@ export class PersonPerController {
     return person;
   }
 
-  @Get()
-  getFirst(): Promise<person_per[]> {
-    return this.personperService.getFirst();
-  }
-
-  @Get()
-  findAll(): Promise<person_per[]> {
-    return this.personperService.findAll();
-  }
+  //  @Get()
+  //  findAll(): Promise<person_per[]> {
+  //    return this.personperService.findAll();
+  //  }
 }
