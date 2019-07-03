@@ -7,7 +7,7 @@ import {
   Render,
 } from '@nestjs/common';
 import { PersonPerService } from './db.service';
-import { person_per } from '@entities/person_per';
+import { person_per } from '../../entities/person_per';
 
 @UseInterceptors(CacheInterceptor)
 @Controller('person')

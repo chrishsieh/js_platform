@@ -5,8 +5,15 @@
     "declaration": true,
     "target": "es6",
     "module": "commonjs",
-    "moduleResolution": "node"
+	"moduleResolution": "node",
+	"sourceMap": true,
+	"baseUrl": "./",
+    "paths": {
+      "@server/*": ["src/*"],
+      "@src/*": ["pages/*"],
+      "@entities/*": ["entities/*"]
+    }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "entities/**/*"],
   "exclude": ["node_modules"]
 }
