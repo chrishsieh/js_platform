@@ -40,6 +40,7 @@ export class PersonPerService {
     const users = await this.PersonPerRepository.createQueryBuilder('u')
       .select('u.per_FirstName')
       .addSelect('u.per_LastName')
+      .addSelect('u.per_Email')
       .where('u.per_Gender=2')
       .orderBy('u.per_ID', 'DESC')
       .take(20)
