@@ -16,7 +16,7 @@ export class PersonPerController {
 
   @Get()
   @Render('Person')
-  getFirst(): any {
+  getFirst(): Promise<person_per[]> {
     return this.personperService.getUsers();
   }
 
