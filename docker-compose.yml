@@ -5,6 +5,7 @@ services:
     image: chrishsieh/js_platform
     build:
       context: ./build/coder
+      dockerfile: Dockerfile.debian
     environment:
       DEBUG_ENTRYPOINT: 2
       FORWARD_PORTS_TO_LOCALHOST: ${DEV_WEB_PORT:-80}:web:80
