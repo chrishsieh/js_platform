@@ -71,13 +71,12 @@ class Person extends React.Component<Props & WithTranslation> {
             <Menu.Item as="a" header position="left">
               ChurchCRM
             </Menu.Item>
+            <Menu.Item as="a" icon="world" header position="right" />
             <Dropdown
-              button
               className="icon"
               floating
               labeled
               item
-              icon="world"
               options={languageOptions}
               search
               text={t('Select Language')}
