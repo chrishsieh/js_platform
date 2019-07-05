@@ -1,5 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
+import { withTranslation } from '../../src/i18n';
+import i18n from 'i18next';
+import { person_per } from '../../entities/person_per';
 import {
   Dropdown,
   Header,
@@ -14,8 +17,9 @@ import {
   Container,
   Image,
   Divider,
+  Button,
 } from 'semantic-ui-react';
-import { person_per } from '@entities/person_per';
+import { WithTranslation } from 'react-i18next';
 
 interface InitialProps {
   query: Promise<person_per[]>;
@@ -24,22 +28,29 @@ interface InitialProps {
 //interface Props extends InitialProps {}
 interface Props {
   items: person_per[];
+  namespacesRequired: string[];
 }
 
-class Person extends React.Component<Props> {
+class Person extends React.Component<Props & WithTranslation> {
   public static async getInitialProps({ query }: InitialProps) {
     const res = await query;
+
     //console.log(query);
     if (res) {
       //console.log(res.map(value => value.per_FirstName + ' ' + value.per_LastName));
       return {
         items: res,
+        namespacesRequired: ['common'],
       };
     }
-    return { items: { per_LastName: '', per_FirstName: '' } };
+    return {
+      items: { per_LastName: '', per_FirstName: '' },
+      namespacesRequired: ['common'],
+    };
   }
 
   public render() {
+    const { t } = this.props;
     return (
       <React.Fragment>
         <Head>
@@ -55,6 +66,14 @@ class Person extends React.Component<Props> {
             <Menu.Item as="a" header position="left">
               ChurchCRM
             </Menu.Item>
+            <Button
+              inverted
+              onClick={() =>
+                i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en')
+              }
+            >
+              {t('change-locale')}
+            </Button>
             <Dropdown item simple text="Menu">
               <Dropdown.Menu>
                 <Dropdown.Item>List Item 1</Dropdown.Item>
@@ -74,7 +93,7 @@ class Person extends React.Component<Props> {
 
                   <Menu.Item>
                     <Menu.Menu>
-                      <Menu.Item name="search">Search</Menu.Item>
+                      <Menu.Item name="search">{t('hello-world')}</Menu.Item>
                       <Menu.Item name="add">Add</Menu.Item>
                       <Menu.Item name="about">Remove</Menu.Item>
                     </Menu.Menu>
@@ -150,4 +169,4 @@ class Person extends React.Component<Props> {
   }
 }
 
-export default Person;
+export default withTranslation('common')(Person);

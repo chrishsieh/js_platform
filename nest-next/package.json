@@ -5,14 +5,14 @@
   "author": "Kyle McCarthy",
   "license": "MIT",
   "scripts": {
-	"dev": "nodemon src/main.ts",
-	"HMR-dev": "NODE_ENV=development node --require ts-node/register --require tsconfig-paths/register --require reflect-metadata dist/server",
+    "dev": "nodemon src/main.ts",
+    "HMR-dev": "NODE_ENV=development node --require ts-node/register --require tsconfig-paths/register --require reflect-metadata dist/server",
     "build:clean": "rm -rf .next",
     "build:server": "npx tsc --project tsconfig.server.json && npx babel .next/production-server -d .next/production-server --config-file ./.babelrc-server --extensions \".js\"",
     "build:ui": "npx next build",
     "build": "yarn build:clean && yarn build:server && yarn build:ui",
-	"start": "NODE_ENV=production node --require ts-node/register --require tsconfig-paths/register --require reflect-metadata .next/production-server/src/main.js",
-	"webpack": "webpack --config webpack.config.js"
+    "start": "NODE_ENV=production node --require ts-node/register --require tsconfig-paths/register --require reflect-metadata .next/production-server/src/main.js",
+    "webpack": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "@babel/core": "^7.1.0",
@@ -21,10 +21,12 @@
     "@nestjs/typeorm": "^6.1.2",
     "cache-manager": "^2.9.0",
     "dotenv": "^6.1.0",
+    "i18next": "^17.0.6",
     "joi": "^14.3.1",
     "mysql": "^2.17.1",
     "nest-next": "0.2",
     "next": "8",
+    "next-i18next": "^0.45.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "reflect-metadata": "^0.1.12",
