@@ -93,7 +93,7 @@ class Person extends React.Component<Props & WithTranslation> {
 
                   <Menu.Item>
                     <Menu.Menu>
-                      <Menu.Item name="search">{t('hello-world')}</Menu.Item>
+                      <Menu.Item name="search">{t('Search')}</Menu.Item>
                       <Menu.Item name="add">Add</Menu.Item>
                       <Menu.Item name="about">Remove</Menu.Item>
                     </Menu.Menu>
