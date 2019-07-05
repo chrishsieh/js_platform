@@ -1,5 +1,7 @@
 {
   "hello-world": "大家好",
-  "change-locale": "變換語言",
-  "Search": "搜尋"
+  "Select Language": "選擇語言",
+  "Search": "搜尋",
+  "Chinese": "中文",
+  "English": "英文"
 }

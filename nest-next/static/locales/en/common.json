@@ -1,5 +1,7 @@
 {
   "hello-world": "Hello World",
-  "change-locale": "Change locale",
-  "Search": "Search"
+  "Select Language": "Select Language",
+  "Search": "Search",
+  "Chinese": "Chinese",
+  "English": "English"
 }

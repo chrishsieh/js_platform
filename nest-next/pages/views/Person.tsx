@@ -20,6 +20,7 @@ import {
   Button,
 } from 'semantic-ui-react';
 import { WithTranslation } from 'react-i18next';
+import { string } from 'joi';
 
 interface InitialProps {
   query: Promise<person_per[]>;
@@ -51,6 +52,10 @@ class Person extends React.Component<Props & WithTranslation> {
 
   public render() {
     const { t } = this.props;
+    const languageOptions = [
+      { key: 'Chinese', text: t('Chinese'), value: 'zh' },
+      { key: 'English', text: t('English'), value: 'en' },
+    ];
     return (
       <React.Fragment>
         <Head>
@@ -66,14 +71,22 @@ class Person extends React.Component<Props & WithTranslation> {
             <Menu.Item as="a" header position="left">
               ChurchCRM
             </Menu.Item>
-            <Button
-              inverted
-              onClick={() =>
-                i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en')
-              }
-            >
-              {t('change-locale')}
-            </Button>
+            <Dropdown
+              button
+              className="icon"
+              floating
+              labeled
+              item
+              icon="world"
+              options={languageOptions}
+              search
+              text={t('Select Language')}
+              onChange={(event, data) => {
+                if (data.value) {
+                  i18n.changeLanguage(data.value as string);
+                }
+              }}
+            />
             <Dropdown item simple text="Menu">
               <Dropdown.Menu>
                 <Dropdown.Item>List Item 1</Dropdown.Item>
