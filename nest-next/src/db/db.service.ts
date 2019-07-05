@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { person_per } from '@entities/person_per';
+import { person_per } from '../../entities/person_per';
 
 @Injectable()
 export class PersonPerService {
@@ -35,7 +35,7 @@ export class PersonPerService {
       .addSelect('u.per_Email')
       .where('u.per_Gender=2')
       .orderBy('u.per_ID', 'DESC')
-      .take(20)
+      .take(5)
       .getMany();
   }
 }

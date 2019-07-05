@@ -1,5 +1,7 @@
+declare const module: any;
+
 import { NestFactory } from '@nestjs/core';
-import { RenderModule } from 'nest-next';
+import { RenderModule, RenderService } from 'nest-next';
 import Next from 'next';
 import { AppModule } from './app.module';
 
@@ -14,7 +16,20 @@ async function bootstrap() {
   const renderer = server.get(RenderModule);
   renderer.register(server, app);
 
+  // get the RenderService
+  const service = server.get(RenderService);
+
+  service.setErrorRenderer(async (err, req, res) => {
+    // send JSON response
+    res.send(err.response);
+  });
+
   await server.listen(process.env.PORT || 5000);
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => server.close());
+  }
 }
 
 bootstrap();

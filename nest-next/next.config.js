@@ -16,6 +16,14 @@ module.exports = withTypescript({
       },
     };
 
+    config.watchOptions = {
+        ignored: [
+          /\.git\//,
+          /\.next\//,
+          /node_modules/
+        ]
+    }
+
     return config
   }
 });
