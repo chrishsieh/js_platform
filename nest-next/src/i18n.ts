@@ -9,9 +9,11 @@ const NextI18NextInstance = new NextI18Next({
 });
 
 NextI18NextInstance.i18n.init({
-  lng: 'zh',
+  lng: 'en',
   fallbackLng: 'en',
 });
+
+NextI18NextInstance.i18n.changeLanguage('en');
 
 export default NextI18NextInstance;
 

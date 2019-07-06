@@ -8,17 +8,18 @@ import {
   Segment,
   Icon,
   Input,
+  Label,
 } from 'semantic-ui-react';
 import React from 'react';
-import { WithTranslation } from 'react-i18next';
 
-class Layout extends React.Component<any & WithTranslation> {
+class Layout extends React.Component<any> {
   render() {
-    const { t, children } = this.props;
+    const { children } = this.props;
     const languageOptions = [
-      { key: 'Chinese', text: i18n.t('Chinese'), value: 'zh' },
       { key: 'English', text: i18n.t('English'), value: 'en' },
+      { key: 'Chinese', text: i18n.t('Chinese'), value: 'zh' },
     ];
+
     return (
       <Divider className="layout">
         <Head>
@@ -30,11 +31,11 @@ class Layout extends React.Component<any & WithTranslation> {
           <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" />
         </Head>
         <Divider horizontal>
-          <Menu fixed="top" inverted stackable size="huge">
-            <Menu.Item as="a" header position="left">
+          <Menu fixed="top" inverted stackable borderless size="huge">
+            <Menu.Item header position="left">
               ChurchCRM
             </Menu.Item>
-            <Menu.Item as="a" icon="world" header position="right" />
+            <Menu.Item icon="world" header position="right" />
             <Dropdown
               className="icon"
               floating
@@ -60,19 +61,51 @@ class Layout extends React.Component<any & WithTranslation> {
         <Segment>
           <Grid>
             <Grid.Column width={3}>
-              <Menu vertical>
+              <Menu vertical compact>
                 <Menu.Item>
                   <Input placeholder="Search..." />
                 </Menu.Item>
 
-                <Menu.Item>
-                  <Menu.Menu>
-                    <Menu.Item name="search">{i18n.t('Search')}</Menu.Item>
-                    <Menu.Item name="add">Add</Menu.Item>
-                    <Menu.Item name="about">Remove</Menu.Item>
-                  </Menu.Menu>
+                <Menu.Item name="dashboard">
+                  <Icon name="dashboard" />
+                  {i18n.t('Dashboard')}
                 </Menu.Item>
-
+                <Menu.Item name="calendar">
+                  <Icon name="calendar" />
+                  {i18n.t('Calendar')}
+                  <span>
+                    <Label size="tiny" color="blue">
+                      1
+                    </Label>
+                    <Label size="tiny" color="red">
+                      12
+                    </Label>
+                    <Label size="tiny" color="yellow">
+                      3
+                    </Label>
+                  </span>
+                </Menu.Item>
+                <Dropdown item pointing text={i18n.t('People')}>
+                  <Dropdown.Menu>
+                    <Dropdown.Item text={i18n.t('Dashboard')} />
+                    <Dropdown.Item text={i18n.t('Add New Person')} />
+                    <Dropdown.Item text={i18n.t('View All Persons')} />
+                    <Dropdown.Item text={i18n.t('Add New Family')} />
+                    <Dropdown.Item text={i18n.t('View Active Families')} />
+                    <Dropdown.Item text={i18n.t('View Inactive Families')} />
+                    <Dropdown item pointing text={i18n.t('Admin')}>
+                      <Dropdown.Menu>
+                        <Dropdown.Item
+                          text={i18n.t('Classifications Manager')}
+                        />
+                        <Dropdown.Item text={i18n.t('Family Roles')} />
+                        <Dropdown.Item text={i18n.t('Family Properties')} />
+                        <Dropdown.Item text={i18n.t('Family Custom Fields')} />
+                        <Dropdown.Item text={i18n.t('People Properties')} />
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Dropdown.Menu>
+                </Dropdown>
                 <Menu.Item name="browse">
                   <Icon name="grid layout" />
                   Browse
