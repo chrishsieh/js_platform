@@ -9,6 +9,7 @@ import {
   Icon,
   Input,
   Label,
+  Header,
 } from 'semantic-ui-react';
 import React from 'react';
 
@@ -50,7 +51,7 @@ class Layout extends React.Component<any> {
                 }
               }}
             />
-            <Dropdown item simple text="Menu">
+            <Dropdown item simple text={i18n.t('Menu')}>
               <Dropdown.Menu>
                 <Dropdown.Item>List Item 1</Dropdown.Item>
                 <Dropdown.Item>List Item 2</Dropdown.Item>
@@ -85,7 +86,7 @@ class Layout extends React.Component<any> {
                     </Label>
                   </span>
                 </Menu.Item>
-                <Dropdown item pointing text={i18n.t('People')}>
+                <Dropdown item text={i18n.t('People')}>
                   <Dropdown.Menu>
                     <Dropdown.Item text={i18n.t('Dashboard')} />
                     <Dropdown.Item text={i18n.t('Add New Person')} />
@@ -93,17 +94,13 @@ class Layout extends React.Component<any> {
                     <Dropdown.Item text={i18n.t('Add New Family')} />
                     <Dropdown.Item text={i18n.t('View Active Families')} />
                     <Dropdown.Item text={i18n.t('View Inactive Families')} />
-                    <Dropdown item pointing text={i18n.t('Admin')}>
-                      <Dropdown.Menu>
-                        <Dropdown.Item
-                          text={i18n.t('Classifications Manager')}
-                        />
-                        <Dropdown.Item text={i18n.t('Family Roles')} />
-                        <Dropdown.Item text={i18n.t('Family Properties')} />
-                        <Dropdown.Item text={i18n.t('Family Custom Fields')} />
-                        <Dropdown.Item text={i18n.t('People Properties')} />
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    <Dropdown.Divider />
+                    <Dropdown.Header content={<Header>{i18n.t('Admin')}</Header>} />
+                    <Dropdown.Item text={i18n.t('Classifications Manager')} />
+                    <Dropdown.Item text={i18n.t('Family Roles')} />
+                    <Dropdown.Item text={i18n.t('Family Properties')} />
+                    <Dropdown.Item text={i18n.t('Family Custom Fields')} />
+                    <Dropdown.Item text={i18n.t('People Properties')} />
                   </Dropdown.Menu>
                 </Dropdown>
                 <Menu.Item name="browse">

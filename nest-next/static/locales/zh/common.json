@@ -1,8 +1,23 @@
 {
-  "Dashboard" : "儀錶板",
-  "hello-world": "大家好",
   "Select Language": "選擇語言",
-  "Search": "搜尋",
   "Chinese": "中文",
-  "English": "英文"
+  "English": "英文",
+
+  "Menu": "選單",
+  "Search": "搜尋",
+  "Dashboard": "儀錶板",
+  "Calendar": "日曆",
+  "People": "人員",
+
+  "Add New Person": "新增人員",
+  "View All Persons": "檢視所有人員",
+  "Add New Family": "新增家庭",
+  "View Active Families": "檢視活躍家庭",
+  "View Inactive Families": "檢視不活躍家庭",
+  "Admin": "管理員",
+  "Classifications Manager": "類別管理",
+  "Family Roles": "家庭規則",
+  "Family Properties": "家庭屬性",
+  "Family Custom Fields": "家庭自訂領域",
+  "People Properties": "人員屬性"
 }
