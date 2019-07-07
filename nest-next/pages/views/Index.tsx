@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header } from 'semantic-ui-react';
+import { withTranslation } from '../../src/i18n';
 import { WithTranslation } from 'react-i18next';
 
 interface InitialProps {
@@ -21,4 +22,4 @@ class Index extends React.Component<Props & WithTranslation> {
   }
 }
 
-export default Index;
+export default withTranslation('common')(Index);

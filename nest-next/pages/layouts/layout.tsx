@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import i18n from 'i18next';
+import { i18n } from '../../src/i18n';
 import {
   Divider,
   Menu,
@@ -20,6 +20,18 @@ class Layout extends React.Component<any> {
       { key: 'English', text: i18n.t('English'), value: 'en' },
       { key: 'Chinese', text: i18n.t('Chinese'), value: 'zh' },
     ];
+    const peopleTrigger = (
+      <span>
+        <Icon name="users" />
+        {i18n.t('People')}
+      </span>
+    );
+    const groupTrigger = (
+      <span>
+        <Icon name="tags" />
+        {i18n.t('Groups')}
+      </span>
+    );
 
     return (
       <Divider className="layout">
@@ -68,25 +80,29 @@ class Layout extends React.Component<any> {
                 </Menu.Item>
 
                 <Menu.Item name="dashboard">
-                  <Icon name="dashboard" />
-                  {i18n.t('Dashboard')}
-                </Menu.Item>
-                <Menu.Item name="calendar">
-                  <Icon name="calendar" />
-                  {i18n.t('Calendar')}
                   <span>
-                    <Label size="tiny" color="blue">
-                      1
-                    </Label>
-                    <Label size="tiny" color="red">
-                      12
-                    </Label>
-                    <Label size="tiny" color="yellow">
-                      3
-                    </Label>
+                    <Icon name="dashboard" />
+                    {i18n.t('Dashboard')}
                   </span>
                 </Menu.Item>
-                <Dropdown item text={i18n.t('People')}>
+                <Menu.Item name="calendar">
+                  <span>
+                    <Icon name="calendar" />
+                    {i18n.t('Calendar')}
+                    <span>
+                      <Label size="tiny" color="blue">
+                        1
+                      </Label>
+                      <Label size="tiny" color="red">
+                        12
+                      </Label>
+                      <Label size="tiny" color="yellow">
+                        3
+                      </Label>
+                    </span>
+                  </span>
+                </Menu.Item>
+                <Dropdown item trigger={peopleTrigger}>
                   <Dropdown.Menu>
                     <Dropdown.Item text={i18n.t('Dashboard')} />
                     <Dropdown.Item text={i18n.t('Add New Person')} />
@@ -95,12 +111,43 @@ class Layout extends React.Component<any> {
                     <Dropdown.Item text={i18n.t('View Active Families')} />
                     <Dropdown.Item text={i18n.t('View Inactive Families')} />
                     <Dropdown.Divider />
-                    <Dropdown.Header content={<Header>{i18n.t('Admin')}</Header>} />
-                    <Dropdown.Item text={i18n.t('Classifications Manager')} />
-                    <Dropdown.Item text={i18n.t('Family Roles')} />
-                    <Dropdown.Item text={i18n.t('Family Properties')} />
-                    <Dropdown.Item text={i18n.t('Family Custom Fields')} />
-                    <Dropdown.Item text={i18n.t('People Properties')} />
+                    <Dropdown item text={i18n.t('Admin')}>
+                      <Dropdown.Menu>
+                        <Dropdown.Item
+                          text={i18n.t('Classifications Manager')}
+                        />
+                        <Dropdown.Item text={i18n.t('Family Roles')} />
+                        <Dropdown.Item text={i18n.t('Family Properties')} />
+                        <Dropdown.Item text={i18n.t('Family Custom Fields')} />
+                        <Dropdown.Item text={i18n.t('People Properties')} />
+                        <Dropdown.Item text={i18n.t('People Custom Fields')} />
+                        <Dropdown.Item
+                          text={i18n.t('Volunteer Opportunities')}
+                        />
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown item trigger={groupTrigger}>
+                  <Dropdown.Menu>
+                    <Dropdown.Item text={i18n.t('List Groups')} />
+                    <Dropdown.Item text={i18n.t('Group Assignment Help')} />
+                    <Dropdown.Divider />
+                    <Dropdown item text={i18n.t('Admin')}>
+                      <Dropdown.Menu>
+                        <Dropdown.Item
+                          text={i18n.t('Classifications Manager')}
+                        />
+                        <Dropdown.Item text={i18n.t('Family Roles')} />
+                        <Dropdown.Item text={i18n.t('Family Properties')} />
+                        <Dropdown.Item text={i18n.t('Family Custom Fields')} />
+                        <Dropdown.Item text={i18n.t('People Properties')} />
+                        <Dropdown.Item text={i18n.t('People Custom Fields')} />
+                        <Dropdown.Item
+                          text={i18n.t('Volunteer Opportunities')}
+                        />
+                      </Dropdown.Menu>
+                    </Dropdown>
                   </Dropdown.Menu>
                 </Dropdown>
                 <Menu.Item name="browse">
