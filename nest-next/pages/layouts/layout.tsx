@@ -20,18 +20,9 @@ class Layout extends React.Component<any> {
       { key: 'English', text: i18n.t('English'), value: 'en' },
       { key: 'Chinese', text: i18n.t('Chinese'), value: 'zh' },
     ];
-    const peopleTrigger = (
-      <span>
-        <Icon name="users" />
-        {i18n.t('People')}
-      </span>
-    );
-    const groupTrigger = (
-      <span>
-        <Icon name="tags" />
-        {i18n.t('Groups')}
-      </span>
-    );
+    const spanStyle: React.CSSProperties = {
+      float: 'right',
+    };
 
     return (
       <Divider className="layout">
@@ -78,7 +69,6 @@ class Layout extends React.Component<any> {
                 <Menu.Item>
                   <Input placeholder="Search..." />
                 </Menu.Item>
-
                 <Menu.Item name="dashboard">
                   <span>
                     <Icon name="dashboard" />
@@ -89,7 +79,7 @@ class Layout extends React.Component<any> {
                   <span>
                     <Icon name="calendar" />
                     {i18n.t('Calendar')}
-                    <span>
+                    <span style={spanStyle}>
                       <Label size="tiny" color="blue">
                         1
                       </Label>
@@ -102,7 +92,15 @@ class Layout extends React.Component<any> {
                     </span>
                   </span>
                 </Menu.Item>
-                <Dropdown item trigger={peopleTrigger}>
+                <Dropdown
+                  item
+                  trigger={
+                    <span>
+                      <Icon name="users" />
+                      {i18n.t('People')}
+                    </span>
+                  }
+                >
                   <Dropdown.Menu>
                     <Dropdown.Item text={i18n.t('Dashboard')} />
                     <Dropdown.Item text={i18n.t('Add New Person')} />
@@ -111,7 +109,15 @@ class Layout extends React.Component<any> {
                     <Dropdown.Item text={i18n.t('View Active Families')} />
                     <Dropdown.Item text={i18n.t('View Inactive Families')} />
                     <Dropdown.Divider />
-                    <Dropdown item text={i18n.t('Admin')}>
+                    <Dropdown
+                      item
+                      trigger={
+                        <span>
+                          <Icon name="user" />
+                          {i18n.t('Admin')}
+                        </span>
+                      }
+                    >
                       <Dropdown.Menu>
                         <Dropdown.Item
                           text={i18n.t('Classifications Manager')}
@@ -128,39 +134,206 @@ class Layout extends React.Component<any> {
                     </Dropdown>
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown item trigger={groupTrigger}>
+                <Dropdown
+                  item
+                  trigger={
+                    <span>
+                      <Icon name="tags" />
+                      {i18n.t('Groups')}
+                    </span>
+                  }
+                >
                   <Dropdown.Menu>
                     <Dropdown.Item text={i18n.t('List Groups')} />
                     <Dropdown.Item text={i18n.t('Group Assignment Help')} />
                     <Dropdown.Divider />
-                    <Dropdown item text={i18n.t('Admin')}>
+                    <Dropdown
+                      item
+                      trigger={
+                        <span>
+                          <Icon name="tag" />
+                          {i18n.t('Ministry')}
+                        </span>
+                      }
+                    >
                       <Dropdown.Menu>
                         <Dropdown.Item
-                          text={i18n.t('Classifications Manager')}
+                          content={
+                            <span>
+                              <Icon name="user" />
+                              {i18n.t('Worship Service')}
+                            </span>
+                          }
                         />
-                        <Dropdown.Item text={i18n.t('Family Roles')} />
-                        <Dropdown.Item text={i18n.t('Family Properties')} />
-                        <Dropdown.Item text={i18n.t('Family Custom Fields')} />
-                        <Dropdown.Item text={i18n.t('People Properties')} />
-                        <Dropdown.Item text={i18n.t('People Custom Fields')} />
+                      </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown.Divider />
+                    <Dropdown
+                      item
+                      trigger={
+                        <span>
+                          <Icon name="tag" />
+                          {i18n.t('Unassigned')}
+                        </span>
+                      }
+                    >
+                      <Dropdown.Menu>
                         <Dropdown.Item
-                          text={i18n.t('Volunteer Opportunities')}
+                          content={
+                            <span>
+                              <Icon name="user" />
+                              {i18n.t('Boys Scouts')}
+                            </span>
+                          }
+                        />
+                        <Dropdown.Item
+                          content={
+                            <span>
+                              <Icon name="user" />
+                              {i18n.t('Church Board')}
+                            </span>
+                          }
+                        />
+                        <Dropdown.Item
+                          content={
+                            <span>
+                              <Icon name="user" />
+                              {i18n.t('Girl Scouts')}
+                            </span>
+                          }
+                        />
+                      </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown.Divider />
+                    <Dropdown
+                      item
+                      trigger={
+                        <span>
+                          <Icon name="user" />
+                          {i18n.t('Admin')}
+                        </span>
+                      }
+                    >
+                      <Dropdown.Menu>
+                        <Dropdown.Item text={i18n.t('Group Properties')} />
+                        <Dropdown.Item text={i18n.t('Group Types')} />
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown
+                  item
+                  trigger={
+                    <span>
+                      <Icon name="child" />
+                      {i18n.t('Sunday School')}
+                    </span>
+                  }
+                >
+                  <Dropdown.Menu>
+                    <Dropdown.Item text={i18n.t('Dashboard')} />
+                    <Dropdown.Divider />
+                    <Dropdown
+                      item
+                      trigger={
+                        <span>
+                          <Icon name="tags" />
+                          {i18n.t('Classes')}
+                        </span>
+                      }
+                    >
+                      <Dropdown.Menu>
+                        <Dropdown.Item
+                          content={
+                            <span>
+                              <Icon name="user" />
+                              {i18n.t('Angels class')}
+                            </span>
+                          }
                         />
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Menu>
                 </Dropdown>
-                <Menu.Item name="browse">
-                  <Icon name="grid layout" />
-                  Browse
+                <Menu.Item name="Email">
+                  <span>
+                    <Icon name="mail" />
+                    {i18n.t('Email')}
+                  </span>
                 </Menu.Item>
-                <Menu.Item name="messages">Messages</Menu.Item>
-
-                <Dropdown item text="More">
+                <Dropdown
+                  item
+                  trigger={
+                    <span>
+                      <Icon name="ticket" />
+                      {i18n.t('Events')}
+                    </span>
+                  }
+                >
                   <Dropdown.Menu>
-                    <Dropdown.Item icon="edit" text="Edit Profile" />
-                    <Dropdown.Item icon="globe" text="Choose Language" />
-                    <Dropdown.Item icon="settings" text="Account Settings" />
+                    <Dropdown.Item text={i18n.t('Add Church Event')} />
+                    <Dropdown.Item text={i18n.t('List Church Events')} />
+                    <Dropdown.Item text={i18n.t('List Event Types')} />
+                    <Dropdown.Item text={i18n.t('Check-in and Check-out')} />
+                    <Dropdown.Item text={i18n.t('Event Attendance Reports')} />
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Menu.Item name="deposit">
+                  <span>
+                    <Icon name="university" />
+                    {i18n.t('Deposit')}
+                    <span style={spanStyle}>
+                      <Label size="tiny" color="green">
+                        6
+                      </Label>
+                    </span>
+                  </span>
+                </Menu.Item>
+                <Menu.Item name="fundraiser">
+                  <span>
+                    <Icon name="money" />
+                    {i18n.t('Fundraiser')}
+                    <span style={spanStyle}>
+                      <Label size="tiny" color="blue">
+                        0
+                      </Label>
+                    </span>
+                  </span>
+                </Menu.Item>
+                <Dropdown
+                  item
+                  trigger={
+                    <span>
+                      <Icon name="file pdf outline" />
+                      {i18n.t('Data/Reports')}
+                    </span>
+                  }
+                >
+                  <Dropdown.Menu>
+                    <Dropdown.Item text={i18n.t('Canvass Automation')} />
+                    <Dropdown.Item text={i18n.t('Query Menu')} />
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown
+                  item
+                  trigger={
+                    <span>
+                      <Icon name="setting" />
+                      {i18n.t('Admin')}
+                    </span>
+                  }
+                >
+                  <Dropdown.Menu>
+                    <Dropdown.Item text={i18n.t('Edit General Settings')} />
+                    <Dropdown.Item text={i18n.t('System Users')} />
+                    <Dropdown.Item text={i18n.t('Property Types')} />
+                    <Dropdown.Item text={i18n.t('Restore Database')} />
+                    <Dropdown.Item text={i18n.t('Backup Database')} />
+                    <Dropdown.Item text={i18n.t('CSV Import')} />
+                    <Dropdown.Item text={i18n.t('CSV Export Records')} />
+                    <Dropdown.Item text={i18n.t('Kiosk Manager')} />
+                    <Dropdown.Item text={i18n.t('Debug')} />
+                    <Dropdown.Item text={i18n.t('Custom Menus')} />
                   </Dropdown.Menu>
                 </Dropdown>
               </Menu>
