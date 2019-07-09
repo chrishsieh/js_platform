@@ -22,9 +22,9 @@ export class PersonSubscriber implements EntitySubscriberInterface<user_usr> {
   async afterInsert(event: InsertEvent<user_usr>) {
     Logger.log(`-----After Insert------`);
 
-    event.manager
-      .createQueryBuilder(user_usr, 'u')
-      .relation('roles')
-      .of(event.entity);
+//    event.manager
+//      .createQueryBuilder(user_usr, 'u')
+//      .relation('roles')
+//      .of(event.entity);
   }
 }

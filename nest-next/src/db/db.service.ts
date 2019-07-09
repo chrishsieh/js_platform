@@ -28,10 +28,10 @@ export class UserUsrService {
   }
 
   async getUsers(): Promise<user_usr[]> {
-    return await this.UserRepository.createQueryBuilder('u')
-      .select('u.usr_UserName')
-      .addSelect('u.usr_apiKey')
-      .orderBy('u.usr_per_ID', 'DESC')
+    return await this.UserRepository.createQueryBuilder('getUsers')
+      .select('getUsers.usr_UserName')
+      .addSelect('getUsers.usr_apiKey')
+      .orderBy('getUsers.usr_per_ID', 'DESC')
       .getMany();
   }
 }

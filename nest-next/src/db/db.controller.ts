@@ -14,10 +14,12 @@ import {
   ApiBearerAuth,
   ApiForbiddenResponse,
 } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
+@ApiUseTags('User')
 @ApiBearerAuth()
 @ApiForbiddenResponse({ description: 'Unauthorized' })
-@ApiUseTags('user')
+//@UseGuards(AuthGuard())
 @UseInterceptors(CacheInterceptor)
 @Controller('user')
 export class UserController {

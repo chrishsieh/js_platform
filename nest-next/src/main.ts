@@ -6,6 +6,8 @@ import Next from 'next';
 import { AppModule } from './app.module';
 import nextI18NextMiddleware from 'next-i18next/middleware';
 import nextI18next from './i18n';
+import { UserModule } from './user/users.module';
+import { AuthModule } from './auth/auth.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
@@ -38,12 +40,26 @@ async function bootstrap() {
     .setDescription('The users Restful API description')
     .setVersion('1.0')
     .addBearerAuth()
-    .addTag('person')
+    .addTag('users')
     .build();
 
   //restful API doc
-  const document = SwaggerModule.createDocument(server, options);
-  SwaggerModule.setup('v1/api/', server, document);
+  const User_document = SwaggerModule.createDocument(server, options, {
+    include: [UserModule],
+  });
+  SwaggerModule.setup('v1/api/user', server, User_document);
+
+  const authApiOptions = new DocumentBuilder()
+    .setTitle('Auth API Doc')
+    .setDescription('Auth API Info')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .addTag('auth') // match tags in controllers
+    .build();
+  const authApiDocument = SwaggerModule.createDocument(server, authApiOptions, {
+    include: [AuthModule],
+  });
+  SwaggerModule.setup('v1/api/auth', server, authApiDocument);
 
   await server.listen(process.env.PORT || 5000);
 
