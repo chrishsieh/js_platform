@@ -1,41 +1,37 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { person_per } from '../../entities/person_per';
+import { user_usr } from '../shared/entity/user_usr';
 
 @Injectable()
-export class PersonPerService {
+export class UserUsrService {
   constructor(
-    @InjectRepository(person_per)
-    private readonly PersonPerRepository: Repository<person_per>,
+    @InjectRepository(user_usr)
+    private readonly UserRepository: Repository<user_usr>,
   ) {}
 
-  findAll(): Promise<person_per[]> {
-    return this.PersonPerRepository.find();
+  findAll(): Promise<user_usr[]> {
+    return this.UserRepository.find();
   }
 
-  findById(id: number): Promise<person_per> {
-    return this.PersonPerRepository.findOneOrFail(id);
+  findById(id: number): Promise<user_usr> {
+    return this.UserRepository.findOneOrFail(id);
   }
 
-  getFirst(): Promise<person_per[]> {
-    return this.PersonPerRepository.createQueryBuilder('person')
-      .select('person.per_FirstName')
-      .addSelect('person.per_LastName')
-      .where('person.per_Gender=2')
-      .orderBy('person.per_ID', 'DESC')
+  getFirst(): Promise<user_usr[]> {
+    return this.UserRepository.createQueryBuilder('user')
+      .select('user.usr_UserName')
+      .addSelect('user.usr_apiKey')
+      .orderBy('user.usr_per_ID', 'DESC')
       .take(10)
       .getMany();
   }
 
-  getUsers(): Promise<person_per[]> {
-    return this.PersonPerRepository.createQueryBuilder('u')
-      .select('u.per_FirstName')
-      .addSelect('u.per_LastName')
-      .addSelect('u.per_Email')
-      .where('u.per_Gender=2')
-      .orderBy('u.per_ID', 'DESC')
-      .take(5)
+  async getUsers(): Promise<user_usr[]> {
+    return await this.UserRepository.createQueryBuilder('u')
+      .select('u.usr_UserName')
+      .addSelect('u.usr_apiKey')
+      .orderBy('u.usr_per_ID', 'DESC')
       .getMany();
   }
 }

@@ -1,16 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, InjectConnection } from '@nestjs/typeorm';
-import { PersonPerService } from './db.service';
-import { PersonPerController } from './db.controller';
-import { person_per } from '../../entities/person_per';
+import { UserUsrService } from './db.service';
+import { UserController } from './db.controller';
+import { userEntities } from '../shared/entity';
 import { Connection } from 'typeorm';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([person_per]),
-  ],
-  providers: [PersonPerService],
-  controllers: [PersonPerController],
+  imports: [TypeOrmModule.forFeature(userEntities)],
+  providers: [UserUsrService],
+  controllers: [UserController],
 })
 export class DatabaseModule {
   constructor(

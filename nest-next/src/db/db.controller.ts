@@ -5,29 +5,43 @@ import {
   UseInterceptors,
   CacheInterceptor,
   Render,
+  UseGuards,
 } from '@nestjs/common';
-import { PersonPerService } from './db.service';
-import { person_per } from '../../entities/person_per';
+import { UserUsrService } from './db.service';
+import {
+  ApiUseTags,
+  ApiResponse,
+  ApiBearerAuth,
+  ApiForbiddenResponse,
+} from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiForbiddenResponse({ description: 'Unauthorized' })
+@ApiUseTags('user')
 @UseInterceptors(CacheInterceptor)
-@Controller('person')
-export class PersonPerController {
-  constructor(private readonly personperService: PersonPerService) {}
+@Controller('user')
+export class UserController {
+  constructor(private readonly UserService: UserUsrService) {}
 
   @Get()
-  @Render('Person')
-  getFirst(): Promise<person_per[]> {
-    return this.personperService.getUsers();
+  @ApiResponse({
+    status: 201,
+    description: 'The record has been successfully created.',
+  })
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  @Render('User')
+  getFirst() {
+    return this.UserService.getUsers();
   }
 
   @Get(':ID')
   getPerson(@Param('ID') person_ID: number) {
-    const person = this.personperService.findById(person_ID);
+    const person = this.UserService.findById(person_ID);
     return person;
   }
 
   //  @Get()
   //  findAll(): Promise<person_per[]> {
-  //    return this.personperService.findAll();
+  //    return this.UserService.findAll();
   //  }
 }
