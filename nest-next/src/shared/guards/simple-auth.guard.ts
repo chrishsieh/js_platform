@@ -20,17 +20,13 @@ export class SimpleAuthGuard implements CanActivate {
     const req = context.switchToHttp().getRequest(); // 取得request物件
     const ctrl = context.getClass(); // 利用reflect metadata取得Controller name
     Logger.log(`Controller Name: ${ctrl.name}`);
-    console.log(`Controller Name: ${ctrl.name}`);
     const handler = context.getHandler(); // 利用reflect metadata 取得存取資源對應的方法
     Logger.log(`Method Name: ${handler.name}`);
-    console.log(`Method Name: ${handler.name}`);
 
     const roles = this.reflector.get<string[]>('roles', handler); // 利用get取得'roles'的值，第二個參數是告訴reflector取得哪一個方法的metadata
     // 使用Logger來測試有沒有取得roles的對應的value
     Logger.log('---允許的Roles有---');
-    console.log('---允許的Roles有---');
     Logger.log(roles);
-    console.log(roles);
 
     if (req.hostname === 'localhost') {
       return true;

@@ -16,8 +16,9 @@ import {
 } from '@nestjs/common';
 
 import { AuthGuard } from '@nestjs/passport';
+import { SimpleAuthGuard } from '../../shared/guards/simple-auth.guard';
 import { UserDTO } from '../../shared/DTOs/userDTO';
-//import { UserDTOValidationPipe } from '../../shared/pipes/userDTOValidation.pipe';
+import { UserDTOValidationPipe } from '../../shared/pipes/userDTOValidation.pipe';
 import { UserQueryDTO } from '../../shared/DTOs/userQueryDTO';
 import { UsersService } from '../../shared/services/users.service';
 import {
@@ -35,7 +36,7 @@ import {
 @ApiUseTags('U')
 @ApiBearerAuth()
 @ApiForbiddenResponse({ description: 'Unauthorized' })
-//@UseGuards(AuthGuard())
+//@UseGuards(SimpleAuthGuard)
 @UseInterceptors(CacheInterceptor)
 @Controller('api/users')
 export class UsersController {
@@ -55,7 +56,7 @@ export class UsersController {
   @Post()
   @ApiCreatedResponse({ description: 'User Created' })
   @ApiInternalServerErrorResponse({ description: 'Invalid Input' })
-  //@UsePipes(UserDTOValidationPipe)
+  @UsePipes(UserDTOValidationPipe)
   @ReflectMetadata('roles', ['admin', 'superuser'])
   create(@Body() userDTO: UserDTO) {
     //throw new HttpException('糟糕!您的要求有問題，請洽系統管理員', HttpStatus.BAD_REQUEST);
@@ -65,7 +66,6 @@ export class UsersController {
 
   @Get(':userId')
   getUserById(@Param('userId') id: number) {
-    console.log('經過');
     return this.usersService.getUserById(id);
   }
 

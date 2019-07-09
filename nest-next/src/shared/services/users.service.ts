@@ -62,8 +62,6 @@ export class UsersService {
   async getUserById(userId: number): Promise<user_usr | undefined> {
     return await this.em
       .createQueryBuilder(user_usr, 'u')
-      .leftJoinAndSelect('u.roles', 'r')
-      .leftJoinAndSelect('u.dep', 'd')
       .whereInIds(userId)
       .select([
         'u.usr_per_ID',

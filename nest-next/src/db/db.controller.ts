@@ -15,11 +15,12 @@ import {
   ApiForbiddenResponse,
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { SimpleAuthGuard } from '../shared/guards/simple-auth.guard';
 
 @ApiUseTags('User')
 @ApiBearerAuth()
 @ApiForbiddenResponse({ description: 'Unauthorized' })
-//@UseGuards(AuthGuard())
+//@UseGuards(SimpleAuthGuard)
 @UseInterceptors(CacheInterceptor)
 @Controller('user')
 export class UserController {

@@ -1,9 +1,9 @@
-//import { HttpExceptionFilter } from './filters/httpexception.filter';
+import { HttpExceptionFilter } from './filters/httpexception.filter';
 import { Module } from '@nestjs/common';
 import { SimpleAuthGuard } from './guards/simple-auth.guard';
-//import { TransformResInterceptor } from './interceptors/transformRes.interceptor';
+import { TransformResInterceptor } from './interceptors/transformRes.interceptor';
 import { TypeOrmModule } from '@nestjs/typeorm';
-//import { UserDTOValidationPipe } from './pipes/userDTOValidation.pipe';
+import { UserDTOValidationPipe } from './pipes/userDTOValidation.pipe';
 import { userEntities } from './entity';
 @Module({
   imports: [
@@ -25,16 +25,16 @@ import { userEntities } from './entity';
     }),
   ],
   providers: [
-    //    UserDTOValidationPipe,
+    UserDTOValidationPipe,
     SimpleAuthGuard,
-    //    HttpExceptionFilter,
-    //    TransformResInterceptor,
+    HttpExceptionFilter,
+    TransformResInterceptor,
   ],
   exports: [
-    //    UserDTOValidationPipe,
+    UserDTOValidationPipe,
     SimpleAuthGuard,
-    //    HttpExceptionFilter,
-    //    TransformResInterceptor,
+    HttpExceptionFilter,
+    TransformResInterceptor,
   ],
 })
 export class SharedModule {}
