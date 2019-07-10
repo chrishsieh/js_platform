@@ -8,9 +8,9 @@ import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
-    PassportModule.register({ defaultStrategy: 'bearer' }),
+    //PassportModule.register({ defaultStrategy: 'bearer' }),
     // 指定strategy，不用在AuthGuard裡特別指定
-    PassportModule.register({ defaultStrategy: 'jwt' }),
+    //PassportModule.register({ defaultStrategy: 'jwt' }),
     TypeOrmModule.forFeature(userEntities),
   ],
   providers: [UserUsrService],

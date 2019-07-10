@@ -19,13 +19,13 @@ import { TokenDTO } from '../shared/DTOs/token';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @ApiCreatedResponse({ description: 'Get Bearer Token' })
-  @ApiForbiddenResponse({ description: 'Invalid username/password' })
-  @Post('getToken')
+//  @ApiCreatedResponse({ description: 'Get Bearer Token' })
+//  @ApiForbiddenResponse({ description: 'Invalid username/password' })
+//  @Post('getToken')
   //@UsePipes(UserDTOValidationPipe)
-  getTokenByUserId(
-    @Body() data: TokenDTO,
-  ) {
-    return this.authService.createToken(data.user_name, data.password);
-  }
+//  getTokenByUserId(
+//    @Body() data: TokenDTO,
+//  ) {
+//    return this.authService.createToken(data.user_name, data.password);
+//  }
 }

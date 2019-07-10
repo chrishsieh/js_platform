@@ -6,6 +6,8 @@ import { IsEmail } from 'class-validator';
 import { user_usr } from '../entity/user_usr';
 import { UserDTO } from '../DTOs/userDTO';
 import { UserQueryDTO } from '../DTOs/userQueryDTO';
+import md5 from 'blueimp-md5';
+import { Base64 } from 'js-base64';
 
 @Injectable()
 export class UsersService {
@@ -98,10 +100,20 @@ export class UsersService {
       .then(result => userDeleted); // 回傳raw沒有資料
   }
 
+  //  async findOneByToken(token: string) {
+  //    return await this.em
+  //      .createQueryBuilder(user_usr, 'u')
+  //      .where('u.usr_apiKey = :token', { token })
+  //      .getOne();
+  //  }
+
   async findOneByToken(token: string) {
-    return await this.em
-      .createQueryBuilder(user_usr, 'u')
-      .where('u.usr_apiKey = :token', { token })
-      .getOne();
+    // 假定token為ironNest
+    const pass_string = 'admin:ironNest';
+    const hash = Base64.btoa(md5(pass_string, '', true));
+    console.log('findOneByToken :', token);
+    console.log('hash:', hash);
+    if (token === hash) return this.getUserById(1);
+    else return null;
   }
 }

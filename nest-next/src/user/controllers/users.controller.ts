@@ -13,10 +13,14 @@ import {
   UsePipes,
   UseInterceptors,
   CacheInterceptor,
+  Catch,
+  Response,
+  Next,
 } from '@nestjs/common';
 
 import { AuthGuard } from '@nestjs/passport';
 import { SimpleAuthGuard } from '../../shared/guards/simple-auth.guard';
+import { HttpAuthGuard } from '../../shared/guards/passport.guard';
 import { UserDTO } from '../../shared/DTOs/userDTO';
 import { UserDTOValidationPipe } from '../../shared/pipes/userDTOValidation.pipe';
 import { UserQueryDTO } from '../../shared/DTOs/userQueryDTO';
@@ -29,6 +33,9 @@ import {
   ApiCreatedResponse,
   ApiBadRequestResponse,
   ApiInternalServerErrorResponse,
+  ApiUnauthorizedResponse,
+  ApiNotFoundResponse,
+  ApiResponse,
 } from '@nestjs/swagger';
 
 // UseGuards()傳入@nest/passport下的AuthGuard
@@ -36,8 +43,10 @@ import {
 @ApiUseTags('U')
 @ApiBearerAuth()
 @ApiForbiddenResponse({ description: 'Unauthorized' })
-//@UseGuards(SimpleAuthGuard)
-@UseInterceptors(CacheInterceptor)
+//@UseGuards(SimpleAuthGuard, AuthGuard('bearer'))
+@UseGuards(AuthGuard('bearer'))
+//@UseGuards(HttpAuthGuard)
+//@UseInterceptors(CacheInterceptor)
 @Controller('api/users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
@@ -66,13 +75,13 @@ export class UsersController {
 
   @Get(':userId')
   getUserById(@Param('userId') id: number) {
+    console.log('In Users.Controller', +id);
     return this.usersService.getUserById(id);
   }
 
   @Put(':userId')
   updateUserById(@Param('userId') id: number, @Body() userDTO: UserDTO) {
     return this.usersService.updateUserById(id, userDTO);
-    // return this.usersService.updateUserRolesByIds(id, userDTO);
   }
 
   @Delete(':userId')

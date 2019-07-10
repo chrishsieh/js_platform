@@ -1,6 +1,7 @@
-import { HttpExceptionFilter } from './filters/httpexception.filter';
+//import { HttpExceptionFilter } from './filters/httpexception.filter';
 import { Module } from '@nestjs/common';
 import { SimpleAuthGuard } from './guards/simple-auth.guard';
+import { HttpAuthGuard } from './guards/passport.guard';
 import { TransformResInterceptor } from './interceptors/transformRes.interceptor';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserDTOValidationPipe } from './pipes/userDTOValidation.pipe';
@@ -16,7 +17,7 @@ import { userEntities } from './entity';
       password: 'changeme',
       database: 'churchcrm',
       synchronize: true,
-      logging: true,
+      logging: false,
       entities: [
         ...userEntities, // use entity/index.ts
       ],
@@ -27,13 +28,15 @@ import { userEntities } from './entity';
   providers: [
     UserDTOValidationPipe,
     SimpleAuthGuard,
-    HttpExceptionFilter,
+    HttpAuthGuard,
+    //    HttpExceptionFilter,
     TransformResInterceptor,
   ],
   exports: [
     UserDTOValidationPipe,
     SimpleAuthGuard,
-    HttpExceptionFilter,
+    HttpAuthGuard,
+    //    HttpExceptionFilter,
     TransformResInterceptor,
   ],
 })
