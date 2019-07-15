@@ -11,12 +11,9 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async createToken(user_name: string, password: string) {
+  async createToken(user_name: string) {
     // 驗證使用者，用最簡單舉例
-    console.log(user_name, 'Password check', password);
-    if ('Argox' !== password) {
-      throw new UnauthorizedException();
-    }
+    //console.log(user_name, 'get Token.');
 
     // 檢查是否已有使用者, 沒有則註冊
     const check_usr = await this.usersService.findOneByUsrName(user_name);
@@ -36,7 +33,7 @@ export class AuthService {
       console.log(user_name, 'UpdateToken');
     } else {
       await this.usersService.addUser(user_data);
-      console.log(user_name, 'createToken');
+      console.log(user_name, 'CreateToken');
     }
     return {
       accessToken,
@@ -57,5 +54,14 @@ export class AuthService {
       throw new UnauthorizedException();
     }
     return usr;
+  }
+
+  async validateBasicUser(username: string, password: string): Promise<any> {
+    //console.log('In validateBasicUser');
+    if ((username === 'APIadmin') && (password === 'Changeme')) {
+      return {};
+    } else {
+      throw new UnauthorizedException();
+    }
   }
 }

@@ -19,10 +19,4 @@ export class TokenDTO {
     message: '長度需要小於32',
   })
   userName: string;
-
-  @ApiModelProperty({
-    required: true,
-  })
-  @IsString()
-  passWord: string;
 }

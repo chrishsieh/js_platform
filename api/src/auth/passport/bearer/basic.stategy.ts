@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { AuthService } from '../../../auth/auth.service';
 import { PassportStrategy } from '@nestjs/passport';
-import { Strategy } from 'passport-http-bearer';
+import { BasicStrategy } from 'passport-http';
 
 @Injectable()
-export class HttpStrategy extends PassportStrategy(Strategy) {
+export class HttpBasicStrategy extends PassportStrategy(BasicStrategy) {
   constructor(private readonly authService: AuthService) {
     super();
   }
-  async validate(token: string, done: Function) {
-    //console.log('Check Http.');
+  async validate(username: string, password: string, done: CallableFunction) {
+    //console.log('Check Basic.', username, ':', password);
     return await this.authService
-      .validateUser(token)
+      .validateBasicUser(username, password)
       .then(signedUser => {
         done(null, signedUser);
       })
       .catch(err => {
-        done(err, false);
+        done(err);
       });
   }
 }
