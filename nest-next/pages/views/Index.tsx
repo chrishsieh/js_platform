@@ -1,5 +1,4 @@
-import React from 'react';
-import { Header } from 'semantic-ui-react';
+import * as React from 'react';
 import { withTranslation } from '../../src/i18n';
 import { WithTranslation } from 'react-i18next';
 
@@ -18,7 +17,7 @@ class Index extends React.Component<Props & WithTranslation> {
   }
 
   public render() {
-    return <Header>{this.props.query}</Header>;
+    return <h1>Hellos</h1>;
   }
 }
 

@@ -1,19 +1,27 @@
 import Head from 'next/head';
 import { i18n } from '../../src/i18n';
-import {
-  Divider,
-  Menu,
-  Dropdown,
-  Grid,
-  Segment,
-  Icon,
-  Input,
-  Label,
-  Header,
-} from 'semantic-ui-react';
-import React from 'react';
+import React, { StyleHTMLAttributes } from 'react';
+import Logo from '@src/components/logo';
+import Navbar from '@src/components/navbar';
+import Sidebar from '@src/components/sidebar';
+import ContentHeader from '@src/components/content_header';
+import SmallBox from '@src/components/small_box';
+import CustomTab from '@src/components/custom_tab';
+import ChatBox from '@src/components/chat_box';
+import TodoList from '@src/components/todo_list';
+import QuickEmail from '@src/components/quick_email';
+import MapBox from '@src/components/map_box';
+import SolidGraph from '@src/components/solid_graph';
+import Calendar from '@src/components/calendar';
+import Footer from '@src/components/footer';
+import ControlSidebar from '@src/components/control_sidebar';
 
 class Layout extends React.Component<any> {
+  public static async getInitialProps() {
+    return {
+      namespacesRequired: ['common'],
+    };
+  }
   render() {
     const { children } = this.props;
     const languageOptions = [
@@ -25,331 +33,102 @@ class Layout extends React.Component<any> {
     };
 
     return (
-      <Divider className="layout">
+      <main>
         <Head>
+          <title>AdminLTE 2 | Dashboard</title>
+          <meta
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+            name="viewport"
+          />
           <link
             rel="stylesheet"
-            href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+            href="/static/bootstrap/css/bootstrap.min.css"
           />
-          <script src="https://unpkg.com/react@16/umd/react.production.min.js" />
-          <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" />
+          <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+          />
+          <link
+            rel="stylesheet"
+            href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+          />
+          <link rel="stylesheet" href="/static/dist/css/AdminLTE.min.css" />
+          <link
+            rel="stylesheet"
+            href="/static/dist/css/skins/_all-skins.min.css"
+          />
+          <link rel="stylesheet" href="/static/plugins/iCheck/flat/blue.css" />
+          <link rel="stylesheet" href="/static/plugins/morris/morris.css" />
+          <link
+            rel="stylesheet"
+            href="/static/plugins/jvectormap/jquery-jvectormap-1.2.2.css"
+          />
+          <link
+            rel="stylesheet"
+            href="/static/plugins/datepicker/datepicker3.css"
+          />
+          <link
+            rel="stylesheet"
+            href="/static/plugins/daterangepicker/daterangepicker-bs3.css"
+          />
+          <link
+            rel="stylesheet"
+            href="/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"
+          />
         </Head>
-        <Segment.Group>
-          <Segment>
-            <Menu fixed="top" inverted stackable borderless size="huge">
-              <Menu.Item header position="left">
-                ChurchCRM
-              </Menu.Item>
-              <Menu.Item icon="world" header position="right" />
-              <Dropdown
-                className="icon"
-                floating
-                labeled
-                item
-                options={languageOptions}
-                search
-                text={i18n.t('Select Language')}
-                onChange={(event, data) => {
-                  if (data.value) {
-                    i18n.changeLanguage(data.value as string);
-                  }
-                }}
-              />
-              <Dropdown item simple text={i18n.t('Menu')}>
-                <Dropdown.Menu>
-                  <Dropdown.Item>List Item 1</Dropdown.Item>
-                  <Dropdown.Item>List Item 2</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Menu>
-          </Segment>
-          <Segment>
-            <Grid>
-              <Grid.Column width={3}>
-                <Menu vertical compact>
-                  <Menu.Item>
-                    <Input placeholder="Search..." />
-                  </Menu.Item>
-                  <Menu.Item name="dashboard">
-                    <span>
-                      <Icon name="dashboard" />
-                      {i18n.t('Dashboard')}
-                    </span>
-                  </Menu.Item>
-                  <Menu.Item name="calendar">
-                    <span>
-                      <Icon name="calendar" />
-                      {i18n.t('Calendar')}
-                      <span style={spanStyle}>
-                        <Label size="tiny" color="blue">
-                          1
-                        </Label>
-                        <Label size="tiny" color="red">
-                          12
-                        </Label>
-                        <Label size="tiny" color="yellow">
-                          3
-                        </Label>
-                      </span>
-                    </span>
-                  </Menu.Item>
-                  <Dropdown
-                    item
-                    trigger={
-                      <span>
-                        <Icon name="users" />
-                        {i18n.t('People')}
-                      </span>
-                    }
-                  >
-                    <Dropdown.Menu>
-                      <Dropdown.Item text={i18n.t('Dashboard')} />
-                      <Dropdown.Item text={i18n.t('Add New Person')} />
-                      <Dropdown.Item text={i18n.t('View All Persons')} />
-                      <Dropdown.Item text={i18n.t('Add New Family')} />
-                      <Dropdown.Item text={i18n.t('View Active Families')} />
-                      <Dropdown.Item text={i18n.t('View Inactive Families')} />
-                      <Dropdown.Divider />
-                      <Dropdown
-                        item
-                        trigger={
-                          <span>
-                            <Icon name="user" />
-                            {i18n.t('Admin')}
-                          </span>
-                        }
-                      >
-                        <Dropdown.Menu>
-                          <Dropdown.Item
-                            text={i18n.t('Classifications Manager')}
-                          />
-                          <Dropdown.Item text={i18n.t('Family Roles')} />
-                          <Dropdown.Item text={i18n.t('Family Properties')} />
-                          <Dropdown.Item
-                            text={i18n.t('Family Custom Fields')}
-                          />
-                          <Dropdown.Item text={i18n.t('People Properties')} />
-                          <Dropdown.Item
-                            text={i18n.t('People Custom Fields')}
-                          />
-                          <Dropdown.Item
-                            text={i18n.t('Volunteer Opportunities')}
-                          />
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                  <Dropdown
-                    item
-                    trigger={
-                      <span>
-                        <Icon name="tags" />
-                        {i18n.t('Groups')}
-                      </span>
-                    }
-                  >
-                    <Dropdown.Menu>
-                      <Dropdown.Item text={i18n.t('List Groups')} />
-                      <Dropdown.Item text={i18n.t('Group Assignment Help')} />
-                      <Dropdown.Divider />
-                      <Dropdown
-                        item
-                        trigger={
-                          <span>
-                            <Icon name="tag" />
-                            {i18n.t('Ministry')}
-                          </span>
-                        }
-                      >
-                        <Dropdown.Menu>
-                          <Dropdown.Item
-                            content={
-                              <span>
-                                <Icon name="user" />
-                                {i18n.t('Worship Service')}
-                              </span>
-                            }
-                          />
-                        </Dropdown.Menu>
-                      </Dropdown>
-                      <Dropdown.Divider />
-                      <Dropdown
-                        item
-                        trigger={
-                          <span>
-                            <Icon name="tag" />
-                            {i18n.t('Unassigned')}
-                          </span>
-                        }
-                      >
-                        <Dropdown.Menu>
-                          <Dropdown.Item
-                            content={
-                              <span>
-                                <Icon name="user" />
-                                {i18n.t('Boys Scouts')}
-                              </span>
-                            }
-                          />
-                          <Dropdown.Item
-                            content={
-                              <span>
-                                <Icon name="user" />
-                                {i18n.t('Church Board')}
-                              </span>
-                            }
-                          />
-                          <Dropdown.Item
-                            content={
-                              <span>
-                                <Icon name="user" />
-                                {i18n.t('Girl Scouts')}
-                              </span>
-                            }
-                          />
-                        </Dropdown.Menu>
-                      </Dropdown>
-                      <Dropdown.Divider />
-                      <Dropdown
-                        item
-                        trigger={
-                          <span>
-                            <Icon name="user" />
-                            {i18n.t('Admin')}
-                          </span>
-                        }
-                      >
-                        <Dropdown.Menu>
-                          <Dropdown.Item text={i18n.t('Group Properties')} />
-                          <Dropdown.Item text={i18n.t('Group Types')} />
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                  <Dropdown
-                    item
-                    trigger={
-                      <span>
-                        <Icon name="child" />
-                        {i18n.t('Sunday School')}
-                      </span>
-                    }
-                  >
-                    <Dropdown.Menu>
-                      <Dropdown.Item text={i18n.t('Dashboard')} />
-                      <Dropdown.Divider />
-                      <Dropdown
-                        item
-                        trigger={
-                          <span>
-                            <Icon name="tags" />
-                            {i18n.t('Classes')}
-                          </span>
-                        }
-                      >
-                        <Dropdown.Menu>
-                          <Dropdown.Item
-                            content={
-                              <span>
-                                <Icon name="user" />
-                                {i18n.t('Angels class')}
-                              </span>
-                            }
-                          />
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                  <Menu.Item name="Email">
-                    <span>
-                      <Icon name="mail" />
-                      {i18n.t('Email')}
-                    </span>
-                  </Menu.Item>
-                  <Dropdown
-                    item
-                    trigger={
-                      <span>
-                        <Icon name="ticket" />
-                        {i18n.t('Events')}
-                      </span>
-                    }
-                  >
-                    <Dropdown.Menu>
-                      <Dropdown.Item text={i18n.t('Add Church Event')} />
-                      <Dropdown.Item text={i18n.t('List Church Events')} />
-                      <Dropdown.Item text={i18n.t('List Event Types')} />
-                      <Dropdown.Item text={i18n.t('Check-in and Check-out')} />
-                      <Dropdown.Item
-                        text={i18n.t('Event Attendance Reports')}
-                      />
-                    </Dropdown.Menu>
-                  </Dropdown>
-                  <Menu.Item name="deposit">
-                    <span>
-                      <Icon name="university" />
-                      {i18n.t('Deposit')}
-                      <span style={spanStyle}>
-                        <Label size="tiny" color="green">
-                          6
-                        </Label>
-                      </span>
-                    </span>
-                  </Menu.Item>
-                  <Menu.Item name="fundraiser">
-                    <span>
-                      <Icon name="money" />
-                      {i18n.t('Fundraiser')}
-                      <span style={spanStyle}>
-                        <Label size="tiny" color="blue">
-                          0
-                        </Label>
-                      </span>
-                    </span>
-                  </Menu.Item>
-                  <Dropdown
-                    item
-                    trigger={
-                      <span>
-                        <Icon name="file pdf outline" />
-                        {i18n.t('Data/Reports')}
-                      </span>
-                    }
-                  >
-                    <Dropdown.Menu>
-                      <Dropdown.Item text={i18n.t('Canvass Automation')} />
-                      <Dropdown.Item text={i18n.t('Query Menu')} />
-                    </Dropdown.Menu>
-                  </Dropdown>
-                  <Dropdown
-                    item
-                    trigger={
-                      <span>
-                        <Icon name="setting" />
-                        {i18n.t('Admin')}
-                      </span>
-                    }
-                  >
-                    <Dropdown.Menu>
-                      <Dropdown.Item text={i18n.t('Edit General Settings')} />
-                      <Dropdown.Item text={i18n.t('System Users')} />
-                      <Dropdown.Item text={i18n.t('Property Types')} />
-                      <Dropdown.Item text={i18n.t('Restore Database')} />
-                      <Dropdown.Item text={i18n.t('Backup Database')} />
-                      <Dropdown.Item text={i18n.t('CSV Import')} />
-                      <Dropdown.Item text={i18n.t('CSV Export Records')} />
-                      <Dropdown.Item text={i18n.t('Kiosk Manager')} />
-                      <Dropdown.Item text={i18n.t('Debug')} />
-                      <Dropdown.Item text={i18n.t('Custom Menus')} />
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </Menu>
-              </Grid.Column>
-              <Grid.Column width={13}>{children}</Grid.Column>
-            </Grid>
-          </Segment>
-        </Segment.Group>
-      </Divider>
+        <body className="hold-transition skin-blue sidebar-mini">
+          <div className="wrapper">
+            <header className="main-header">
+              <Logo />
+              <Navbar />
+            </header>
+            <Sidebar />
+            <div className="content-wrapper">
+              <ContentHeader />
+              <section className="content">
+                <SmallBox />
+                <div className="row">
+                  <section className="col-lg-7 connectedSortable">
+                    <CustomTab />
+                    <ChatBox />
+                    <TodoList />
+                    <QuickEmail />
+                  </section>
+
+                  <section className="col-lg-5 connectedSortable">
+                    <MapBox />
+                    <SolidGraph />
+                    <Calendar />
+                  </section>
+                </div>
+              </section>
+            </div>
+            <Footer />
+            <ControlSidebar />
+            <div className="control-sidebar-bg" />
+          </div>
+
+          <script src="/static/plugins/jQuery/jQuery-2.1.4.min.js" />
+          <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" />
+          <script>$.widget.bridge('uibutton', $.ui.button);</script>
+          <script src="/static/bootstrap/js/bootstrap.min.js" />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" />
+          <script src="/static/plugins/morris/morris.min.js" />
+          <script src="/static/plugins/sparkline/jquery.sparkline.min.js" />
+          <script src="/static/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" />
+          <script src="/static/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" />
+          <script src="/static/plugins/knob/jquery.knob.js" />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" />
+          <script src="/static/plugins/daterangepicker/daterangepicker.js" />
+          <script src="/static/plugins/datepicker/bootstrap-datepicker.js" />
+          <script src="/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />
+          <script src="/static/plugins/slimScroll/jquery.slimscroll.min.js" />
+          <script src="/static/plugins/fastclick/fastclick.min.js" />
+          <script src="/static/dist/js/app.min.js" />
+          <script src="/static/dist/js/pages/dashboard.js" />
+          <script src="/static/dist/js/demo.js" />
+        </body>
+      </main>
     );
   }
 }
