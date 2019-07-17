@@ -36,7 +36,7 @@ class Layout extends React.Component<any> {
     return (
       <main>
         <Head>
-          <title>AdminLTE 2 | Dashboard</title>
+          <title>ChurchCRM</title>
           <meta
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
             name="viewport"
@@ -87,21 +87,7 @@ class Layout extends React.Component<any> {
             <div className="content-wrapper">
               <ContentHeader />
               <section className="content">
-                <SmallBox />
-                <div className="row">
-                  <section className="col-lg-7 connectedSortable">
-                    <CustomTab />
-                    <ChatBox />
-                    <TodoList />
-                    <QuickEmail />
-                  </section>
-
-                  <section className="col-lg-5 connectedSortable">
-                    <MapBox />
-                    <SolidGraph />
-                    <Calendar />
-                  </section>
-                </div>
+                {children}
               </section>
             </div>
             <Footer />

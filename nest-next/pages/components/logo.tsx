@@ -1,4 +1,5 @@
 import * as React from 'react';
+import "../churchcrm.scss";
 
 class Logo extends React.Component<any> {
   public static async getInitialProps() {
@@ -17,12 +18,14 @@ class Logo extends React.Component<any> {
 
   render() {
     return (
-      <a href="index2.html" className="logo">
+      <a href="Menu" className="logo">
+        {/*<!-- mini logo for sidebar mini 50x50 pixels -->*/}
         <span className="logo-mini">
-          <b>A</b>LT
+          <b>C</b>RM
         </span>
+        {/*<!-- logo for regular state and mobile devices -->*/}
         <span className="logo-lg">
-          <b>Admin</b>LTE
+          <b>Church</b>CRM
         </span>
       </a>
     );
