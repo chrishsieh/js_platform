@@ -34,10 +34,10 @@ class SolidGraph extends React.Component<any> {
                 type="text"
                 className="knob"
                 data-readonly="true"
-                value="20"
+                defaultValue="20"
                 data-width="60"
                 data-height="60"
-                data-fgColor="#39CCCC"
+                data-fgcolor="#39CCCC"
               />
               <div className="knob-label">Mail-Orders</div>
             </div>
@@ -49,10 +49,10 @@ class SolidGraph extends React.Component<any> {
                 type="text"
                 className="knob"
                 data-readonly="true"
-                value="50"
+                defaultValue="50"
                 data-width="60"
                 data-height="60"
-                data-fgColor="#39CCCC"
+                data-fgcolor="#39CCCC"
               />
               <div className="knob-label">Online</div>
             </div>
@@ -61,10 +61,10 @@ class SolidGraph extends React.Component<any> {
                 type="text"
                 className="knob"
                 data-readonly="true"
-                value="30"
+                defaultValue="30"
                 data-width="60"
                 data-height="60"
-                data-fgColor="#39CCCC"
+                data-fgcolor="#39CCCC"
               />
               <div className="knob-label">In-Store</div>
             </div>

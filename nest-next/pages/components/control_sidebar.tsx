@@ -182,7 +182,7 @@ class ControlSidebar extends React.Component<any> {
               <div className="form-group">
                 <label className="control-sidebar-subheading">
                   Show me as online
-                  <input type="checkbox" className="pull-right" checked />
+                  <input type="checkbox" className="pull-right" defaultChecked />
                 </label>
               </div>
 

@@ -15,6 +15,7 @@ import SolidGraph from '@src/components/solid_graph';
 import Calendar from '@src/components/calendar';
 import Footer from '@src/components/footer';
 import ControlSidebar from '@src/components/control_sidebar';
+import "../churchcrm.scss";
 
 class Layout extends React.Component<any> {
   public static async getInitialProps() {
