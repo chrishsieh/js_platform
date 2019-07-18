@@ -4,15 +4,15 @@ import { appWithTranslation } from '../src/i18n';
 import Layout from './layouts/layout';
 
 class MyApps extends App {
-//  static async getInitialProps({ Component, ctx }: any) {
-//    let pageProps = {};
-//
-//    if (Component.getInitialProps) {
-//      pageProps = await Component.getInitialProps(ctx);
-//    }
-//
-//    return { pageProps };
-//  }
+  static async getInitialProps({ Component, ctx }: any) {
+    let pageProps = {};
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
 
   render() {
     const { Component, pageProps } = this.props;

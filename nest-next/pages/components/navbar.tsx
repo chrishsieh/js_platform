@@ -47,11 +47,22 @@ class Navbar extends React.Component<any> {
                 data-toggle="dropdown"
                 title="Your settings and more"
               >
-                <img
-                  src="/static/dist/img/user2-160x160.jpg"
-                  className="user-image initials-image"
-                  alt="User Image"
-                />
+                <span
+                  style={{
+                    background: '#3B5998',
+                    color: 'white',
+                    padding: '4px',
+                    fontSize: '14px',
+                    height: '14px',
+                    width: '14px',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    margin: '5px 10px 0 0',
+                    borderRadius: '50%',
+                  }}
+                >
+                  CA
+                </span>
                 <span className="hidden-xs">Church Admin</span>
               </a>
 
@@ -62,45 +73,47 @@ class Navbar extends React.Component<any> {
                   style={{ height: '205px' }}
                 >
                   <table style={{ border: 0, width: '100%' }}>
-                    <tr style={{ borderBottom: '1pt solid white' }}>
-                      <td style={{ verticalAlign: 'middle', width: 110 }}>
-                        <img
-                          width="80"
-                          src="/static/dist/img/user2-160x160.jpg"
-                          className="initials-image img-circle no-border"
-                          alt="User Image"
-                        />
-                      </td>
-                      <td
-                        style={{ verticalAlign: 'middle', textAlign: 'left' }}
-                      >
-                        <a href="PersonView?PersonID=0" className="item_link">
-                          <p>
-                            <i className="fa fa-home" /> Profile
-                          </p>
-                        </a>
-                        <a href="UserPasswordChange" className="item_link">
-                          <p>
-                            <i className="fa fa-key" /> Change Password
-                          </p>
-                        </a>
-                        <a href="SettingsIndividual" className="item_link">
-                          <p>
-                            <i className="fa fa-gear" /> Change Settings
-                          </p>
-                        </a>
-                        <a href="Login?session=Lock" className="item_link">
-                          <p>
-                            <i className="fa fa-pause" /> Lock
-                          </p>
-                        </a>
-                        <a href="Logoff" className="item_link">
-                          <p>
-                            <i className="fa fa-sign-out" /> Sign out
-                          </p>
-                        </a>
-                      </td>
-                    </tr>
+                    <tbody>
+                      <tr style={{ borderBottom: '1pt solid white' }}>
+                        <td style={{ verticalAlign: 'middle', width: 110 }}>
+                          <img
+                            width="80"
+                            src="/static/dist/img/user2-160x160.jpg"
+                            className="initials-image img-circle no-border"
+                            alt="User Image"
+                          />
+                        </td>
+                        <td
+                          style={{ verticalAlign: 'middle', textAlign: 'left' }}
+                        >
+                          <a href="PersonView?PersonID=0" className="item_link">
+                            <p>
+                              <i className="fa fa-home" /> Profile
+                            </p>
+                          </a>
+                          <a href="UserPasswordChange" className="item_link">
+                            <p>
+                              <i className="fa fa-key" /> Change Password
+                            </p>
+                          </a>
+                          <a href="SettingsIndividual" className="item_link">
+                            <p>
+                              <i className="fa fa-gear" /> Change Settings
+                            </p>
+                          </a>
+                          <a href="Login?session=Lock" className="item_link">
+                            <p>
+                              <i className="fa fa-pause" /> Lock
+                            </p>
+                          </a>
+                          <a href="Logoff" className="item_link">
+                            <p>
+                              <i className="fa fa-sign-out" /> Sign out
+                            </p>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                   <p style={{ color: '#fff' }}>
                     <b>Church Admin</b>

@@ -15,7 +15,7 @@ import SolidGraph from '@src/components/solid_graph';
 import Calendar from '@src/components/calendar';
 import Footer from '@src/components/footer';
 import ControlSidebar from '@src/components/control_sidebar';
-import "../churchcrm.scss";
+import '../churchcrm.scss';
 
 class Layout extends React.Component<any> {
   public static async getInitialProps() {
@@ -34,7 +34,7 @@ class Layout extends React.Component<any> {
     };
 
     return (
-      <main>
+      <div className="hold-transition skin-blue sidebar-mini">
         <Head>
           <title>ChurchCRM</title>
           <meta
@@ -77,45 +77,45 @@ class Layout extends React.Component<any> {
             href="/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"
           />
         </Head>
-        <body className="hold-transition skin-blue sidebar-mini">
-          <div className="wrapper">
-            <header className="main-header">
-              <Logo />
-              <Navbar />
-            </header>
-            <Sidebar />
-            <div className="content-wrapper">
-              <ContentHeader />
-              <section className="content">
-                {children}
-              </section>
-            </div>
-            <Footer />
-            <ControlSidebar />
-            <div className="control-sidebar-bg" />
+        <div className="wrapper">
+          <header className="main-header">
+            <Logo />
+            <Navbar />
+          </header>
+          <Sidebar />
+          <div className="content-wrapper">
+            <ContentHeader />
+            <section className="content">{children}</section>
           </div>
+          <Footer />
+          <ControlSidebar />
+          <div className="control-sidebar-bg" />
+        </div>
 
-          <script src="/static/plugins/jQuery/jQuery-2.1.4.min.js" />
-          <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" />
-          <script>$.widget.bridge('uibutton', $.ui.button);</script>
-          <script src="/static/bootstrap/js/bootstrap.min.js" />
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" />
-          <script src="/static/plugins/morris/morris.min.js" />
-          <script src="/static/plugins/sparkline/jquery.sparkline.min.js" />
-          <script src="/static/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" />
-          <script src="/static/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" />
-          <script src="/static/plugins/knob/jquery.knob.js" />
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" />
-          <script src="/static/plugins/daterangepicker/daterangepicker.js" />
-          <script src="/static/plugins/datepicker/bootstrap-datepicker.js" />
-          <script src="/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />
-          <script src="/static/plugins/slimScroll/jquery.slimscroll.min.js" />
-          <script src="/static/plugins/fastclick/fastclick.min.js" />
-          <script src="/static/dist/js/app.min.js" />
-          <script src="/static/dist/js/pages/dashboard.js" />
-          <script src="/static/dist/js/demo.js" />
-        </body>
-      </main>
+        <script src="/static/plugins/jQuery/jQuery-2.1.4.min.js" />
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `$.widget.bridge('uibutton', $.ui.button);`,
+          }}
+        />
+        <script src="/static/bootstrap/js/bootstrap.min.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" />
+        <script src="/static/plugins/morris/morris.min.js" />
+        <script src="/static/plugins/sparkline/jquery.sparkline.min.js" />
+        <script src="/static/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" />
+        <script src="/static/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" />
+        <script src="/static/plugins/knob/jquery.knob.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" />
+        <script src="/static/plugins/daterangepicker/daterangepicker.js" />
+        <script src="/static/plugins/datepicker/bootstrap-datepicker.js" />
+        <script src="/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />
+        <script src="/static/plugins/slimScroll/jquery.slimscroll.min.js" />
+        <script src="/static/plugins/fastclick/fastclick.min.js" />
+        <script src="/static/dist/js/app.min.js" />
+        <script src="/static/dist/js/pages/dashboard.js" />
+        <script src="/static/dist/js/demo.js" />
+      </div>
     );
   }
 }
