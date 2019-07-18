@@ -2,7 +2,7 @@ version: '3.7'
 services:
   code:
     container_name: code
-    image: chrishsieh/js_platform
+    image: js_platform
     build:
       context: ./build/coder
       dockerfile: Dockerfile.debian
