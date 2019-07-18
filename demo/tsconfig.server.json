@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": ".next/production-server",
+    "declaration": true,
+    "target": "esnext",
+    "module": "commonjs",
+	"moduleResolution": "node",
+	"sourceMap": true,
+	"baseUrl": "./",
+    "paths": {
+      "@server/*": ["./.next/production-server/*"],
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
