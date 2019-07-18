@@ -13,11 +13,10 @@ services:
     volumes:
       - source_code:/var/www/
       - coder_setting:/home/coder/
-      - ./runtime/coder/run.d/:/run.d/
-      - ./runtime/coder/setting/:/setting/
       - .:/data
     ports:
       - "8443:8443"
+      - "8080:8080"
       - "5000:5000"
     links:
       - db
