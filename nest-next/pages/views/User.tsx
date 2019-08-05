@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { WithTranslation } from 'react-i18next';
 import { withTranslation } from '../../src/i18n';
 import { user_usr } from '../../src/shared/entity/user_usr';
-import { WithTranslation } from 'react-i18next';
 
 interface InitialProps {
   query: Promise<user_usr[]>;

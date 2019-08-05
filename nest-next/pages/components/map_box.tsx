@@ -6,7 +6,7 @@ class MapBox extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <div className="box box-solid bg-light-blue-gradient">
         <div className="box-header">

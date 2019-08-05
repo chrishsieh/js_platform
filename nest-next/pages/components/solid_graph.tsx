@@ -6,7 +6,7 @@ class SolidGraph extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <div className="box box-solid bg-teal-gradient">
         <div className="box-header">

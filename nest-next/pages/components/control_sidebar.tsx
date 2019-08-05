@@ -7,7 +7,7 @@ class ControlSidebar extends React.Component<any> {
     };
   }
 
-  render() {
+  public render() {
     return (
       <aside className="control-sidebar control-sidebar-dark">
         <ul className="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -147,7 +147,7 @@ class ControlSidebar extends React.Component<any> {
                   <input
                     type="checkbox"
                     className="pull-right"
-                    defaultChecked
+                    defaultChecked={true}
                   />
                 </label>
                 <p>Some information about this general settings option</p>
@@ -159,7 +159,7 @@ class ControlSidebar extends React.Component<any> {
                   <input
                     type="checkbox"
                     className="pull-right"
-                    defaultChecked
+                    defaultChecked={true}
                   />
                 </label>
                 <p>Other sets of options are available</p>
@@ -171,7 +171,7 @@ class ControlSidebar extends React.Component<any> {
                   <input
                     type="checkbox"
                     className="pull-right"
-                    defaultChecked
+                    defaultChecked={true}
                   />
                 </label>
                 <p>Allow the user to show his name in blog posts</p>
@@ -182,7 +182,7 @@ class ControlSidebar extends React.Component<any> {
               <div className="form-group">
                 <label className="control-sidebar-subheading">
                   Show me as online
-                  <input type="checkbox" className="pull-right" defaultChecked />
+                  <input type="checkbox" className="pull-right" defaultChecked={true} />
                 </label>
               </div>
 

@@ -1,20 +1,11 @@
-import Head from 'next/head';
-import { i18n } from '../../src/i18n';
-import React, { StyleHTMLAttributes } from 'react';
+import ContentHeader from '@src/components/content_header';
+import ControlSidebar from '@src/components/control_sidebar';
+import Footer from '@src/components/footer';
 import Logo from '@src/components/logo';
 import Navbar from '@src/components/navbar';
 import Sidebar from '@src/components/sidebar';
-import ContentHeader from '@src/components/content_header';
-import SmallBox from '@src/components/small_box';
-import CustomTab from '@src/components/custom_tab';
-import ChatBox from '@src/components/chat_box';
-import TodoList from '@src/components/todo_list';
-import QuickEmail from '@src/components/quick_email';
-import MapBox from '@src/components/map_box';
-import SolidGraph from '@src/components/solid_graph';
-import Calendar from '@src/components/calendar';
-import Footer from '@src/components/footer';
-import ControlSidebar from '@src/components/control_sidebar';
+import Head from 'next/head';
+import React from 'react';
 import '../churchcrm.scss';
 
 class Layout extends React.Component<any> {
@@ -23,15 +14,8 @@ class Layout extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     const { children } = this.props;
-    const languageOptions = [
-      { key: 'English', text: i18n.t('English'), value: 'en' },
-      { key: 'Chinese', text: i18n.t('Chinese'), value: 'zh' },
-    ];
-    const spanStyle: React.CSSProperties = {
-      float: 'right',
-    };
 
     return (
       <div className="hold-transition skin-blue sidebar-mini">
@@ -95,9 +79,7 @@ class Layout extends React.Component<any> {
         <script src="/static/plugins/jQuery/jQuery-2.1.4.min.js" />
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" />
         <script
-          dangerouslySetInnerHTML={{
-            __html: `$.widget.bridge('uibutton', $.ui.button);`,
-          }}
+          dangerouslySetInnerHTML={{ __html: `$.widget.bridge('uibutton', $.ui.button);` }}
         />
         <script src="/static/bootstrap/js/bootstrap.min.js" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" />

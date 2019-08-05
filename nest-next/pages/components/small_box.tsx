@@ -6,7 +6,7 @@ class SmallBox extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <div className="row">
         <div className="col-lg-3 col-xs-6">

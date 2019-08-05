@@ -1,10 +1,10 @@
-import * as React from 'react';
 import App, { Container } from 'next/app';
+import * as React from 'react';
 import { appWithTranslation } from '../src/i18n';
 import Layout from './layouts/layout';
 
 class MyApps extends App {
-  static async getInitialProps({ Component, ctx }: any) {
+  public static async getInitialProps({ Component, ctx }: any) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -14,7 +14,7 @@ class MyApps extends App {
     return { pageProps };
   }
 
-  render() {
+  public render() {
     const { Component, pageProps } = this.props;
     return (
       <Container>

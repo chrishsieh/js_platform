@@ -6,7 +6,7 @@ class QuickEmail extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <div className="box box-info">
         <div className="box-header">
@@ -46,6 +46,7 @@ class QuickEmail extends React.Component<any> {
               <textarea
                 className="textarea"
                 placeholder="Message"
+                // tslint:disable-next-line: jsx-no-multiline-js
                 style={{
                   width: '100%',
                   height: '125px',

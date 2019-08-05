@@ -1,16 +1,15 @@
-import * as React from 'react';
 import PropTypes from 'prop-types';
-
-import { withTranslation } from '../src/i18n';
+import * as React from 'react';
 import { WithTranslation } from 'react-i18next';
+import { withTranslation } from '../src/i18n';
 
 class Error extends React.Component<any & WithTranslation> {
-  static defaultProps: { statusCode: null };
-  static propTypes: {
+  public static defaultProps: { statusCode: null };
+  public static propTypes: {
     statusCode: PropTypes.Requireable<number>;
     t: PropTypes.Validator<(...args: any[]) => any>;
   };
-  static getInitialProps({ res, err }: any) {
+  public static getInitialProps({ res, err }: any) {
     let statusCode = null;
     if (res) {
       ({ statusCode } = res);
@@ -23,13 +22,11 @@ class Error extends React.Component<any & WithTranslation> {
     };
   }
 
-  render() {
+  public render() {
     const { statusCode, t } = this.props;
     return (
       <p>
-        {statusCode
-          ? t('error-with-status', { statusCode })
-          : t('error-without-status')}
+        {statusCode ? t('error-with-status', { statusCode }) : t('error-without-status')}
       </p>
     );
   }

@@ -6,7 +6,7 @@ class ChatBox extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <div className="box box-success">
         <div className="box-header">

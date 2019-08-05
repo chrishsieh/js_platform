@@ -7,7 +7,7 @@ class Navbar extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <nav className="navbar navbar-static-top" role="navigation">
         {/*<!-- Sidebar toggle button-->*/}
@@ -48,6 +48,7 @@ class Navbar extends React.Component<any> {
                 title="Your settings and more"
               >
                 <span
+                  // tslint:disable-next-line: jsx-no-multiline-js
                   style={{
                     background: '#3B5998',
                     color: 'white',
@@ -129,7 +130,7 @@ class Navbar extends React.Component<any> {
                 className="dropdown-toggle"
                 id="dropdown-toggle"
                 data-toggle="dropdown"
-                title="Help & Support"
+                title="Help &amp; Support"
               >
                 <i className="fa fa-support" />
               </a>
@@ -138,9 +139,9 @@ class Navbar extends React.Component<any> {
                   <a
                     href="<?= SystemURLs::getSupportURL() ?>"
                     target="_blank"
-                    title="Help & Manual"
+                    title="Help &amp; Manual"
                   >
-                    <i className="fa fa-question-circle" /> Help & Manual
+                    <i className="fa fa-question-circle" /> Help &amp; Manual
                   </a>
                 </li>
                 <li className="hidden-xxs">
@@ -178,7 +179,7 @@ class Navbar extends React.Component<any> {
             <li className="dropdown settings-dropdown">
               <a href="#" data-toggle="control-sidebar" title="Your tasks">
                 <i className="fa fa-tasks" />
-                <span className="label label-danger">5</span>
+                <span className="label label-danger">6</span>
               </a>
             </li>
           </ul>

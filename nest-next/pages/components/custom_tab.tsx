@@ -6,7 +6,7 @@ class CustomTab extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <div className="nav-tabs-custom">
         <ul className="nav nav-tabs pull-right">

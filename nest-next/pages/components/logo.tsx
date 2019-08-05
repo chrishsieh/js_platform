@@ -1,5 +1,5 @@
 import * as React from 'react';
-import "../churchcrm.scss";
+import '../churchcrm.scss';
 
 class Logo extends React.Component<any> {
   public static async getInitialProps() {
@@ -16,7 +16,7 @@ class Logo extends React.Component<any> {
   //      this.fetchDataHadler = this.fetchDataHadler.bind(this);
   //    }
 
-  render() {
+  public render() {
     return (
       <a href="Menu" className="logo">
         {/*<!-- mini logo for sidebar mini 50x50 pixels -->*/}

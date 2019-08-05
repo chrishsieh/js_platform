@@ -6,7 +6,7 @@ class Footer extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <footer className="main-footer">
         <div className="pull-right hidden-xs">

@@ -6,7 +6,7 @@ class TodoList extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <div className="box box-primary">
         <div className="box-header">

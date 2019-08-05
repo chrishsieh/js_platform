@@ -1,5 +1,5 @@
 import * as React from 'react';
-import "../churchcrm.scss";
+import '../churchcrm.scss';
 
 class ContentHeader extends React.Component<any> {
   public static async getInitialProps() {
@@ -7,7 +7,7 @@ class ContentHeader extends React.Component<any> {
       namespacesRequired: ['common'],
     };
   }
-  render() {
+  public render() {
     return (
       <section className="content-header">
         <h1>Welcome to Main St. Cathedral</h1>

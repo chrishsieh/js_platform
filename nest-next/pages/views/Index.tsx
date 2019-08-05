@@ -1,16 +1,17 @@
-import * as React from 'react';
-import { withTranslation } from '../../src/i18n';
-import { WithTranslation } from 'react-i18next';
-import SmallBox from '@src/components/small_box';
-import CustomTab from '@src/components/custom_tab';
-import ChatBox from '@src/components/chat_box';
-import TodoList from '@src/components/todo_list';
-import QuickEmail from '@src/components/quick_email';
-import MapBox from '@src/components/map_box';
-import SolidGraph from '@src/components/solid_graph';
 import Calendar from '@src/components/calendar';
-import '../churchcrm.scss';
+import ChatBox from '@src/components/chat_box';
+import CustomTab from '@src/components/custom_tab';
+import MapBox from '@src/components/map_box';
+import QuickEmail from '@src/components/quick_email';
+import SmallBox from '@src/components/small_box';
+import SolidGraph from '@src/components/solid_graph';
+import TodoList from '@src/components/todo_list';
 import Head from 'next/head';
+import * as React from 'react';
+import { WithTranslation } from 'react-i18next';
+import { withTranslation } from '../../src/i18n';
+
+import '../churchcrm.scss';
 
 interface InitialProps {
   query: string;
