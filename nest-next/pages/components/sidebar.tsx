@@ -17,56 +17,134 @@ class Sidebar extends React.Component<any> {
           </form>
 
           {/*<!-- sidebar menu: : style can be found in sidebar.less --> */}
-          <ul className="sidebar-menu" data-widget="tree" />
-          <ul className="sidebar-menu">
-            <li className="header">MAIN NAVIGATION</li>
-            <li className="active treeview">
-              <a href="#">
-                <i className="fa fa-dashboard" /> <span>Dashboard</span>{' '}
-                <i className="fa fa-angle-left pull-right" />
+          <ul className="sidebar-menu" data-widget="tree">
+            <li>
+              <a href="/Menu">
+                <i className="fa fa-dashboard" /> <span>Dashboard</span>
               </a>
-              <ul className="treeview-menu">
-                <li className="active">
-                  <a href="index.html">
-                    <i className="fa fa-circle-o" /> Dashboard v1
-                  </a>
-                </li>
-                <li>
-                  <a href="index2.html">
-                    <i className="fa fa-circle-o" /> Dashboard v2
-                  </a>
-                </li>
-              </ul>
+            </li>
+            <li>
+              <a href="/v2/calendar">
+                <i className="fa fa-calendar" /> <span>Calendar</span>
+                <span className="pull-right-container">
+                  <small className="label pull-right bg-blue" id="AnniversaryNumber">0</small>
+                  <small className="label pull-right bg-red" id="BirthdateNumber">0</small>
+                  <small className="label pull-right bg-yellow" id="EventsNumber">3</small>
+                </span>
+              </a>
             </li>
             <li className="treeview">
               <a href="#">
-                <i className="fa fa-files-o" />
-                <span>Layout Options</span>
-                <span className="label label-primary pull-right">4</span>
+                <i className="fa fa-users" />
+                <span>People</span>
+                <i className="fa fa-angle-left pull-right" />
               </a>
               <ul className="treeview-menu">
                 <li>
-                  <a href="pages/layout/top-nav.html">
-                    <i className="fa fa-circle-o" /> Top Navigation
+                  <a href="/PeopleDashboard">
+                    <i className="fa fa-angle-double-right" />
+                    <span>
+                      Dashboard                                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="pages/layout/boxed.html">
-                    <i className="fa fa-circle-o" /> Boxed
+                  <a href="/PersonEditor">
+                    <i className="fa fa-angle-double-right" />
+                    <span>
+                      Add New Person                                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="pages/layout/fixed.html">
-                    <i className="fa fa-circle-o" /> Fixed
+                  <a href="/SelectList">
+                    <i className="fa fa-angle-double-right" />
+                    <span>
+                      View All Persons                                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="pages/layout/collapsed-sidebar.html">
-                    <i className="fa fa-circle-o" /> Collapsed Sidebar
+                  <a href="/FamilyEditor">
+                    <i className="fa fa-angle-double-right" />
+                    <span>
+                      Add New Family                                    </span>
                   </a>
+                </li>
+                <li>
+                  <a href="/v2/family">
+                    <i className="fa fa-angle-double-right" />
+                    <span>
+                      View Active Families                                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/v2/family">
+                    <i className="fa fa-angle-double-right" />
+                    <span>
+                      View Inactive Families                                    </span>
+                  </a>
+                </li>
+                <li className="treeview ">
+                  <a href="#">
+                    <i className="fa fa-angle-double-right" />
+                    <span>
+                      Admin                                    </span>
+                    <i className="fa fa-angle-left pull-right" />
+                  </a>
+                  <ul className="treeview-menu ">
+                    <li>
+                      <a href="/OptionManager?mode=classes">
+                        <i className="fa fa-angle-double-right" />
+                        <span>
+                          Classifications Manager                                    </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/OptionManager?mode=famroles">
+                        <i className="fa fa-angle-double-right" />
+                        <span>
+                          Family Roles                                    </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/PropertyList?Type=f">
+                        <i className="fa fa-angle-double-right" />
+                        <span>
+                          Family Properties                                    </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/FamilyCustomFieldsEditor">
+                        <i className="fa fa-angle-double-right" />
+                        <span>
+                          Family Custom Fields                                    </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/PropertyList?Type=p">
+                        <i className="fa fa-angle-double-right" />
+                        <span>
+                          People Properties                                    </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/PersonCustomFieldsEditor">
+                        <i className="fa fa-angle-double-right" />
+                        <span>
+                          Person Custom Fields                                    </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/VolunteerOpportunityEditor">
+                        <i className="fa fa-angle-double-right" />
+                        <span>
+                          Volunteer Opportunities                                    </span>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>
+          </ul>
+          <ul className="sidebar-menu">
             <li>
               <a href="pages/widgets.html">
                 <i className="fa fa-th" /> <span>Widgets</span>{' '}
