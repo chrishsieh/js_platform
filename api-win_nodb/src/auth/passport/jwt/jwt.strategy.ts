@@ -5,22 +5,22 @@ import { PassportStrategy } from '@nestjs/passport';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private readonly authService: AuthService) {
-    super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'ChangeJWTsecret',
-    });
-  }
+	constructor(private readonly authService: AuthService) {
+		super({
+			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+			secretOrKey: 'ChangeJWTsecret',
+		});
+	}
 
-  async validate(payload: any, done: Function) {
-    //console.log('Check JWT.');
-    return await this.authService
-      .validateJWTUser(payload)
-      .then(signedUser => {
-        done(null, signedUser);
-      })
-      .catch(err => {
-        done(err, false);
-      });
-  }
+	async validate(payload: any, done: Function) {
+		//console.log('Check JWT.');
+		return await this.authService
+			.validateJWTUser(payload)
+			.then(signedUser => {
+				done(null, signedUser);
+			})
+			.catch(err => {
+				done(err, false);
+			});
+	}
 }
