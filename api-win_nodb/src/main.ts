@@ -6,6 +6,7 @@ import { UserModule } from './user/users.module';
 import { AuthModule } from './auth/auth.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import passport = require('passport');
+require('dotenv').config()
 
 async function bootstrap() {
 	const server = await NestFactory.create(AppModule);
@@ -36,8 +37,7 @@ async function bootstrap() {
 	SwaggerModule.setup('v1/api/auth', server, authApiDocument);
 
 	server.use(passport.initialize());
-
-	await server.listen(process.env.PORT || 5000);
+	await server.listen(process.env.PORT || 80);
 
 	if (module.hot) {
 		module.hot.accept();

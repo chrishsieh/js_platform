@@ -55,7 +55,7 @@ export class AuthService {
 
 	async validateBasicUser(username: string, password: string): Promise<any> {
 		//console.log('In validateBasicUser');
-		if ((username === 'APIadmin') && (password === 'Changeme')) {
+		if ((username === process.env.USER) && (password === process.env.PWD)) {
 			return {};
 		} else {
 			throw new UnauthorizedException();
