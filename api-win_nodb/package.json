@@ -1,0 +1,81 @@
+{
+  "name": "nest-next-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kyle McCarthy",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/main.ts",
+    "HMR-dev": "NODE_ENV=development node --require ts-node/register --require tsconfig-paths/register --require reflect-metadata dist/server",
+    "build:clean": "rmdir /Q/S .next & echo clean",
+    "build:server": "npx tsc --project tsconfig.server.json",
+    "build": "yarn build:clean && yarn build:server",
+    "start": "NODE_ENV=production node --require ts-node/register --require tsconfig-paths/register --require reflect-metadata .next/production-server/main.js",
+    "webpack": "webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "^5.3.9",
+    "@nestjs/core": "^5.3.10",
+    "@nestjs/jwt": "^6.1.1",
+    "@nestjs/passport": "^6.1.0",
+    "@nestjs/swagger": "^3.0.2",
+    "@nestjs/typeorm": "^6.1.2",
+    "@types/blueimp-md5": "^2.7.0",
+    "@types/cors": "^2.8.5",
+    "@types/js-base64": "^2.3.1",
+    "@types/passport-http": "^0.3.8",
+    "@types/passport-http-bearer": "^1.0.33",
+    "@types/passport-jwt": "^3.0.1",
+    "blueimp-md5": "^2.10.0",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.9.1",
+    "cors": "^2.8.5",
+    "dotenv": "^6.1.0",
+    "joi": "^14.3.1",
+    "js-base64": "^2.5.1",
+    "mysql": "^2.17.1",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-jwt": "^4.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^6.3.2",
+    "swagger-ui-express": "^4.0.7",
+    "ts-node": "^8.3.0",
+    "tsconfig-paths": "^3.8.0",
+    "tslint-react": "^3.6.0",
+    "typeorm": "^0.2.18"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^5.3.11",
+    "@types/dotenv": "^4.0.3",
+    "@types/jest": "^23.3.5",
+    "@types/joi": "^13.6.1",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.8",
+    "ts-jest": "^23.10.4",
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@server/(.*)$": "<rootDir>/src/$1"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": ".spec.ts$",
+    "coverageDirectory": "./coverage",
+    "preset": "ts-jest/presets/js-with-ts",
+    "testMatch": null
+  }
+}
