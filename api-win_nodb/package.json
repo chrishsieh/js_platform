@@ -11,7 +11,8 @@
     "build:server": "npx tsc --project tsconfig.server.json",
     "build": "npm run build:clean && npm run build:server",
     "start": "node --require ts-node/register --require tsconfig-paths/register --require reflect-metadata .next/production-server/main.js",
-    "webpack": "webpack --config webpack.config.js"
+	"webpack": "webpack --config webpack.config.js",
+	"make-cert": "cd secrets && make.bat"
   },
   "dependencies": {
     "@nestjs/common": "^5.3.9",

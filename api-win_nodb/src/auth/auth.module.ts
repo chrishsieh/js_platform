@@ -11,7 +11,7 @@ import { JwtStrategy } from './passport/jwt/jwt.strategy';
 @Module({
 	imports: [
 		UserModule,
-		JwtModule.register({ secret: process.env.JWT_SECRET }),
+		JwtModule.register({ secret: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiO' }),
 		SharedModule,
 	],
 	controllers: [AuthController],
