@@ -8,14 +8,15 @@ import {
 } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
-export class UserDTO {
+export class TokenDTO {
   @ApiModelProperty({
+    required: true,
     maxLength: 32,
-    description: 'Username',
+    description: 'userName',
   })
   @IsString()
   @Length(0, 32, {
     message: '長度需要小於32',
   })
-  usr_UserName: string;
+  userName: string;
 }

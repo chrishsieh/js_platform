@@ -22,7 +22,7 @@ async function bootstrap() {
   const User_document = SwaggerModule.createDocument(server, options, {
     include: [UserModule],
   });
-  SwaggerModule.setup('v1/api/user', server, User_document);
+  SwaggerModule.setup('v1/api/job', server, User_document);
 
   const authApiOptions = new DocumentBuilder()
     .setTitle('Auth API Doc')

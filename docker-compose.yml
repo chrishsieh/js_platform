@@ -16,8 +16,8 @@ services:
       - .:/data
     ports:
       - "8443:8443"
-      - "8080:8080"
       - "5000:5000"
+      - "3000:3000"
     links:
       - db
 
@@ -29,11 +29,11 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
-  phpmyadmin:
-    container_name: phpmyadmin
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - "${DEV_PHPMYADMIN_PORT:-8000}:80"
+#  phpmyadmin:
+#    container_name: phpmyadmin
+#    image: phpmyadmin/phpmyadmin
+#    ports:
+#      - "${DEV_PHPMYADMIN_PORT:-8000}:80"
 
 volumes:
   source_code:

@@ -27,7 +27,6 @@ export class UsersService {
     var userId: number = 0;
     user.usr_UserName = data.usr_UserName;
     user.usr_CreateDate = new Date();
-    if (data.usr_apiKey) user.usr_apiKey = data.usr_apiKey;
     console.log('新增使用者', user.usr_UserName);
     await this.em
       .createQueryBuilder()
@@ -36,7 +35,7 @@ export class UsersService {
       .values(user)
       .execute()
       .then(result => {
-        Logger.log(result); // 到console看回傳的格式
+        //Logger.log(result); // 到console看回傳的格式
 
         userId = result.identifiers[0].usr_per_ID; // 取得新增後回傳的id
       })
@@ -54,7 +53,6 @@ export class UsersService {
         'u.usr_UserName',
         'u.usr_CreateDate',
         'u.usr_LastLogin',
-        'u.usr_apiKey',
       ])
       .cache(60000) // 1 min
       .getMany()
@@ -85,7 +83,6 @@ export class UsersService {
       .set({
         // 更新資料物件
         usr_UserName: data.usr_UserName,
-        usr_apiKey: data.usr_apiKey,
       })
       .whereInIds(userId)
       // .printSql() 可以用來除錯
@@ -112,7 +109,6 @@ export class UsersService {
   //  async findOneByToken(token: string) {
   //    return await this.em
   //      .createQueryBuilder(user, 'u')
-  //      .where('u.usr_apiKey = :token', { token })
   //      .getOne();
   //  }
 

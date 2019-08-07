@@ -25,8 +25,7 @@ export class AuthService {
       //algorithm:'RS256', // default是HMAC SHA256，也可以指定別的
     });
     const user_data: UserDTO = {
-      usr_UserName: user_name,
-      usr_apiKey: accessToken,
+      usr_UserName: user_name
     };
     if (check_usr) {
       await this.usersService.updateUserById(check_usr.usr_per_ID, user_data);

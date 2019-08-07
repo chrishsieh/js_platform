@@ -6,6 +6,7 @@ import { TransformResInterceptor } from './interceptors/transformRes.interceptor
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserDTOValidationPipe } from './pipes/userDTOValidation.pipe';
 import { userEntities } from './entity';
+import { TokenDTO } from './DTOs/tokens';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -13,9 +14,9 @@ import { userEntities } from './entity';
       type: 'mariadb',
       host: 'db',
       port: 3306,
-      username: 'churchcrm',
-      password: 'changeme',
-      database: 'churchcrm',
+      username: 'demo',
+      password: 'demo_user',
+      database: 'demo',
       synchronize: true,
       logging: false,
       entities: [
@@ -31,6 +32,7 @@ import { userEntities } from './entity';
     HttpAuthGuard,
     //    HttpExceptionFilter,
     TransformResInterceptor,
+    TokenDTO,
   ],
   exports: [
     UserDTOValidationPipe,
@@ -38,6 +40,7 @@ import { userEntities } from './entity';
     HttpAuthGuard,
     //    HttpExceptionFilter,
     TransformResInterceptor,
+    TokenDTO,
   ],
 })
 export class SharedModule {}

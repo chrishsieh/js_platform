@@ -33,11 +33,12 @@ export class SimpleAuthGuard implements CanActivate {
     Logger.log(req.headers['content-type']);
     Logger.log(req.headers['authorization']);
     Logger.log(JSON.stringify(req.headers));
+    Logger.log(JSON.stringify(req.body));
 
-    if (req.hostname === 'localhost') {
+    //if (req.hostname === 'localhost') {
       return true;
-    }
-    return false;
+    //}
+    //return false;
   }
 
   handleRequest(err: any, user: any, info: any) {

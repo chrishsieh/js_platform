@@ -31,6 +31,7 @@ import {
 @UseGuards(AuthGuard('jwt'))
 @Controller('api')
 export class UsersController {
+/*
   constructor(private usersService: UsersService) {}
 
   @ApiOkResponse({ description: 'Return Users Array' })
@@ -65,4 +66,5 @@ export class UsersController {
   delete(@Param('userId') id: number) {
     return this.usersService.deleteUser(id);
   }
+*/
 }

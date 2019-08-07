@@ -1,109 +1,114 @@
-import { Injectable, Logger } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  HttpException,
+  HttpStatus,
+  BadRequestException,
+} from '@nestjs/common';
 
 import { EntityManager, Repository } from 'typeorm';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
-import { IsEmail } from 'class-validator';
-import { user_usr } from '../entity/user_usr';
+import { Users } from '../entity/user';
 import { UserDTO } from '../DTOs/userDTO';
-import { UserQueryDTO } from '../DTOs/userQueryDTO';
 import md5 from 'blueimp-md5';
 import { Base64 } from 'js-base64';
 
 @Injectable()
 export class UsersService {
   constructor(
-    //    @InjectRepository(user_usr)
-    //    private readonly userRepo: Repository<user_usr>,
+    @InjectRepository(Users)
+    private readonly userRepo: Repository<Users>,
 
     @InjectEntityManager()
     private readonly em: EntityManager,
   ) {}
   async addUser(data: UserDTO) {
-    const user = new user_usr();
-
+    const user = new Users();
+    var userId: number = 0;
     user.usr_UserName = data.usr_UserName;
-    var userId: number = 10000;
+    user.usr_CreateDate = new Date();
+    console.log('新增使用者', user.usr_UserName);
     await this.em
       .createQueryBuilder()
       .insert()
-      .into(user_usr)
+      .into(Users)
       .values(user)
       .execute()
       .then(result => {
-        Logger.log(result); // 到console看回傳的格式
+        //Logger.log(result); // 到console看回傳的格式
 
-        userId = result.identifiers[0].id; // 取得新增後回傳的id
-        // 以下更新關聯資料
-        //        this.em
-        //          .createQueryBuilder()
-        //          .relation(user_usr, 'dep')
-        //          .of(userId)
-        //          .set(data.depId)
-        //
-        //          .then(() => {
-        //            if (data.roleIds)
-        //              this.em
-        //                .createQueryBuilder()
-        //                .relation(User, 'roles')
-        //                .of(userId)
-        //                .add(data.roleIds);
-        //          });
+        userId = result.identifiers[0].usr_per_ID; // 取得新增後回傳的id
+      })
+      .catch(err => {
+        throw new HttpException(err, HttpStatus.BAD_REQUEST);
       });
 
     return this.getUserById(userId);
   }
-  async getUsers(pageInfo: UserQueryDTO): Promise<user_usr[]> {
+  async getUsers(): Promise<Users[]> {
     return await this.em
-      .createQueryBuilder(user_usr, 'u')
-      .select(['u.usr_UserName', 'u.usr_LastLogin', 'u.usr_apiKey'])
-      .skip((pageInfo.page - 1) * pageInfo.pageSize)
-      .take(pageInfo.pageSize)
-      .cache(60000) // 1 min
-      .getMany(); //
-  }
-  async getUserById(userId: number): Promise<user_usr | undefined> {
-    return await this.em
-      .createQueryBuilder(user_usr, 'u')
-      .whereInIds(userId)
+      .createQueryBuilder(Users, 'u')
       .select([
         'u.usr_per_ID',
         'u.usr_UserName',
-        'u.usr_Admin',
+        'u.usr_CreateDate',
         'u.usr_LastLogin',
-        'u.usr_showSince',
       ])
-      .getOne();
+      .cache(60000) // 1 min
+      .getMany()
+      .catch(err => {
+        throw new HttpException(err, HttpStatus.BAD_REQUEST);
+      }); //
   }
-
+  async getUserById(userId: number): Promise<Users | undefined> {
+    const get_user = await this.em
+      .createQueryBuilder(Users, 'u')
+      .whereInIds(userId)
+      .select([
+        'u.usr_per_ID',
+        'u.usr_CreateDate',
+        'u.usr_UserName',
+        'u.usr_LastLogin',
+      ])
+      .getOne()
+      .catch(err => {
+        throw new HttpException(err, HttpStatus.BAD_REQUEST);
+      });
+    return get_user;
+  }
   async updateUserById(userId: number, data: UserDTO) {
     await this.em
       .createQueryBuilder() // 更新非relation相關資料
-      .update(user_usr) // 指定update哪一個entity
+      .update(Users) // 指定update哪一個entity
       .set({
         // 更新資料物件
         usr_UserName: data.usr_UserName,
-        usr_apiKey: data.usr_apiKey,
       })
       .whereInIds(userId)
       // .printSql() 可以用來除錯
-      .execute(); // 執行query
+      .execute()
+      .catch(err => {
+        throw new HttpException(err, HttpStatus.BAD_REQUEST);
+      }); // 執行query
     return this.getUserById(userId);
   }
   async deleteUser(id: number) {
     const userDeleted = this.getUserById(id);
-    return this.em
+    return await this.em
       .createQueryBuilder()
       .delete()
-      .from(user_usr)
+      .from(Users)
       .whereInIds(id)
       .execute()
-      .then(result => userDeleted); // 回傳raw沒有資料
+      .then(result => userDeleted)
+      .catch(err => {
+        throw new HttpException(err, HttpStatus.BAD_REQUEST);
+      }); // 回傳raw沒有資料
   }
 
   //  async findOneByToken(token: string) {
   //    return await this.em
-  //      .createQueryBuilder(user_usr, 'u')
-  //      .where('u.usr_apiKey = :token', { token })
+  //      .createQueryBuilder(user, 'u')
   //      .getOne();
   //  }
 
@@ -113,7 +118,23 @@ export class UsersService {
     const hash = Base64.btoa(md5(pass_string, '', true));
     console.log('findOneByToken :', token);
     console.log('hash:', hash);
-    if (token === hash) return this.getUserById(1);
+    if (token === hash) return [{ Asscess: 'Success' }];
+    //this.getUserById(1);
     else return null;
+  }
+
+  async findOneByUsrName(usr_name: string) {
+    console.log('user:', usr_name, 'get data at', Date());
+    const get_user = await this.em
+      .createQueryBuilder(Users, 'u')
+      .where('u.usr_UserName=:name', { name: usr_name })
+      .select([
+        'u.usr_per_ID',
+        'u.usr_CreateDate',
+        'u.usr_UserName',
+        'u.usr_LastLogin',
+      ])
+      .getOne();
+    return get_user;
   }
 }

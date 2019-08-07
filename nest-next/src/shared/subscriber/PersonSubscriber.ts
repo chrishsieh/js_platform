@@ -5,26 +5,26 @@ import {
 } from 'typeorm';
 
 import { Logger } from '@nestjs/common';
-import { user_usr } from '../entity/user_usr';
+import { Users } from '../entity/user';
 
 @EventSubscriber()
-export class PersonSubscriber implements EntitySubscriberInterface<user_usr> {
+export class PersonSubscriber implements EntitySubscriberInterface<Users> {
   listenTo() {
-    return user_usr;
+    return Users;
   }
 
-  async beforeInsert(event: InsertEvent<user_usr>) {
+  async beforeInsert(event: InsertEvent<Users>) {
     Logger.log(`-----Before Insert------`);
     Logger.log(event.entity);
     event.entity.usr_LastLogin = new Date();
   }
 
-  async afterInsert(event: InsertEvent<user_usr>) {
+  async afterInsert(event: InsertEvent<Users>) {
     Logger.log(`-----After Insert------`);
 
-//    event.manager
-//      .createQueryBuilder(user_usr, 'u')
-//      .relation('roles')
-//      .of(event.entity);
+    //    event.manager
+    //      .createQueryBuilder(user, 'u')
+    //      .relation('roles')
+    //      .of(event.entity);
   }
 }
