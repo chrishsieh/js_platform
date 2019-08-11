@@ -18,11 +18,13 @@ class Sidebar extends React.Component<any> {
 
           {/*<!-- sidebar menu: : style can be found in sidebar.less --> */}
           <ul className="sidebar-menu" data-widget="tree">
+            {/*<!-- sidebar Dashboard --> */}
             <li>
               <a href="/Menu">
                 <i className="fa fa-dashboard" /> <span>Dashboard</span>
               </a>
             </li>
+            {/*<!-- sidebar Calendar --> */}
             <li>
               <a href="/v2/calendar">
                 <i className="fa fa-calendar" /> <span>Calendar</span>
@@ -33,6 +35,7 @@ class Sidebar extends React.Component<any> {
                 </span>
               </a>
             </li>
+            {/*<!-- sidebar People --> */}
             <li className="treeview">
               <a href="#">
                 <i className="fa fa-users" />
@@ -43,358 +46,241 @@ class Sidebar extends React.Component<any> {
                 <li>
                   <a href="/PeopleDashboard">
                     <i className="fa fa-angle-double-right" />
-                    <span>
-                      Dashboard                                    </span>
+                    <span>Dashboard</span>
                   </a>
                 </li>
                 <li>
                   <a href="/PersonEditor">
                     <i className="fa fa-angle-double-right" />
-                    <span>
-                      Add New Person                                    </span>
+                    <span>Add New Person</span>
                   </a>
                 </li>
                 <li>
                   <a href="/SelectList">
                     <i className="fa fa-angle-double-right" />
-                    <span>
-                      View All Persons                                    </span>
+                    <span>View All Persons</span>
                   </a>
                 </li>
                 <li>
                   <a href="/FamilyEditor">
                     <i className="fa fa-angle-double-right" />
-                    <span>
-                      Add New Family                                    </span>
+                    <span>Add New Family</span>
                   </a>
                 </li>
                 <li>
                   <a href="/v2/family">
                     <i className="fa fa-angle-double-right" />
-                    <span>
-                      View Active Families                                    </span>
+                    <span>View Active Families</span>
                   </a>
                 </li>
                 <li>
                   <a href="/v2/family">
                     <i className="fa fa-angle-double-right" />
-                    <span>
-                      View Inactive Families                                    </span>
+                    <span>View Inactive Families</span>
                   </a>
                 </li>
                 <li className="treeview ">
                   <a href="#">
                     <i className="fa fa-angle-double-right" />
-                    <span>
-                      Admin                                    </span>
+                    <span>Admin</span>
                     <i className="fa fa-angle-left pull-right" />
                   </a>
                   <ul className="treeview-menu ">
                     <li>
                       <a href="/OptionManager?mode=classes">
                         <i className="fa fa-angle-double-right" />
-                        <span>
-                          Classifications Manager                                    </span>
+                        <span>Classifications Manager</span>
                       </a>
                     </li>
                     <li>
                       <a href="/OptionManager?mode=famroles">
                         <i className="fa fa-angle-double-right" />
-                        <span>
-                          Family Roles                                    </span>
+                        <span>Family Roles</span>
                       </a>
                     </li>
                     <li>
                       <a href="/PropertyList?Type=f">
                         <i className="fa fa-angle-double-right" />
-                        <span>
-                          Family Properties                                    </span>
+                        <span>Family Properties</span>
                       </a>
                     </li>
                     <li>
                       <a href="/FamilyCustomFieldsEditor">
                         <i className="fa fa-angle-double-right" />
-                        <span>
-                          Family Custom Fields                                    </span>
+                        <span>Family Custom Fields</span>
                       </a>
                     </li>
                     <li>
                       <a href="/PropertyList?Type=p">
                         <i className="fa fa-angle-double-right" />
-                        <span>
-                          People Properties                                    </span>
+                        <span>People Properties</span>
                       </a>
                     </li>
                     <li>
                       <a href="/PersonCustomFieldsEditor">
                         <i className="fa fa-angle-double-right" />
-                        <span>
-                          Person Custom Fields                                    </span>
+                        <span>Person Custom Fields</span>
                       </a>
                     </li>
                     <li>
                       <a href="/VolunteerOpportunityEditor">
                         <i className="fa fa-angle-double-right" />
-                        <span>
-                          Volunteer Opportunities                                    </span>
+                        <span>Volunteer Opportunities</span>
                       </a>
                     </li>
                   </ul>
                 </li>
               </ul>
             </li>
-          </ul>
-          <ul className="sidebar-menu">
-            <li>
-              <a href="pages/widgets.html">
-                <i className="fa fa-th" /> <span>Widgets</span>{' '}
-                <small className="label pull-right bg-green">new</small>
-              </a>
-            </li>
+            {/*<!-- sidebar Groups --> */}
             <li className="treeview">
               <a href="#">
-                <i className="fa fa-pie-chart" />
-                <span>Charts</span>
+                <i className="fa fa-tag" />
+                <span>Groups</span>
                 <i className="fa fa-angle-left pull-right" />
               </a>
-              <ul className="treeview-menu">
+              <ul className="treeview-menu" style={{ display: 'block' }}>
                 <li>
-                  <a href="pages/charts/chartjs.html">
-                    <i className="fa fa-circle-o" /> ChartJS
+                  <a href="/GroupList">
+                    <i className="fa fa-angle-double-right" />
+                    <span>List Groups</span>
                   </a>
                 </li>
                 <li>
-                  <a href="pages/charts/morris.html">
-                    <i className="fa fa-circle-o" /> Morris
+                  <a href="/SelectList?mode=groupassign">
+                    <i className="fa fa-angle-double-right" />
+                    <span>Group Assignment Helper</span>
                   </a>
                 </li>
-                <li>
-                  <a href="pages/charts/flot.html">
-                    <i className="fa fa-circle-o" /> Flot
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/charts/inline.html">
-                    <i className="fa fa-circle-o" /> Inline charts
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="treeview">
-              <a href="#">
-                <i className="fa fa-laptop" />
-                <span>UI Elements</span>
-                <i className="fa fa-angle-left pull-right" />
-              </a>
-              <ul className="treeview-menu">
-                <li>
-                  <a href="pages/UI/general.html">
-                    <i className="fa fa-circle-o" /> General
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/UI/icons.html">
-                    <i className="fa fa-circle-o" /> Icons
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/UI/buttons.html">
-                    <i className="fa fa-circle-o" /> Buttons
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/UI/sliders.html">
-                    <i className="fa fa-circle-o" /> Sliders
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/UI/timeline.html">
-                    <i className="fa fa-circle-o" /> Timeline
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/UI/modals.html">
-                    <i className="fa fa-circle-o" /> Modals
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="treeview">
-              <a href="#">
-                <i className="fa fa-edit" /> <span>Forms</span>
-                <i className="fa fa-angle-left pull-right" />
-              </a>
-              <ul className="treeview-menu">
-                <li>
-                  <a href="pages/forms/general.html">
-                    <i className="fa fa-circle-o" /> General Elements
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/forms/advanced.html">
-                    <i className="fa fa-circle-o" /> Advanced Elements
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/forms/editors.html">
-                    <i className="fa fa-circle-o" /> Editors
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="treeview">
-              <a href="#">
-                <i className="fa fa-table" /> <span>Tables</span>
-                <i className="fa fa-angle-left pull-right" />
-              </a>
-              <ul className="treeview-menu">
-                <li>
-                  <a href="pages/tables/simple.html">
-                    <i className="fa fa-circle-o" /> Simple tables
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/tables/data.html">
-                    <i className="fa fa-circle-o" /> Data tables
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="pages/calendar.html">
-                <i className="fa fa-calendar" /> <span>Calendar</span>
-                <small className="label pull-right bg-red">3</small>
-              </a>
-            </li>
-            <li>
-              <a href="pages/mailbox/mailbox.html">
-                <i className="fa fa-envelope" /> <span>Mailbox</span>
-                <small className="label pull-right bg-yellow">12</small>
-              </a>
-            </li>
-            <li className="treeview">
-              <a href="#">
-                <i className="fa fa-folder" /> <span>Examples</span>
-                <i className="fa fa-angle-left pull-right" />
-              </a>
-              <ul className="treeview-menu">
-                <li>
-                  <a href="pages/examples/invoice.html">
-                    <i className="fa fa-circle-o" /> Invoice
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/examples/profile.html">
-                    <i className="fa fa-circle-o" /> Profile
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/examples/login.html">
-                    <i className="fa fa-circle-o" /> Login
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/examples/register.html">
-                    <i className="fa fa-circle-o" /> Register
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/examples/lockscreen.html">
-                    <i className="fa fa-circle-o" /> Lockscreen
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/examples/404.html">
-                    <i className="fa fa-circle-o" /> 404 Error
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/examples/500.html">
-                    <i className="fa fa-circle-o" /> 500 Error
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/examples/blank.html">
-                    <i className="fa fa-circle-o" /> Blank Page
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="treeview">
-              <a href="#">
-                <i className="fa fa-share" /> <span>Multilevel</span>
-                <i className="fa fa-angle-left pull-right" />
-              </a>
-              <ul className="treeview-menu">
-                <li>
+                <li className="treeview ">
                   <a href="#">
-                    <i className="fa fa-circle-o" /> Level One
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="fa fa-circle-o" /> Level One{' '}
+                    <i className="fa fa-tag" />
+                    <span>Ministry</span>
                     <i className="fa fa-angle-left pull-right" />
                   </a>
-                  <ul className="treeview-menu">
+                  <ul className="treeview-menu ">
                     <li>
-                      <a href="#">
-                        <i className="fa fa-circle-o" /> Level Two
+                      <a href="/GroupView?GroupID=10">
+                        <i className="fa fa-user" />
+                        <span>Worship Service</span>
                       </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fa fa-circle-o" /> Level Two{' '}
-                        <i className="fa fa-angle-left pull-right" />
-                      </a>
-                      <ul className="treeview-menu">
-                        <li>
-                          <a href="#">
-                            <i className="fa fa-circle-o" /> Level Three
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="fa fa-circle-o" /> Level Three
-                          </a>
-                        </li>
-                      </ul>
                     </li>
                   </ul>
                 </li>
-                <li>
+                <li className="treeview ">
                   <a href="#">
-                    <i className="fa fa-circle-o" /> Level One
+                    <i className="fa fa-tag" />
+                    <span>Unassigned</span>
+                    <i className="fa fa-angle-left pull-right" />
                   </a>
+                  <ul className="treeview-menu ">
+                    <li>
+                      <a href="/GroupView?GroupID=7">
+                        <i className="fa fa-user" />
+                        <span>Boys Scouts</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/GroupView?GroupID=9">
+                        <i className="fa fa-user" />
+                        <span>Church Board</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/GroupView?GroupID=8">
+                        <i className="fa fa-user" />
+                        <span>Girl Scouts</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className="treeview ">
+                  <a href="#">
+                    <i className="fa fa-angle-double-right" />
+                    <span>Admin</span>
+                    <i className="fa fa-angle-left pull-right" />
+                  </a>
+                  <ul className="treeview-menu ">
+                    <li>
+                      <a href="/PropertyList?Type=g">
+                        <i className="fa fa-angle-double-right" />
+                        <span>Group Properties</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/OptionManager?mode=grptypes">
+                        <i className="fa fa-angle-double-right" />
+                        <span>Group Types</span>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>
-            <li>
-              <a href="documentation/index.html">
-                <i className="fa fa-book" /> <span>Documentation</span>
-              </a>
-            </li>
-            <li className="header">LABELS</li>
-            <li>
+            {/*<!-- sidebar Sunday School --> */}
+            <li className="treeview ">
               <a href="#">
-                <i className="fa fa-circle-o text-red" /> <span>Important</span>
+                <i className="fa fa-child" />
+                <span>Sunday School</span>
+                <i className="fa fa-angle-left pull-right" />
               </a>
+              <ul className="treeview-menu ">
+                <li>
+                  <a href="/sundayschool/SundaySchoolDashboard">
+                    <i className="fa fa-angle-double-right" />
+                    <span>Dashboard</span>
+                  </a>
+                </li>
+                <li className="treeview ">
+                  <a href="#">
+                    <i className="fa fa-tag" />
+                    <span>Classes</span>
+                    <i className="fa fa-angle-left pull-right" />
+                  </a>
+                  <ul className="treeview-menu ">
+                    <li>
+                      <a href="/sundayschool/SundaySchoolClassView?groupId=1">
+                        <i className="fa fa-user" />
+                        <span>Angels class</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/sundayschool/SundaySchoolClassView?groupId=2">
+                        <i className="fa fa-user" />
+                        <span>Class 1-3</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/sundayschool/SundaySchoolClassView?groupId=3">
+                        <i className="fa fa-user" />
+                        <span>Class 4-5</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/sundayschool/SundaySchoolClassView?groupId=4">
+                        <i className="fa fa-user" />
+                        <span>Class 6-7</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="sundayschool/SundaySchoolClassView?groupId=5">
+                        <i className="fa fa-user" />
+                        <span>High School Class</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/sundayschool/SundaySchoolClassView?groupId=6">
+                        <i className="fa fa-user" />
+                        <span>Youth Meeting</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </li>
-            <li>
-              <a href="#">
-                <i className="fa fa-circle-o text-yellow" />{' '}
-                <span>Warning</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fa fa-circle-o text-aqua" />{' '}
-                <span>Information</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </aside>
+          </ul >
+        </section >
+      </aside >
     );
   }
 }
