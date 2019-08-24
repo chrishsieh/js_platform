@@ -34,14 +34,13 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
+                      padding: '8px 8px 8px 8px',
+                      fontSize: '3vmax',
                       height: 'auto',
                       width: 'auto',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -58,14 +57,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -81,14 +77,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -104,14 +97,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -127,14 +117,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -150,14 +137,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -173,14 +157,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -196,14 +177,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -219,14 +197,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -242,14 +217,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -265,14 +237,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
@@ -288,14 +257,11 @@ class PersonsList extends React.Component<any> {
                     // tslint:disable-next-line: jsx-no-multiline-js
                     style={{
                       background: this.colors[Math.floor(Math.random() * this.colors.length)],
+                      fontFamily: 'Consolas, sans-serif',
                       color: 'white',
-                      padding: '6px',
-                      fontSize: '50px',
-                      height: 'auto',
-                      width: 'auto',
+                      padding: '0.5vmax 0.5vmax 0.5vmax 0.5vmax',
+                      fontSize: '3vmax',
                       textAlign: 'center',
-                      textDecoration: 'none',
-                      margin: 'margin top',
                       borderRadius: '50%',
                     }}
                   >
