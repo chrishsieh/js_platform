@@ -1,11 +1,7 @@
-import Calendar from '@src/components/calendar';
-import ChatBox from '@src/components/chat_box';
-import CustomTab from '@src/components/custom_tab';
-import MapBox from '@src/components/map_box';
-import QuickEmail from '@src/components/quick_email';
+
+import FamilyList from '@src/components/family_list';
+import PersonsList from '@src/components/persons_list';
 import SmallBox from '@src/components/small_box';
-import SolidGraph from '@src/components/solid_graph';
-import TodoList from '@src/components/todo_list';
 import Head from 'next/head';
 import * as React from 'react';
 import { WithTranslation } from 'react-i18next';
@@ -35,18 +31,12 @@ class Index extends React.Component<Props & WithTranslation> {
         </Head>
         <SmallBox />
         <div className="row">
-          <section className="col-lg-7 connectedSortable">
-            <CustomTab />
-            <ChatBox />
-            <TodoList />
-            <QuickEmail />
-          </section>
-
-          <section className="col-lg-5 connectedSortable">
-            <MapBox />
-            <SolidGraph />
-            <Calendar />
-          </section>
+          <div className="col-lg-6"><FamilyList /></div>
+          <div className="col-lg-6"><FamilyList /></div>
+        </div>
+        <div className="row">
+          <div className="col-lg-6"><PersonsList /></div>
+          <div className="col-lg-6"><PersonsList /></div>
         </div>
       </div>
     );
