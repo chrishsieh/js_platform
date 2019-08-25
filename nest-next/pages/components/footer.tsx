@@ -9,14 +9,19 @@ class Footer extends React.Component<any> {
   public render() {
     return (
       <footer className="main-footer">
-        <div className="pull-right hidden-xs">
-          <b>Version</b> 2.3.0
+        <div className="pull-right">
+          <b>Version</b>
+          3.4.1
         </div>
-        <strong>
-          Copyright &copy; 2014-2015{' '}
-          <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.
-        </strong>{' '}
-        All rights reserved.
+        <strong>Copyright © 2019
+          <a href="http://www.churchcrm.io" target="_blank">
+            <b>Church</b>
+            CRM
+          </a>.
+        </strong> All rights reserved.|
+        <a href="https://twitter.com/church_crm" target="_blank">
+          <i className="fa fa-twitter" /> Follow us on Twitter
+        </a>
       </footer>
     );
   }
