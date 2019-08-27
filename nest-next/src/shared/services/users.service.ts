@@ -1,11 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
-
-import { EntityManager, Repository } from 'typeorm';
-import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
-import { IsEmail } from 'class-validator';
-import { user_usr } from '../entity/user_usr';
+import { InjectEntityManager } from '@nestjs/typeorm';
+import { EntityManager } from 'typeorm';
 import { UserDTO } from '../DTOs/userDTO';
 import { UserQueryDTO } from '../DTOs/userQueryDTO';
+import { user_usr } from '../entity/user_usr';
 
 @Injectable()
 export class UsersService {
@@ -14,20 +12,20 @@ export class UsersService {
     //    private readonly userRepo: Repository<user_usr>,
 
     @InjectEntityManager()
-    private readonly em: EntityManager,
+    private readonly em: EntityManager
   ) {}
-  async addUser(data: UserDTO) {
+  public async addUser(data: UserDTO) {
     const user = new user_usr();
 
     user.usr_UserName = data.usr_UserName;
-    var userId: number = 10000;
+    let userId: number = 10000;
     await this.em
       .createQueryBuilder()
       .insert()
       .into(user_usr)
       .values(user)
       .execute()
-      .then(result => {
+      .then((result) => {
         Logger.log(result); // 到console看回傳的格式
 
         userId = result.identifiers[0].id; // 取得新增後回傳的id
@@ -50,7 +48,7 @@ export class UsersService {
 
     return this.getUserById(userId);
   }
-  async getUsers(pageInfo: UserQueryDTO): Promise<user_usr[]> {
+  public async getUsers(pageInfo: UserQueryDTO): Promise<user_usr[]> {
     return await this.em
       .createQueryBuilder(user_usr, 'u')
       .select(['u.usr_UserName', 'u.usr_LastLogin', 'u.usr_apiKey'])
@@ -59,7 +57,7 @@ export class UsersService {
       .cache(60000) // 1 min
       .getMany(); //
   }
-  async getUserById(userId: number): Promise<user_usr | undefined> {
+  public async getUserById(userId: number): Promise<user_usr | undefined> {
     return await this.em
       .createQueryBuilder(user_usr, 'u')
       .whereInIds(userId)
@@ -73,7 +71,7 @@ export class UsersService {
       .getOne();
   }
 
-  async updateUserById(userId: number, data: UserDTO) {
+  public async updateUserById(userId: number, data: UserDTO) {
     await this.em
       .createQueryBuilder() // 更新非relation相關資料
       .update(user_usr) // 指定update哪一個entity
@@ -87,7 +85,7 @@ export class UsersService {
       .execute(); // 執行query
     return this.getUserById(userId);
   }
-  async deleteUser(id: number) {
+  public async deleteUser(id: number) {
     const userDeleted = this.getUserById(id);
     return this.em
       .createQueryBuilder()
@@ -95,10 +93,10 @@ export class UsersService {
       .from(user_usr)
       .whereInIds(id)
       .execute()
-      .then(result => userDeleted); // 回傳raw沒有資料
+      .then(() => userDeleted); // 回傳raw沒有資料
   }
 
-  async findOneByToken(token: string) {
+  public async findOneByToken(token: string) {
     return await this.em
       .createQueryBuilder(user_usr, 'u')
       .where('u.usr_apiKey = :token', { token })

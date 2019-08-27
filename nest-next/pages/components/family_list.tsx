@@ -1,13 +1,28 @@
-import { map } from 'jquery';
+import { FamilyContent } from '@server/shared/interface/familylist';
 import * as React from 'react';
 
-class FamilyList extends React.Component<any> {
+interface Familyif {
+  title: string;
+  content: FamilyContent[];
+}
+
+class FamilyList extends React.Component<Familyif> {
   public static async getInitialProps() {
     return {
       namespacesRequired: ['common'],
     };
   }
   public render() {
+    const familyListContent = this.props.content.map((value) => (
+      // tslint:disable-next-line: jsx-wrap-multiline
+      <tr role="row" className="odd" key={value.name_link}>
+        <td tabIndex={0}>
+          <a href={value.name_link}>{value.name}</a>
+        </td>
+        <td>{value.address}</td>
+        <td>{value.created}</td>
+      </tr>
+    ));
     return (
       <div className="box box-solid">
         <div className="box-header">
@@ -63,18 +78,7 @@ class FamilyList extends React.Component<any> {
                   </tr>
                 </thead>
                 <tbody>
-                  {
-                    // tslint:disable-next-line: jsx-no-multiline-js
-                    map(this.props.content, (item) => // map from lodash
-                      <tr role="row" className="odd">
-                        <td tabIndex={0}>
-                          <a href={item.name_link}>{item.name}</a>
-                        </td>
-                        <td>{item.address}</td>
-                        <td>{item.created}</td>
-                      </tr>
-                    )
-                  }
+                  {familyListContent}
                 </tbody>
               </table></div>
           </div>

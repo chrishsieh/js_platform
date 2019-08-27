@@ -11,7 +11,7 @@ class Footer extends React.Component<any> {
       <footer className="main-footer">
         <div className="pull-right">
           <b>Version</b>
-          3.4.1
+          3.5.0
         </div>
         <strong>Copyright © 2019
           <a href="http://www.churchcrm.io" target="_blank">
