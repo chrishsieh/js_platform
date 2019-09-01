@@ -1,97 +1,104 @@
 import {
-  BaseEntity,
   Column,
   Entity,
   Index,
-  JoinColumn,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
-  OneToMany,
-  OneToOne,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
+  JoinColumn,
   RelationId,
 } from 'typeorm';
+import { family_fam } from './family_fam';
 
 @Entity('person_per', { schema: 'churchcrm' })
 @Index('per_ID', ['per_ID'])
+// tslint:disable-next-line: class-name
 export class person_per {
   @PrimaryGeneratedColumn({
     type: 'mediumint',
     name: 'per_ID',
   })
-  per_ID: number;
+  // tslint:disable-next-line: variable-name
+  public per_ID: number;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Title',
   })
-  per_Title: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_Title: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_FirstName',
   })
-  per_FirstName: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_FirstName: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_MiddleName',
   })
-  per_MiddleName: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_MiddleName: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_LastName',
   })
-  per_LastName: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_LastName: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Suffix',
   })
-  per_Suffix: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_Suffix: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Address1',
   })
-  per_Address1: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_Address1: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Address2',
   })
-  per_Address2: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_Address2: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_City',
   })
-  per_City: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_City: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_State',
   })
-  per_State: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_State: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Zip',
   })
-  per_Zip: string | null;
+  // tslint:disable-next-line: variable-name
+  public per_Zip: string | null;
 
   @Column('varchar', {
     nullable: true,
@@ -137,14 +144,14 @@ export class person_per {
 
   @Column('tinyint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'per_BirthMonth',
   })
   per_BirthMonth: number;
 
   @Column('tinyint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'per_BirthDay',
   })
   per_BirthDay: number;
@@ -163,31 +170,24 @@ export class person_per {
 
   @Column('tinyint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'per_Gender',
   })
   per_Gender: number;
 
   @Column('tinyint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'per_fmr_ID',
   })
   per_fmr_ID: number;
 
   @Column('tinyint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'per_cls_ID',
   })
   per_cls_ID: number;
-
-  @Column('smallint', {
-    nullable: false,
-    default: () => "'0'",
-    name: 'per_fam_ID',
-  })
-  per_fam_ID: number;
 
   @Column('smallint', {
     nullable: true,
@@ -209,14 +209,14 @@ export class person_per {
 
   @Column('smallint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'per_EnteredBy',
   })
   per_EnteredBy: number;
 
   @Column('smallint', {
     nullable: true,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'per_EditedBy',
   })
   per_EditedBy: number | null;
@@ -229,7 +229,7 @@ export class person_per {
 
   @Column('mediumint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'per_Flags',
   })
   per_Flags: number;
@@ -253,4 +253,12 @@ export class person_per {
     name: 'per_LinkedIn',
   })
   per_LinkedIn: string | null;
+
+  @Column('mediumint', {
+    nullable: false,
+    default: () => '\'0\'',
+    name: 'per_fam_ID',
+  })
+  // tslint:disable-next-line: variable-name
+  public per_fam_ID: number;
 }

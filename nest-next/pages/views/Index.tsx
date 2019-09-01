@@ -1,4 +1,5 @@
 import { FamilyContent } from '@server/shared/interface/familylist';
+import { PersonContent } from '@server/shared/interface/personlist';
 import FamilyList from '@src/components/family_list';
 import PersonsList from '@src/components/persons_list';
 import SmallBox from '@src/components/small_box';
@@ -12,6 +13,8 @@ interface InitialProps {
   query: {
     lastFamilyContent: FamilyContent[];
     updatedFamilyContent: FamilyContent[];
+    lastPersonContent: PersonContent[];
+    updatedPersonContent: PersonContent[];
   };
 }
 
@@ -19,6 +22,8 @@ interface Props {
   query: {
     lastFamilyContent: FamilyContent[];
     updatedFamilyContent: FamilyContent[];
+    lastPersonContent: PersonContent[];
+    updatedPersonContent: PersonContent[];
   };
   namespacesRequired: string[];
 }
@@ -70,6 +75,8 @@ class Index extends React.Component<Props & WithTranslation> {
             <PersonsList
               title="Updated Persons"
               // tslint:disable-next-line: jsx-no-multiline-js
+              content={this.props.query.updatedPersonContent}
+              /*
               content={
                 [{
                   name: 'Mark Smith',
@@ -78,6 +85,7 @@ class Index extends React.Component<Props & WithTranslation> {
                   date: '04/15/2017',
                 }]
               }
+              */
             />
           </div>
         </div>

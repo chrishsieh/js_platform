@@ -25,7 +25,7 @@ class PersonsList extends React.Component<Personif> {
   public render() {
     const PersonListContent = this.props.content.map((value) => (
       <li>
-        <a className="users-list" href={value.name_link} key={value.name_link}>
+        <a className="users-list" href={value.name_link}>
           <span
             // tslint:disable-next-line: jsx-no-multiline-js
             style={{
