@@ -3,6 +3,7 @@ import * as React from 'react';
 
 interface Familyif {
   title: string;
+  icon: string;
   content: FamilyContent[];
 }
 
@@ -26,7 +27,7 @@ class FamilyList extends React.Component<Familyif> {
     return (
       <div className="box box-solid">
         <div className="box-header">
-          <i className="fa fa-user-plus" />
+          <i className={this.props.icon} />
           <h3 className="box-title">{this.props.title}</h3>
           <div className="box-tools pull-right">
             <button type="button" className="btn btn-box-tool" data-widget="collapse">

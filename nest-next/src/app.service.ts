@@ -21,7 +21,7 @@ export class AppService {
     const personUpdate = await this.personDashboard.getUpdatedMembers();
 
     return {
-      lastFamilyContent: familyLatest.map((value: family_fam) => {
+      lastFamilyContent: familyLatest.map((value: any) => {
         const famName = value.fam_Name ? value.fam_Name : '';
         const famAddress = value.fam_Address1 ? value.fam_Address1 : '';
         const famDateEntered = value.fam_DateEntered
@@ -34,7 +34,7 @@ export class AppService {
           datetime: famDateEntered,
         };
       }),
-      updatedFamilyContent: familyUpdate.map((value: family_fam) => {
+      updatedFamilyContent: familyUpdate.map((value: any) => {
         const famName = value.fam_Name ? value.fam_Name : '';
         const famAddress = value.fam_Address1 ? value.fam_Address1 : '';
         const famLastEdited = value.fam_DateLastEdited
@@ -47,7 +47,7 @@ export class AppService {
           datetime: famLastEdited,
         };
       }),
-      lastPersonContent: personLatest.map((value: person_per) => {
+      lastPersonContent: personLatest.map((value: any) => {
         let outDate = '';
         let shortName = '';
         if (value.per_DateEntered) {
@@ -71,7 +71,7 @@ export class AppService {
           date: outDate,
         };
       }),
-      updatedPersonContent: personUpdate.map((value: person_per) => {
+      updatedPersonContent: personUpdate.map((value: any) => {
         let outDate = '';
         let shortName = '';
         if (value.per_DateLastEdited) {

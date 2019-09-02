@@ -28,7 +28,7 @@ class ControlSidebar extends React.Component<any> {
             <h3 className="control-sidebar-heading">Recent Activity</h3>
             <ul className="control-sidebar-menu">
               <li>
-                <a href="javascript::;">
+                <a >
                   <i className="menu-icon fa fa-birthday-cake bg-red" />
                   <div className="menu-info">
                     <h4 className="control-sidebar-subheading">
@@ -39,7 +39,7 @@ class ControlSidebar extends React.Component<any> {
                 </a>
               </li>
               <li>
-                <a href="javascript::;">
+                <a >
                   <i className="menu-icon fa fa-user bg-yellow" />
                   <div className="menu-info">
                     <h4 className="control-sidebar-subheading">
@@ -50,7 +50,7 @@ class ControlSidebar extends React.Component<any> {
                 </a>
               </li>
               <li>
-                <a href="javascript::;">
+                <a >
                   <i className="menu-icon fa fa-envelope-o bg-light-blue" />
                   <div className="menu-info">
                     <h4 className="control-sidebar-subheading">
@@ -61,7 +61,8 @@ class ControlSidebar extends React.Component<any> {
                 </a>
               </li>
               <li>
-                <a href="javascript::;">
+                {/*<a href="javascript::;">*/}
+                <a>
                   <i className="menu-icon fa fa-file-code-o bg-green" />
                   <div className="menu-info">
                     <h4 className="control-sidebar-subheading">
@@ -76,7 +77,7 @@ class ControlSidebar extends React.Component<any> {
             <h3 className="control-sidebar-heading">Tasks Progress</h3>
             <ul className="control-sidebar-menu">
               <li>
-                <a href="javascript::;">
+                <a >
                   <h4 className="control-sidebar-subheading">
                     Custom Template Design
                     <span className="label label-danger pull-right">70%</span>
@@ -90,7 +91,7 @@ class ControlSidebar extends React.Component<any> {
                 </a>
               </li>
               <li>
-                <a href="javascript::;">
+                <a >
                   <h4 className="control-sidebar-subheading">
                     Update Resume
                     <span className="label label-success pull-right">95%</span>
@@ -104,7 +105,7 @@ class ControlSidebar extends React.Component<any> {
                 </a>
               </li>
               <li>
-                <a href="javascript::;">
+                <a >
                   <h4 className="control-sidebar-subheading">
                     Laravel Integration
                     <span className="label label-warning pull-right">50%</span>
@@ -118,7 +119,7 @@ class ControlSidebar extends React.Component<any> {
                 </a>
               </li>
               <li>
-                <a href="javascript::;">
+                <a >
                   <h4 className="control-sidebar-subheading">
                     Back End Framework
                     <span className="label label-primary pull-right">68%</span>
@@ -196,7 +197,7 @@ class ControlSidebar extends React.Component<any> {
               <div className="form-group">
                 <label className="control-sidebar-subheading">
                   Delete chat history
-                  <a href="javascript::;" className="text-red pull-right">
+                  <a className="text-red pull-right">
                     <i className="fa fa-trash-o" />
                   </a>
                 </label>

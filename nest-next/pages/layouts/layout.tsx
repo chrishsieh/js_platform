@@ -78,9 +78,7 @@ class Layout extends React.Component<any> {
 
         <script src="/static/plugins/jQuery/jQuery-2.1.4.min.js" />
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" />
-        <script
-          dangerouslySetInnerHTML={{ __html: `$.widget.bridge('uibutton', $.ui.button);` }}
-        />
+        {/*<script dangerouslySetInnerHTML={{ __html: `$.widget.bridge('uibutton', $.ui.button);` }}/>*/}
         <script src="/static/bootstrap/js/bootstrap.min.js" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" />
         <script src="/static/plugins/morris/morris.min.js" />

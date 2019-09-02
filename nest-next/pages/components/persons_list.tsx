@@ -1,11 +1,5 @@
+import { PersonContent } from '@server/shared/interface/personlist';
 import * as React from 'react';
-
-interface PersonContent {
-  name: string;
-  name_link: string;
-  nameshort: string;
-  date: string;
-}
 
 interface Personif {
   title: string;
@@ -24,8 +18,8 @@ class PersonsList extends React.Component<Personif> {
     '#c9302c'];
   public render() {
     const PersonListContent = this.props.content.map((value) => (
-      <li>
-        <a className="users-list" href={value.name_link}>
+      <li key={value.name_link}>
+        <a className="users-list" href={value.name_link} >
           <span
             // tslint:disable-next-line: jsx-no-multiline-js
             style={{

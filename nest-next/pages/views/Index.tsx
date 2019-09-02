@@ -44,6 +44,7 @@ class Index extends React.Component<Props & WithTranslation> {
           <div className="col-lg-6">
             <FamilyList
               title="Latest Families"
+              icon="fa fa-user-plus"
               // tslint:disable-next-line: jsx-no-multiline-js
               content={this.props.query.lastFamilyContent}
             />
@@ -51,6 +52,7 @@ class Index extends React.Component<Props & WithTranslation> {
           <div className="col-lg-6">
             <FamilyList
               title="Updated Families"
+              icon="fa fa-check"
               // tslint:disable-next-line: jsx-no-multiline-js
               content={this.props.query.updatedFamilyContent}
             />
