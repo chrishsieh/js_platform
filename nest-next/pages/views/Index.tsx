@@ -61,14 +61,7 @@ class Index extends React.Component<Props & WithTranslation> {
             <PersonsList
               title="Latest Persons"
               // tslint:disable-next-line: jsx-no-multiline-js
-              content={
-                [{
-                  name: 'Mark Smith',
-                  name_link: 'PersonView?PersonID=104',
-                  nameshort: 'MS',
-                  date: '04/15/2017',
-                }]
-              }
+              content={this.props.query.lastPersonContent}
             />
           </div>
           <div className="col-lg-6">
@@ -76,16 +69,6 @@ class Index extends React.Component<Props & WithTranslation> {
               title="Updated Persons"
               // tslint:disable-next-line: jsx-no-multiline-js
               content={this.props.query.updatedPersonContent}
-              /*
-              content={
-                [{
-                  name: 'Mark Smith',
-                  name_link: 'PersonView?PersonID=104',
-                  nameshort: 'MS',
-                  date: '04/15/2017',
-                }]
-              }
-              */
             />
           </div>
         </div>

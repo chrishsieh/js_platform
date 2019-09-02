@@ -2,11 +2,8 @@ import {
   Column,
   Entity,
   Index,
-  OneToMany,
   PrimaryGeneratedColumn,
-  JoinColumn,
 } from 'typeorm';
-import { person_per } from './person_per';
 
 @Entity('family_fam', { schema: 'churchcrm' })
 @Index('fam_ID', ['fam_ID'])

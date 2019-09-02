@@ -1,10 +1,10 @@
-import { HttpExceptionFilter } from './filters/httpexception.filter';
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { userEntities } from './entity';
+import { HttpExceptionFilter } from './filters/httpexception.filter';
 import { SimpleAuthGuard } from './guards/simple-auth.guard';
 import { TransformResInterceptor } from './interceptors/transformRes.interceptor';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserDTOValidationPipe } from './pipes/userDTOValidation.pipe';
-import { userEntities } from './entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({

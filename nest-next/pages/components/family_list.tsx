@@ -20,7 +20,7 @@ class FamilyList extends React.Component<Familyif> {
           <a href={value.name_link}>{value.name}</a>
         </td>
         <td>{value.address}</td>
-        <td>{value.created}</td>
+        <td>{value.datetime}</td>
       </tr>
     ));
     return (

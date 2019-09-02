@@ -2,6 +2,7 @@ import { CacheInterceptor, Controller, Get, Render, UseGuards, UseInterceptors }
 import { AppService } from './app.service';
 import { SimpleAuthGuard } from './shared/guards/simple-auth.guard';
 import { Familyif } from './shared/interface/familylist';
+import { Personif } from './shared/interface/personlist';
 
 @Controller()
 @UseGuards(SimpleAuthGuard)
@@ -11,7 +12,7 @@ export class AppController {
 
   @Get()
   @Render('Index')
-  public root(): Familyif {
+  public async root(): Promise<Familyif&Personif> {
     return this.appService.root();
   }
 }

@@ -2,7 +2,7 @@ export interface FamilyContent {
   name: string;
   name_link: string;
   address: string;
-  created: string;
+  datetime: string;
 }
 
 export interface Familyif {

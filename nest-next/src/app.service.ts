@@ -1,58 +1,77 @@
 import { Injectable } from '@nestjs/common';
+import moment from 'moment';
+import { family_fam } from './shared/entity/family_fam';
 import { person_per } from './shared/entity/person_per';
 import { Familyif } from './shared/interface/familylist';
-import { PersonContent, Personif } from './shared/interface/personlist';
-import { DashboardService } from './shared/services/dashboard.service';
+import { Personif } from './shared/interface/personlist';
+import { FamilyDashboardService } from './shared/services/family.dashboard.service';
+import { PersonDashboardService } from './shared/services/person.dashboard.service';
 
 @Injectable()
 export class AppService {
-  constructor(private readonly dashboard: DashboardService) {}
+  constructor(
+    private readonly personDashboard: PersonDashboardService,
+    private readonly familyDashboard: FamilyDashboardService
+  ) {}
   public async root(): Promise<Familyif & Personif> {
     // tslint:disable-next-line: no-console
-    const personUpdate = await this.dashboard.getUpdatedMembers();
+    const familyLatest = await this.familyDashboard.getLatestFamilies();
+    const familyUpdate = await this.familyDashboard.getUpdatedFamilies();
+    const personLatest = await this.personDashboard.getLatestMembers();
+    const personUpdate = await this.personDashboard.getUpdatedMembers();
+
     return {
-      lastFamilyContent: [
-        {
-          name: 'Smith',
-          name_link: '/FamilyView?FamilyID=21',
-          address: '123 Main St.',
-          created: '15/04/17 5:19 pm',
-        },
-        {
-          name: 'Larson',
-          name_link: '/FamilyView?FamilyID=16',
-          address: '3866 Edwards Rd',
-          created: '1/03/16 2:19 pm',
-        },
-        {
-          name: 'Kennedy',
-          name_link: '/FamilyView?FamilyID=19',
-          address: '9481 Wycliff Ave',
-          created: '23/11/14 9:17 am',
-        },
-      ],
-      updatedFamilyContent: [
-        {
-          name: 'Cooper',
-          name_link: '/FamilyView?FamilyID=17',
-          address: '1782 Daisy Dr',
-          created: '26/09/14 12:09 am',
-        },
-        {
-          name: 'Olson',
-          name_link: '/FamilyView?FamilyID=12',
-          address: '1272 Shady Ln Dr',
-          created: '31/08/14 4:21 am',
-        },
-        {
-          name: 'Black',
-          name_link: '/FamilyView?FamilyID=20',
-          address: '4307 Avondale Ave',
-          created: '10/05/14 6:07 am',
-        },
-      ],
-      lastPersonContent: [],
-      updatedPersonContent: personUpdate.map((value) => {
+      lastFamilyContent: familyLatest.map((value: family_fam) => {
+        const famName = value.fam_Name ? value.fam_Name : '';
+        const famAddress = value.fam_Address1 ? value.fam_Address1 : '';
+        const famDateEntered = value.fam_DateEntered
+          ? moment(value.fam_DateEntered).format('DD/MM/YY hh:mm a')
+          : '';
+        return {
+          name: famName,
+          name_link: '/FamilyView?FamilyID=' + value.fam_ID,
+          address: famAddress,
+          datetime: famDateEntered,
+        };
+      }),
+      updatedFamilyContent: familyUpdate.map((value: family_fam) => {
+        const famName = value.fam_Name ? value.fam_Name : '';
+        const famAddress = value.fam_Address1 ? value.fam_Address1 : '';
+        const famLastEdited = value.fam_DateLastEdited
+          ? moment(value.fam_DateLastEdited).format('DD/MM/YY hh:mm a')
+          : '';
+        return {
+          name: famName,
+          name_link: '/FamilyView?FamilyID=' + value.fam_ID,
+          address: famAddress,
+          datetime: famLastEdited,
+        };
+      }),
+      lastPersonContent: personLatest.map((value: person_per) => {
+        let outDate = '';
+        let shortName = '';
+        if (value.per_DateEntered) {
+          outDate =
+            value.per_DateEntered.getMonth() +
+            '/' +
+            value.per_DateEntered.getDate() +
+            '/' +
+            value.per_DateEntered.getFullYear();
+        }
+        if (value.per_FirstName) {
+          shortName += value.per_FirstName.charAt(0);
+        }
+        if (value.per_LastName) {
+          shortName += value.per_LastName.charAt(0);
+        }
+        return {
+          name: value.per_FirstName + ' ' + value.per_LastName,
+          name_link: '/PersonView?PersonID=' + value.per_ID,
+          nameshort: shortName,
+          date: outDate,
+        };
+      }),
+      updatedPersonContent: personUpdate.map((value: person_per) => {
         let outDate = '';
         let shortName = '';
         if (value.per_DateLastEdited) {
@@ -71,7 +90,7 @@ export class AppService {
         }
         return {
           name: value.per_FirstName + ' ' + value.per_LastName,
-          name_link: 'PersonView?PersonID=' + value.per_ID,
+          name_link: '/PersonView?PersonID=' + value.per_ID,
           nameshort: shortName,
           date: outDate,
         };
