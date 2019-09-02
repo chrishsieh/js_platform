@@ -6,6 +6,18 @@ interface Personif {
   content: PersonContent[];
 }
 
+function hashcode(dataStr: string): number {
+  let hash: any = 0;
+  let i = 0;
+  let chr = 0;
+  if (dataStr.length === 0) { return hash; }
+  for (i = 0; i < dataStr.length; i++) {
+    chr = dataStr.charCodeAt(i);
+    hash = (hash * 32 - hash) + chr;
+  }
+  return hash;
+};
+
 class PersonsList extends React.Component<Personif> {
   public static async getInitialProps() {
     return {
@@ -13,7 +25,7 @@ class PersonsList extends React.Component<Personif> {
     };
   }
   private colors = [
-    '#3c763d', '#67b168', '#8a6d3b', '#66512c', '#843534',
+    '#3c763d', '#8a6d3b', '#66512c', '#843534',
     '#ce8483', '#337ab7', '#286090', '#122b40', '#5cb85c',
     '#c9302c'];
   public render() {
@@ -23,7 +35,8 @@ class PersonsList extends React.Component<Personif> {
           <span
             // tslint:disable-next-line: jsx-no-multiline-js
             style={{
-              background: this.colors[Math.floor(Math.random() * this.colors.length)],
+              background: this.colors[
+                Math.floor(hashcode(value.name) % this.colors.length)],
               fontFamily: 'Consolas, sans-serif',
               color: 'white',
               padding: '8px 8px 8px 8px',
