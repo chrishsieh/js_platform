@@ -1,5 +1,5 @@
-import { FamilyContent } from '@server/shared/interface/familylist';
 import * as React from 'react';
+import { FamilyContent } from '../../src/shared/interface/familylist';
 
 interface Familyif {
   title: string;

@@ -1,20 +1,13 @@
-import {
-  Module,
-  NestModule,
-  MiddlewareConsumer,
-  RequestMethod,
-} from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { RenderModule } from 'nest-next';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/users.module';
-import { CacheModule } from './cache/cache.module';
+// import { CacheModule } from './cache/cache.module';
 import { ConfigModule } from './config/config.module';
 import { DatabaseModule } from './db/db.module';
 import { SharedModule } from './shared/shared.module';
-import { LoggerMiddleware } from './shared/middlewares/logger.middleware';
-import cors from 'cors';
+import { UserModule } from './user/users.module';
 
 @Module({
   imports: [
@@ -22,7 +15,7 @@ import cors from 'cors';
     AuthModule,
     UserModule,
     RenderModule,
-    CacheModule,
+    // CacheModule,
     ConfigModule,
     DatabaseModule,
   ],

@@ -1,82 +1,72 @@
-import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
+import {BaseEntity, Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn, RelationId} from 'typeorm';
 
-
-@Entity("note_nte",{schema:"churchcrm" } )
+@Entity('note_nte', {schema: "churchcrm" } )
 export class note_nte {
 
     @PrimaryGeneratedColumn({
-        type:"mediumint", 
-        name:"nte_ID"
+        type:'mediumint',
+        name:'nte_ID'
         })
-    nte_ID:number;
-        
+    nte_ID: number;
 
-    @Column("mediumint",{ 
-        nullable:false,
-        default: () => "'0'",
-        name:"nte_per_ID"
+    @Column('mediumint', {
+        nullable: false,
+        default: () => '\'0\'',
+        name:'nte_per_ID'
         })
-    nte_per_ID:number;
-        
+    nte_per_ID: number;
 
-    @Column("mediumint",{ 
-        nullable:false,
-        default: () => "'0'",
-        name:"nte_fam_ID"
+    @Column('mediumint', {
+        nullable: false,
+        default: () => '\'0\'',
+        name: "nte_fam_ID",
         })
-    nte_fam_ID:number;
-        
+    nte_fam_ID: number;
 
-    @Column("mediumint",{ 
-        nullable:false,
-        default: () => "'0'",
-        name:"nte_Private"
+    @Column('mediumint', {
+        nullable: false,
+        default: () => '\'0\'',
+        name:'nte_Private'
         })
-    nte_Private:number;
-        
+    nte_Private: number;
 
-    @Column("text",{ 
-        nullable:true,
-        name:"nte_Text"
+    @Column('text', {
+        nullable: true,
+        name:'nte_Text'
         })
-    nte_Text:string | null;
-        
+    nte_Text: string | null;
 
-    @Column("datetime",{ 
-        nullable:false,
-        name:"nte_DateEntered"
+    @Column('datetime', {
+        nullable: false,
+        name: "nte_DateEntered",
         })
-    nte_DateEntered:Date;
-        
+    nte_DateEntered: Date;
 
-    @Column("datetime",{ 
-        nullable:true,
-        name:"nte_DateLastEdited"
+    @Column('datetime', {
+        nullable: true,
+        name:'nte_DateLastEdited'
         })
-    nte_DateLastEdited:Date | null;
-        
+    nte_DateLastEdited: Date | null;
 
-    @Column("mediumint",{ 
-        nullable:false,
-        default: () => "'0'",
-        name:"nte_EnteredBy"
+    @Column('mediumint', {
+        nullable: false,
+        default: () => '\'0\'',
+        name: "nte_EnteredBy",
         })
-    nte_EnteredBy:number;
-        
+    nte_EnteredBy: number;
 
-    @Column("mediumint",{ 
-        nullable:false,
-        default: () => "'0'",
-        name:"nte_EditedBy"
+    @Column('mediumint', {
+        nullable: false,
+        default: () => '\'0\'',
+        name:'nte_EditedBy'
         })
-    nte_EditedBy:number;
-        
+    nte_EditedBy: number;
 
-    @Column("varchar",{ 
-        nullable:true,
-        length:50,
-        name:"nte_Type"
+    @Column('varchar', {
+        nullable: true,
+        length: 50,
+        name: "nte_Type",
         })
-    nte_Type:string | null;
-        
+    nte_Type: string | null;
+
 }

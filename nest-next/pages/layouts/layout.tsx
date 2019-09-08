@@ -1,12 +1,12 @@
-import ContentHeader from '@src/components/content_header';
-import ControlSidebar from '@src/components/control_sidebar';
-import Footer from '@src/components/footer';
-import Logo from '@src/components/logo';
-import Navbar from '@src/components/navbar';
-import Sidebar from '@src/components/sidebar';
 import Head from 'next/head';
 import React from 'react';
 import '../churchcrm.scss';
+import ContentHeader from '../components/content_header';
+import ControlSidebar from '../components/control_sidebar';
+import Footer from '../components/footer';
+import Logo from '../components/logo';
+import Navbar from '../components/navbar';
+import Sidebar from '../components/sidebar';
 
 class Layout extends React.Component<any> {
   public static async getInitialProps() {

@@ -1,13 +1,13 @@
-import { FamilyContent } from '@server/shared/interface/familylist';
-import { PersonContent } from '@server/shared/interface/personlist';
-import FamilyList from '@src/components/family_list';
-import PersonsList from '@src/components/persons_list';
-import SmallBox from '@src/components/small_box';
 import Head from 'next/head';
 import * as React from 'react';
 import { WithTranslation } from 'react-i18next';
 import { withTranslation } from '../../src/i18n';
+import { FamilyContent } from '../../src/shared/interface/familylist';
+import { PersonContent } from '../../src/shared/interface/personlist';
 import '../churchcrm.scss';
+import FamilyList from '../components/family_list';
+import PersonsList from '../components/persons_list';
+import SmallBox from '../components/small_box';
 
 interface InitialProps {
   query: {

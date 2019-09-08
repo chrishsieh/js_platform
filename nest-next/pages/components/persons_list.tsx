@@ -1,5 +1,5 @@
-import { PersonContent } from '@server/shared/interface/personlist';
 import * as React from 'react';
+import { PersonContent } from '../../src/shared/interface/personlist';
 
 interface Personif {
   title: string;

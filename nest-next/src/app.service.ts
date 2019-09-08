@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import moment from 'moment';
-import { family_fam } from './shared/entity/family_fam';
-import { person_per } from './shared/entity/person_per';
 import { Familyif } from './shared/interface/familylist';
 import { Personif } from './shared/interface/personlist';
 import { FamilyDashboardService } from './shared/services/family.dashboard.service';
@@ -11,7 +9,7 @@ import { PersonDashboardService } from './shared/services/person.dashboard.servi
 export class AppService {
   constructor(
     private readonly personDashboard: PersonDashboardService,
-    private readonly familyDashboard: FamilyDashboardService
+    private readonly familyDashboard: FamilyDashboardService,
   ) {}
   public async root(): Promise<Familyif & Personif> {
     // tslint:disable-next-line: no-console

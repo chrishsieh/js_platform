@@ -1,51 +1,46 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "jsx": "react",
-    "strict": true,
-    "pretty": true,
+    "compilerOptions": {
+      "strictPropertyInitialization": false,
 
-    "noImplicitAny": true,
-    "alwaysStrict": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "strictPropertyInitialization": false,
-
-    "outDir": ".next",
-    "moduleResolution": "node",
-
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-
-    "sourceMap": true,
-    "skipLibCheck": true,
-
-    "lib": [
-      "es2017"
-    ],
-
-    "baseUrl": ".",
-    "paths": {
-      "@server/*": [
-        "src/*"
+      "target": "esnext",
+      "module": "esnext",
+      "jsx": "preserve",
+      "strict": true,
+      "pretty": true,
+      "noImplicitAny": true,
+      "alwaysStrict": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "outDir": ".next",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "sourceMap": true,
+      "skipLibCheck": true,
+      "lib": [
+        "es2017",
+        "dom"
       ],
-      "@src/*": [
-        "pages/*"
-	  ],
-	  "@entities/*": [
-        "src/shared/entities/*"
-      ]
+      "baseUrl": ".",
+      "typeRoots": [
+        "node_modules/@types",
+        "./typings"
+      ],
+      "allowJs": true,
+      "forceConsistentCasingInFileNames": true,
+      "noEmit": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true
     },
-
-    "typeRoots": [
-      "node_modules/@types"
+    "include": [
+      "./pages/**/*",
+      "./src/**/*",
+      "./static/**/*"
+    ],
+    "exclude": [
+      "node_modules"
     ]
-  },
-  "exclude": [
-    "node_modules"
-  ]
-}
+  }
+  

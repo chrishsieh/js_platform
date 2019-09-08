@@ -1,14 +1,13 @@
-declare const module: any;
-
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { RenderModule, RenderService } from 'nest-next';
 import Next from 'next';
-import { AppModule } from './app.module';
 import nextI18NextMiddleware from 'next-i18next/middleware';
+import 'reflect-metadata';
+import { AppModule } from './app.module';
+import { AuthModule } from './auth/auth.module';
 import nextI18next from './i18n';
 import { UserModule } from './user/users.module';
-import { AuthModule } from './auth/auth.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const dev = process.env.NODE_ENV !== 'production';
@@ -34,7 +33,7 @@ async function bootstrap() {
     res.send(err.response);
   });
 
-  //swagger options
+  // swagger options
   const options = new DocumentBuilder()
     .setTitle('Users Restful API')
     .setDescription('The users Restful API description')
@@ -43,11 +42,11 @@ async function bootstrap() {
     .addTag('users')
     .build();
 
-  //restful API doc
-  const User_document = SwaggerModule.createDocument(server, options, {
+  // restful API doc
+  const UserDocument = SwaggerModule.createDocument(server, options, {
     include: [UserModule],
   });
-  SwaggerModule.setup('v1/api/user', server, User_document);
+  SwaggerModule.setup('v1/api/user', server, UserDocument);
 
   const authApiOptions = new DocumentBuilder()
     .setTitle('Auth API Doc')
@@ -63,10 +62,12 @@ async function bootstrap() {
 
   await server.listen(process.env.PORT || 5000);
 
+  /*
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => server.close());
   }
+  */
 }
 
 bootstrap();

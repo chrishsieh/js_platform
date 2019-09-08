@@ -1,49 +1,43 @@
-import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
+import {BaseEntity, Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn, RelationId} from 'typeorm';
 
-
-@Entity("whycame_why",{schema:"churchcrm" } )
+@Entity('whycame_why', {schema: 'churchcrm' } )
 export class whycame_why {
 
     @PrimaryGeneratedColumn({
-        type:"mediumint", 
-        name:"why_ID"
+        type: 'mediumint',
+        name: 'why_ID',
         })
-    why_ID:number;
-        
+    why_ID: number;
 
-    @Column("mediumint",{ 
-        nullable:false,
-        default: () => "'0'",
-        name:"why_per_ID"
+    @Column('mediumint', {
+        nullable: false,
+        default: () => '\'0\'',
+        name: 'why_per_ID',
         })
-    why_per_ID:number;
-        
+    why_per_ID: number;
 
-    @Column("text",{ 
-        nullable:false,
-        name:"why_join"
+    @Column('text', {
+        nullable: false,
+        name: 'why_join',
         })
-    why_join:string;
-        
+    why_join: string;
 
-    @Column("text",{ 
-        nullable:false,
-        name:"why_come"
+    @Column('text', {
+        nullable: false,
+        name: 'why_come',
         })
-    why_come:string;
-        
+    why_come: string;
 
-    @Column("text",{ 
-        nullable:false,
-        name:"why_suggest"
+    @Column('text', {
+        nullable: false,
+        name: 'why_suggest',
         })
-    why_suggest:string;
-        
+    why_suggest: string;
 
-    @Column("text",{ 
-        nullable:false,
-        name:"why_hearOfUs"
+    @Column('text', {
+        nullable: false,
+        name: 'why_hearOfUs',
         })
-    why_hearOfUs:string;
-        
+    why_hearOfUs: string;
+
 }

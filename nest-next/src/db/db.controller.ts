@@ -1,27 +1,24 @@
 import {
+//  CacheInterceptor,
   Controller,
   Get,
   Param,
-  UseInterceptors,
-  CacheInterceptor,
   Render,
-  UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
-import { UserUsrService } from './db.service';
 import {
-  ApiUseTags,
-  ApiResponse,
   ApiBearerAuth,
   ApiForbiddenResponse,
+  ApiResponse,
+  ApiUseTags,
 } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
-import { SimpleAuthGuard } from '../shared/guards/simple-auth.guard';
+import { UserUsrService } from './db.service';
 
 @ApiUseTags('User')
 @ApiBearerAuth()
 @ApiForbiddenResponse({ description: 'Unauthorized' })
-//@UseGuards(SimpleAuthGuard)
-@UseInterceptors(CacheInterceptor)
+// @UseGuards(SimpleAuthGuard)
+// @UseInterceptors(CacheInterceptor)
 @Controller('user')
 export class UserController {
   constructor(private readonly UserService: UserUsrService) {}
@@ -33,13 +30,13 @@ export class UserController {
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Render('User')
-  getFirst() {
+  public getFirst() {
     return this.UserService.getUsers();
   }
 
   @Get(':ID')
-  getPerson(@Param('ID') person_ID: number) {
-    const person = this.UserService.findById(person_ID);
+  public getPerson(@Param('ID') personID: number) {
+    const person = this.UserService.findById(personID);
     return person;
   }
 

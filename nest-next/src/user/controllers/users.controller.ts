@@ -1,6 +1,6 @@
 import {
   Body,
-  CacheInterceptor,
+// CacheInterceptor,
   Controller,
   Delete,
   Get,
@@ -8,11 +8,10 @@ import {
   Post,
   Put,
   Query,
-  ReflectMetadata,
+  SetMetadata,
   UseInterceptors,
   UsePipes,
 } from '@nestjs/common';
-
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
@@ -32,7 +31,7 @@ import { UsersService } from '../../shared/services/users.service';
 @ApiBearerAuth()
 @ApiForbiddenResponse({ description: 'Unauthorized' })
 // @UseGuards(SimpleAuthGuard)
-@UseInterceptors(CacheInterceptor)
+// @UseInterceptors(CacheInterceptor)
 @Controller('api/users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
@@ -52,7 +51,7 @@ export class UsersController {
   @ApiCreatedResponse({ description: 'User Created' })
   @ApiInternalServerErrorResponse({ description: 'Invalid Input' })
   @UsePipes(UserDTOValidationPipe)
-  @ReflectMetadata('roles', ['admin', 'superuser'])
+  @SetMetadata('roles', ['admin', 'superuser'])
   public create(@Body() userDTO: UserDTO) {
     // throw new HttpException('糟糕!您的要求有問題，請洽系統管理員', HttpStatus.BAD_REQUEST);
     return this.usersService.addUser(userDTO);

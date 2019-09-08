@@ -1,19 +1,17 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": ".next/production-server",
-    "declaration": true,
-    "target": "es6",
-    "module": "commonjs",
-	"moduleResolution": "node",
-	"sourceMap": true,
-	"baseUrl": "./",
-    "paths": {
-      "@server/*": ["src/*"],
-      "@src/*": ["pages/*"],
-      "@entities/*": ["entities/*"]
-    }
-  },
-  "include": ["src/**/*", "entities/**/*"],
-  "exclude": ["node_modules"]
-}
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": ".next/production-server",
+      "declaration": true,
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "isolatedModules": false,
+      "noEmit": false,
+      "allowJs": false
+    },
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules"]
+  }
