@@ -11,10 +11,10 @@ import { JwtStrategy } from './passport/jwt/jwt.strategy';
   imports: [
     UserModule,
     // 建立jsonwebtoken時的相關資訊
-    JwtModule.register({ secret: 'TestToken' }),
-    PassportModule.register({ defaultStrategy: 'bearer' }),
+    // JwtModule.register({ secret: 'TestToken' }),
+    // PassportModule.register({ defaultStrategy: 'bearer' }),
   ],
   controllers: [AuthController],
-  providers: [HttpStrategy, AuthService, JwtStrategy],
+  providers: [/*HttpStrategy, */AuthService/*, JwtStrategy*/],
 })
 export class AuthModule {}

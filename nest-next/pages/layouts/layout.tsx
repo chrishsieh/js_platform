@@ -25,6 +25,7 @@ class Layout extends React.Component<any> {
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
             name="viewport"
           />
+          <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
           <link
             rel="stylesheet"
             href="/static/bootstrap/css/bootstrap.min.css"

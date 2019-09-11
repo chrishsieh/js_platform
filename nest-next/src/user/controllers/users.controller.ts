@@ -1,6 +1,6 @@
 import {
   Body,
-// CacheInterceptor,
+  // CacheInterceptor,
   Controller,
   Delete,
   Get,
@@ -9,7 +9,6 @@ import {
   Put,
   Query,
   SetMetadata,
-  UseInterceptors,
   UsePipes,
 } from '@nestjs/common';
 import {
