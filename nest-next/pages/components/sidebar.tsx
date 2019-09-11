@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { i18n } from '../../src/i18n';
 
 class Sidebar extends React.Component<any> {
   public static async getInitialProps() {
@@ -57,13 +58,13 @@ class Sidebar extends React.Component<any> {
             {/*<!-- sidebar Dashboard --> */}
             < li >
               <a href="/Menu">
-                <i className="fa fa-dashboard" /> <span>Dashboard</span>
+                <i className="fa fa-dashboard" /> <span>{i18n.t('Dashboard')}</span>
               </a>
             </li >
             {/*<!-- sidebar Calendar --> */}
             < li >
               <a href="/v2/calendar">
-                <i className="fa fa-calendar" /> <span>Calendar</span>
+                <i className="fa fa-calendar" /> <span>{i18n.t('Calendar')}</span>
                 <span className="pull-right-container">
                   <small className="label pull-right bg-blue" id="AnniversaryNumber">0</small>
                   <small className="label pull-right bg-red" id="BirthdateNumber">0</small>
@@ -75,7 +76,7 @@ class Sidebar extends React.Component<any> {
             < li className="treeview" >
               <a href="#">
                 <i className="fa fa-users" />
-                <span>People</span>
+                <span>{i18n.t('People')}</span>
                 <i className="fa fa-angle-left pull-right" />
               </a>
               <ul className="treeview-menu">
@@ -172,7 +173,7 @@ class Sidebar extends React.Component<any> {
             < li className="treeview" >
               <a href="#">
                 <i className="fa fa-tag" />
-                <span>Groups</span>
+                <span>{i18n.t('Groups')}</span>
                 <i className="fa fa-angle-left pull-right" />
               </a>
               <ul className="treeview-menu" style={{ display: 'block' }}>
@@ -257,7 +258,7 @@ class Sidebar extends React.Component<any> {
             < li className="treeview " >
               <a href="#">
                 <i className="fa fa-child" />
-                <span>Sunday School</span>
+                <span>{i18n.t('Sunday School')}</span>
                 <i className="fa fa-angle-left pull-right" />
               </a>
               <ul className="treeview-menu ">
@@ -318,14 +319,14 @@ class Sidebar extends React.Component<any> {
             < li >
               <a href="/v2/email/dashboard">
                 <i className="fa fa-envelope" />
-                <span>Email</span>
+                <span>{i18n.t('Email')}</span>
               </a>
             </li >
             {/*<!-- sidebar Events --> */}
             < li className="treeview " >
               <a href="#">
                 <i className="fa fa-ticket" />
-                <span>Events</span>
+                <span>{i18n.t('Events')}</span>
                 <i className="fa fa-angle-left pull-right" />
               </a>
               <ul className="treeview-menu ">

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import '../churchcrm.scss';
 import ContentHeader from '../components/content_header';
 import ControlSidebar from '../components/control_sidebar';
@@ -101,4 +102,4 @@ class Layout extends React.Component<any> {
   }
 }
 
-export default Layout;
+export default withTranslation('common')(Layout);

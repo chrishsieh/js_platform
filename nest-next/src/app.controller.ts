@@ -23,7 +23,7 @@ export class AppController {
     return this.appService.root();
   }
 
-  @Get()
+  @Get('Menu')
   @Render('Menu')
   public async Menu(): Promise<Familyif & Personif> {
     return this.appService.root();

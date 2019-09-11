@@ -22,6 +22,7 @@ export class SimpleAuthGuard implements CanActivate {
     // Logger.log(`Controller Name: ${ctrl.name}`);
     const handler = context.getHandler(); // 利用reflect metadata 取得存取資源對應的方法
     // Logger.log(`Method Name: ${handler.name}`);
+    // Logger.log('req', req);
 
     const roles = this.reflector.get<string[]>('roles', handler); // 利用get取得'roles'的值，第二個參數是告訴reflector取得哪一個方法的metadata
     // 使用Logger來測試有沒有取得roles的對應的value

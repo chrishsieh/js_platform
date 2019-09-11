@@ -25,6 +25,7 @@ async function bootstrap() {
   } catch (e) {
     throw e;
   }
+
   // get the RenderService
   const service = server.get(RenderService);
 

@@ -15,3 +15,4 @@ class MyApps extends App {
 }
 
 export default appWithTranslation(MyApps);
+// export default MyApps;
