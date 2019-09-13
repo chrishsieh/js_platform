@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
-import { family_fam } from '../entity/family_fam';
-import { DashboardItemInterface } from '../interface/dashboard';
+import { family_fam } from '../../shared/entity/family_fam';
+import { DashboardItemInterface } from '../../shared/interface/dashboard';
 
 @Injectable()
-export class FamilyDashboardService implements DashboardItemInterface {
+export class FamilyDashboardItem implements DashboardItemInterface {
   constructor(
     @InjectRepository(family_fam)
     private readonly familyRepo: Repository<family_fam>,
 
     @InjectEntityManager()
-    private readonly em: EntityManager,
+    private readonly em: EntityManager
   ) {}
   public getDashboardItemName(): string {
     return 'FamilyCount';
@@ -21,14 +21,14 @@ export class FamilyDashboardService implements DashboardItemInterface {
   }
 
   public getDashboardItemValue() {
-    return [
-      { familyCount: this.getCountFamilies() },
-      { LatestFamilies: this.getLatestFamilies() },
-      { UpdatedFamilies: this.getUpdatedFamilies() },
-    ];
+    return {
+      familyCount: this.getCountFamilies(),
+      LatestFamilies: this.getLatestFamilies(),
+      UpdatedFamilies: this.getUpdatedFamilies(),
+    };
   }
 
-  public async getUpdatedFamilies(limit: number = 12) {
+  private async getUpdatedFamilies(limit: number = 12) {
     const familyQb = await this.familyRepo
       .createQueryBuilder('f')
       .where('f.fam_DateDeactivated is null')
@@ -47,7 +47,7 @@ export class FamilyDashboardService implements DashboardItemInterface {
     return familyQb;
   }
 
-  public async getLatestFamilies(limit = 12) {
+  private async getLatestFamilies(limit = 12) {
     const familyQb = await this.familyRepo
       .createQueryBuilder('flatest')
       .where('flatest.fam_DateDeactivated is null')
@@ -65,7 +65,7 @@ export class FamilyDashboardService implements DashboardItemInterface {
     return familyQb;
   }
 
-  private async getCountFamilies(): Promise<number> {
+  private async getCountFamilies(): Promise < number > {
     const familyQb = await this.familyRepo
       .createQueryBuilder('fcount')
       .where('fcount.fam_DateDeactivated is not null')

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { i18n } from '../../src/i18n';
 
 class SmallBox extends React.Component<any> {
   public static async getInitialProps() {
@@ -30,7 +31,7 @@ class SmallBox extends React.Component<any> {
           <div className="small-box bg-green">
             <div className="inner">
               <h3 id="peopleStatsDashboard">92</h3>
-              <p>People</p>
+              <p>{i18n.t('People')}</p>
             </div>
             <div className="icon">
               <i className="fa fa-user" />

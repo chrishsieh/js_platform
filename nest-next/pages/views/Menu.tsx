@@ -79,4 +79,4 @@ class Menu extends React.Component<Props & WithTranslation> {
   }
 }
 
-export default withTranslation('common')(Menu);
+export default Menu;

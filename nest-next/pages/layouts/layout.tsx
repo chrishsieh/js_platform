@@ -102,4 +102,4 @@ class Layout extends React.Component<any> {
   }
 }
 
-export default withTranslation('common')(Layout);
+export default Layout;

@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 // import { CacheModule } from './cache/cache.module';
 import { ConfigModule } from './config/config.module';
 import { DatabaseModule } from './db/db.module';
+import { DashBoardModule } from './feature/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/users.module';
 
@@ -18,6 +19,7 @@ import { UserModule } from './user/users.module';
     // CacheModule,
     ConfigModule,
     DatabaseModule,
+    DashBoardModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -79,4 +79,4 @@ class Index extends React.Component<Props & WithTranslation> {
   }
 }
 
-export default withTranslation('common')(Index);
+export default Index;
