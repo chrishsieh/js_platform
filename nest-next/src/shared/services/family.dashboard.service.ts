@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
-import { family_fam } from '../entity/family_fam';
+import { FamilyFam } from '../entity/family_fam';
 import { DashboardItemInterface } from '../interface/dashboard';
 
 @Injectable()
 export class FamilyDashboardService implements DashboardItemInterface {
   constructor(
-    @InjectRepository(family_fam)
-    private readonly familyRepo: Repository<family_fam>,
+    @InjectRepository(FamilyFam)
+    private readonly familyRepo: Repository<FamilyFam>,
 
     @InjectEntityManager()
     private readonly em: EntityManager,

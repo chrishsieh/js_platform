@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { DashBoardController } from './dashboard.control';
 import { DashBoardService } from './dashboard.service';
 import { FamilyDashboardItem } from './FamilyDashboardItem';
+import { GroupsDashboardItem } from './GroupsDashboardItem';
 import { PersonDashboardItem } from './PersonDashboardItem';
 
 @Module({
@@ -15,6 +16,7 @@ import { PersonDashboardItem } from './PersonDashboardItem';
   providers: [
     FamilyDashboardItem,
     PersonDashboardItem,
+    GroupsDashboardItem,
     DashBoardService,
   ],
   controllers: [DashBoardController],

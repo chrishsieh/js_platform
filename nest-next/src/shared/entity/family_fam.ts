@@ -6,181 +6,178 @@ import {
 } from 'typeorm';
 
 @Entity('family_fam', { schema: 'churchcrm' })
-@Index('fam_ID', ['fam_ID'])
-// tslint:disable-next-line: class-name
-export class family_fam {
+@Index('fam_ID', ['FamID'])
+export class FamilyFam {
   @PrimaryGeneratedColumn({
     type: 'mediumint',
     name: 'fam_ID',
   })
-  // tslint:disable-next-line: variable-name
-  public fam_ID: number;
+  public FamID: number;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'fam_Name',
   })
-  // tslint:disable-next-line: variable-name
-  public fam_Name: string | null;
+  public FamName: string | null;
 
   @Column('varchar', {
     nullable: true,
     name: 'fam_Address1',
   })
-  fam_Address1: string | null;
+  public FamAddress1: string | null;
 
   @Column('varchar', {
     nullable: true,
     name: 'fam_Address2',
   })
-  fam_Address2: string | null;
+  public FamAddress2: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'fam_City',
   })
-  fam_City: string | null;
+  public FamCity: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'fam_State',
   })
-  fam_State: string | null;
+  public FamState: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'fam_Zip',
   })
-  fam_Zip: string | null;
+  public FamZip: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'fam_Country',
   })
-  fam_Country: string | null;
+  public FamCountry: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 30,
     name: 'fam_HomePhone',
   })
-  fam_HomePhone: string | null;
+  public FamHomePhone: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 30,
     name: 'fam_WorkPhone',
   })
-  fam_WorkPhone: string | null;
+  public FamWorkPhone: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 30,
     name: 'fam_CellPhone',
   })
-  fam_CellPhone: string | null;
+  public FamCellPhone: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 100,
     name: 'fam_Email',
   })
-  fam_Email: string | null;
+  public FamEmail: string | null;
 
   @Column('date', {
     nullable: true,
     name: 'fam_WeddingDate',
   })
-  fam_WeddingDate: string | null;
+  public FamWeddingDate: string | null;
 
   @Column('datetime', {
     nullable: false,
     name: 'fam_DateEntered',
   })
-  fam_DateEntered: Date;
+  public FamDateEntered: Date;
 
   @Column('datetime', {
     nullable: true,
     name: 'fam_DateLastEdited',
   })
-  fam_DateLastEdited: Date | null;
+  public FamDateLastEdited: Date | null;
 
   @Column('smallint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'fam_EnteredBy',
   })
-  fam_EnteredBy: number;
+  public FamEnteredBy: number;
 
   @Column('smallint', {
     nullable: true,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'fam_EditedBy',
   })
-  fam_EditedBy: number | null;
+  public FamEditedBy: number | null;
 
   @Column('text', {
     nullable: true,
     name: 'fam_scanCheck',
   })
-  fam_scanCheck: string | null;
+  public FamscanCheck: string | null;
 
   @Column('text', {
     nullable: true,
     name: 'fam_scanCredit',
   })
-  fam_scanCredit: string | null;
+  public FamscanCredit: string | null;
 
   @Column('enum', {
     nullable: false,
-    default: () => "'FALSE'",
+    default: () => '\'FALSE\'',
     enum: ['FALSE', 'TRUE'],
     name: 'fam_SendNewsLetter',
   })
-  fam_SendNewsLetter: string;
+  public FamSendNewsLetter: string;
 
   @Column('date', {
     nullable: true,
     name: 'fam_DateDeactivated',
   })
-  fam_DateDeactivated: string | null;
+  public FamDateDeactivated: string | null;
 
   @Column('enum', {
     nullable: false,
-    default: () => "'FALSE'",
+    default: () => '\'FALSE\'',
     enum: ['FALSE', 'TRUE'],
     name: 'fam_OkToCanvass',
   })
-  fam_OkToCanvass: string;
+  public FamOkToCanvass: string;
 
   @Column('smallint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'fam_Canvasser',
   })
-  fam_Canvasser: number;
+  public FamCanvasser: number;
 
   @Column('double', {
     nullable: true,
     name: 'fam_Latitude',
   })
-  fam_Latitude: number | null;
+  public FamLatitude: number | null;
 
   @Column('double', {
     nullable: true,
     name: 'fam_Longitude',
   })
-  fam_Longitude: number | null;
+  public FamLongitude: number | null;
 
   @Column('mediumint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'fam_Envelope',
   })
-  fam_Envelope: number;
+  public FamEnvelope: number;
 }

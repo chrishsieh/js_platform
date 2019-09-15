@@ -1,82 +1,71 @@
-import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity('group_grp', { schema: 'churchcrm' })
+@Index('grp_ID', ['GrpID'], { unique: true })
+@Index('grp_ID_2', ['GrpID'])
+export class GroupGrp {
+  @PrimaryGeneratedColumn({
+    type: 'mediumint',
+    name: 'grp_ID',
+  })
+  public GrpID: number;
 
-@Entity("group_grp",{schema:"churchcrm" } )
-@Index("grp_ID",["grp_ID",],{unique:true})
-@Index("grp_ID_2",["grp_ID",])
-export class group_grp {
+  @Column('tinyint', {
+    nullable: false,
+    default: () => '\'0\'',
+    name: 'grp_Type',
+  })
+  public GrpType: number;
 
-    @PrimaryGeneratedColumn({
-        type:"mediumint", 
-        name:"grp_ID"
-        })
-    grp_ID:number;
-        
+  @Column('mediumint', {
+    nullable: false,
+    default: () => '\'0\'',
+    name: 'grp_RoleListID',
+  })
+  public GrpRoleListID: number;
 
-    @Column("tinyint",{ 
-        nullable:false,
-        default: () => "'0'",
-        name:"grp_Type"
-        })
-    grp_Type:number;
-        
+  @Column('mediumint', {
+    nullable: false,
+    default: () => '\'0\'',
+    name: 'grp_DefaultRole',
+  })
+  public GrpDefaultRole: number;
 
-    @Column("mediumint",{ 
-        nullable:false,
-        default: () => "'0'",
-        name:"grp_RoleListID"
-        })
-    grp_RoleListID:number;
-        
+  @Column('varchar', {
+    nullable: false,
+    length: 50,
+    default: () => '\'\'',
+    name: 'grp_Name',
+  })
+  public GrpName: string;
 
-    @Column("mediumint",{ 
-        nullable:false,
-        default: () => "'0'",
-        name:"grp_DefaultRole"
-        })
-    grp_DefaultRole:number;
-        
+  @Column('text', {
+    nullable: true,
+    name: 'grp_Description',
+  })
+  public GrpDescription: string | null;
 
-    @Column("varchar",{ 
-        nullable:false,
-        length:50,
-        default: () => "''",
-        name:"grp_Name"
-        })
-    grp_Name:string;
-        
+  @Column('tinyint', {
+    nullable: false,
+    width: 1,
+    default: () => '\'0\'',
+    name: 'grp_hasSpecialProps',
+  })
+  public GrpHasSpecialProps: boolean;
 
-    @Column("text",{ 
-        nullable:true,
-        name:"grp_Description"
-        })
-    grp_Description:string | null;
-        
+  @Column('tinyint', {
+    nullable: false,
+    width: 1,
+    default: () => '\'1\'',
+    name: 'grp_active',
+  })
+  public GrpActive: boolean;
 
-    @Column("tinyint",{ 
-        nullable:false,
-        width:1,
-        default: () => "'0'",
-        name:"grp_hasSpecialProps"
-        })
-    grp_hasSpecialProps:boolean;
-        
-
-    @Column("tinyint",{ 
-        nullable:false,
-        width:1,
-        default: () => "'1'",
-        name:"grp_active"
-        })
-    grp_active:boolean;
-        
-
-    @Column("tinyint",{ 
-        nullable:false,
-        width:1,
-        default: () => "'1'",
-        name:"grp_include_email_export"
-        })
-    grp_include_email_export:boolean;
-        
+  @Column('tinyint', {
+    nullable: false,
+    width: 1,
+    default: () => '\'1\'',
+    name: 'grp_include_email_export',
+  })
+  public GrpIncludeEmailExport: boolean;
 }

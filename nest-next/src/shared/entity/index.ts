@@ -1,5 +1,7 @@
-import { family_fam } from './family_fam';
-import { person_per } from './person_per';
+import { FamilyFam } from './family_fam';
+import { GroupGrp } from './group_grp';
+import { Person2group2roleP2G2r } from './person2group2role_p2g2r';
+import { PersonPer } from './person_per';
 import { user_usr } from './user_usr';
 
-export const userEntities = [person_per, user_usr, family_fam];
+export const userEntities = [PersonPer, user_usr, FamilyFam, GroupGrp, Person2group2roleP2G2r];

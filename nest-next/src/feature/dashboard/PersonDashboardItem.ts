@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
-import { family_fam } from '../../shared/entity/family_fam';
-import { person_per } from '../../shared/entity/person_per';
+import { FamilyFam } from '../../shared/entity/family_fam';
+import { PersonPer } from '../../shared/entity/person_per';
 import { DashboardItemInterface } from '../../shared/interface/dashboard';
 
 @Injectable()
 export class PersonDashboardItem implements DashboardItemInterface {
   constructor(
-    @InjectRepository(family_fam)
-    private readonly familyRepo: Repository<family_fam>,
+    @InjectRepository(FamilyFam)
+    private readonly familyRepo: Repository<FamilyFam>,
 
-    @InjectRepository(person_per)
-    private readonly personRepo: Repository<person_per>,
+    @InjectRepository(PersonPer)
+    private readonly personRepo: Repository<PersonPer>,
 
     @InjectEntityManager()
     private readonly em: EntityManager,
@@ -77,7 +77,6 @@ export class PersonDashboardItem implements DashboardItemInterface {
       .createQueryBuilder('p')
       .where('p.per_fam_ID IN (' + familyQb.getQuery() + ')')
       .orWhere('p.per_fam_ID = 0')
-      .andWhere('p.per_DateLastEdited is null')
       .getCount();
 
     return personQb;

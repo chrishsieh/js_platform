@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
-import { family_fam } from '../../shared/entity/family_fam';
+import { FamilyFam } from '../../shared/entity/family_fam';
 import { DashboardItemInterface } from '../../shared/interface/dashboard';
 
 @Injectable()
 export class FamilyDashboardItem implements DashboardItemInterface {
   constructor(
-    @InjectRepository(family_fam)
-    private readonly familyRepo: Repository<family_fam>,
+    @InjectRepository(FamilyFam)
+    private readonly familyRepo: Repository<FamilyFam>,
 
     @InjectEntityManager()
     private readonly em: EntityManager
@@ -68,7 +68,7 @@ export class FamilyDashboardItem implements DashboardItemInterface {
   private async getCountFamilies(): Promise < number > {
     const familyQb = await this.familyRepo
       .createQueryBuilder('fcount')
-      .where('fcount.fam_DateDeactivated is not null')
+      .where('fcount.fam_DateDeactivated is null')
       .getCount();
     return familyQb;
   }

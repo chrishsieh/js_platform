@@ -1,264 +1,246 @@
-import {
-  Column,
-  Entity,
-  Index,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  JoinColumn,
-  RelationId,
-} from 'typeorm';
-import { family_fam } from './family_fam';
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Person2group2roleP2G2r } from './person2group2role_p2g2r';
 
 @Entity('person_per', { schema: 'churchcrm' })
-@Index('per_ID', ['per_ID'])
-// tslint:disable-next-line: class-name
-export class person_per {
+@Index('per_ID', ['PerID'])
+export class PersonPer {
   @PrimaryGeneratedColumn({
     type: 'mediumint',
     name: 'per_ID',
   })
-  // tslint:disable-next-line: variable-name
-  public per_ID: number;
+  public PerID: number;
+
+  @OneToMany(() => Person2group2roleP2G2r, (P2G2r) => P2G2r.P2G2rPerID)
+  public P2G2r: Person2group2roleP2G2r[];
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Title',
   })
-  // tslint:disable-next-line: variable-name
-  public per_Title: string | null;
+  public PerTitle: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_FirstName',
   })
-  // tslint:disable-next-line: variable-name
-  public per_FirstName: string | null;
+  public PerFirstName: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_MiddleName',
   })
-  // tslint:disable-next-line: variable-name
-  public per_MiddleName: string | null;
+  public PerMiddleName: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_LastName',
   })
-  // tslint:disable-next-line: variable-name
-  public per_LastName: string | null;
+  public PerLastName: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Suffix',
   })
-  // tslint:disable-next-line: variable-name
-  public per_Suffix: string | null;
+  public PerSuffix: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Address1',
   })
-  // tslint:disable-next-line: variable-name
-  public per_Address1: string | null;
+  public PerAddress1: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Address2',
   })
-  // tslint:disable-next-line: variable-name
-  public per_Address2: string | null;
+  public PerAddress2: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_City',
   })
-  // tslint:disable-next-line: variable-name
-  public per_City: string | null;
+  public PerCity: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_State',
   })
-  // tslint:disable-next-line: variable-name
-  public per_State: string | null;
+  public PerState: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Zip',
   })
-  // tslint:disable-next-line: variable-name
-  public per_Zip: string | null;
+  public PerZip: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Country',
   })
-  per_Country: string | null;
+  public PerCountry: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 30,
     name: 'per_HomePhone',
   })
-  per_HomePhone: string | null;
+  public PerHomePhone: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 30,
     name: 'per_WorkPhone',
   })
-  per_WorkPhone: string | null;
+  public PerWorkPhone: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 30,
     name: 'per_CellPhone',
   })
-  per_CellPhone: string | null;
+  public PerCellPhone: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Email',
   })
-  per_Email: string | null;
+  public PerEmail: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_WorkEmail',
   })
-  per_WorkEmail: string | null;
+  public PerWorkEmail: string | null;
 
   @Column('tinyint', {
     nullable: false,
     default: () => '\'0\'',
     name: 'per_BirthMonth',
   })
-  per_BirthMonth: number;
+  public PerBirthMonth: number;
 
   @Column('tinyint', {
     nullable: false,
     default: () => '\'0\'',
     name: 'per_BirthDay',
   })
-  per_BirthDay: number;
+  public PerBirthDay: number;
 
   @Column('year', {
     nullable: true,
     name: 'per_BirthYear',
   })
-  per_BirthYear: number | null;
+  public PerBirthYear: number | null;
 
   @Column('date', {
     nullable: true,
     name: 'per_MembershipDate',
   })
-  per_MembershipDate: string | null;
+  public PerMembershipDate: string | null;
 
   @Column('tinyint', {
     nullable: false,
     default: () => '\'0\'',
     name: 'per_Gender',
   })
-  per_Gender: number;
+  public PerGender: number;
 
   @Column('tinyint', {
     nullable: false,
     default: () => '\'0\'',
     name: 'per_fmr_ID',
   })
-  per_fmr_ID: number;
+  public PerfmrID: number;
 
   @Column('tinyint', {
     nullable: false,
     default: () => '\'0\'',
     name: 'per_cls_ID',
   })
-  per_cls_ID: number;
+  public PerClsID: number;
 
   @Column('smallint', {
     nullable: true,
     name: 'per_Envelope',
   })
-  per_Envelope: number | null;
+  public PerEnvelope: number | null;
 
   @Column('datetime', {
     nullable: true,
     name: 'per_DateLastEdited',
   })
-  per_DateLastEdited: Date | null;
+  public PerDateLastEdited: Date | null;
 
   @Column('datetime', {
     nullable: false,
     name: 'per_DateEntered',
   })
-  per_DateEntered: Date;
+  public PerDateEntered: Date;
 
   @Column('smallint', {
     nullable: false,
     default: () => '\'0\'',
     name: 'per_EnteredBy',
   })
-  per_EnteredBy: number;
+  public PerEnteredBy: number;
 
   @Column('smallint', {
     nullable: true,
     default: () => '\'0\'',
     name: 'per_EditedBy',
   })
-  per_EditedBy: number | null;
+  public PerEditedBy: number | null;
 
   @Column('date', {
     nullable: true,
     name: 'per_FriendDate',
   })
-  per_FriendDate: string | null;
+  public PerFriendDate: string | null;
 
   @Column('mediumint', {
     nullable: false,
     default: () => '\'0\'',
     name: 'per_Flags',
   })
-  per_Flags: number;
+  public PerFlags: number;
 
   @Column('bigint', {
     nullable: true,
     name: 'per_FacebookID',
   })
-  per_FacebookID: string | null;
+  public PerFacebookID: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_Twitter',
   })
-  per_Twitter: string | null;
+  public PerTwitter: string | null;
 
   @Column('varchar', {
     nullable: true,
     length: 50,
     name: 'per_LinkedIn',
   })
-  per_LinkedIn: string | null;
+  public PerLinkedIn: string | null;
 
   @Column('mediumint', {
     nullable: false,
     default: () => '\'0\'',
     name: 'per_fam_ID',
   })
-  // tslint:disable-next-line: variable-name
-  public per_fam_ID: number;
+  public PerFamID: number;
 }
