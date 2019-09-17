@@ -28,26 +28,33 @@ class PersonsList extends React.Component<Personif> {
     '#3c763d', '#8a6d3b', '#66512c', '#843534',
     '#ce8483', '#337ab7', '#286090', '#122b40', '#5cb85c',
     '#c9302c'];
+  private circleSz = 80;
   public render() {
     const PersonListContent = this.props.content.map((value) => (
       <li key={value.name_link}>
         <a className="users-list" href={value.name_link} >
-          <span
-            // tslint:disable-next-line: jsx-no-multiline-js
-            style={{
-              background: this.colors[
-                Math.floor(hashcode(value.name) % this.colors.length)],
-              fontFamily: 'Consolas, sans-serif',
-              color: 'white',
-              padding: '8px 8px 8px 8px',
-              fontSize: '3vmax',
-              height: 'auto',
-              width: 'auto',
-              textAlign: 'center',
-              borderRadius: '50%',
-            }}
-          >
-            {value.nameshort}
+          <span>
+            <svg height={this.circleSz} width={this.circleSz}>
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+                fill={this.colors[Math.floor(hashcode(value.name) % this.colors.length)]}
+              />
+              <text
+                x="50%"
+                y="50%"
+                fontFamily="Consolas, sans-serif"
+                textAnchor="middle"
+                dominantBaseline="central"
+                textLength="80%"
+                lengthAdjust="spacing"
+                fontSize={Math.floor(this.circleSz * 0.75)}
+                fill="white"
+              >
+                {value.nameshort}
+              </text>
+            </svg>
           </span>
           <br />
           {value.name}
