@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { PersonContent } from '../../src/shared/interface/personlist';
+import CircleText from './circle_text';
 
 interface Personif {
   title: string;
@@ -34,27 +35,11 @@ class PersonsList extends React.Component<Personif> {
       <li key={value.name_link}>
         <a className="users-list" href={value.name_link} >
           <span>
-            <svg height={this.circleSz} width={this.circleSz}>
-              <circle
-                cx="50%"
-                cy="50%"
-                r="50%"
-                fill={this.colors[Math.floor(hashcode(value.name) % this.colors.length)]}
-              />
-              <text
-                x="50%"
-                y="50%"
-                fontFamily="Consolas, sans-serif"
-                textAnchor="middle"
-                dominantBaseline="central"
-                textLength="80%"
-                lengthAdjust="spacing"
-                fontSize={Math.floor(this.circleSz * 0.75)}
-                fill="white"
-              >
-                {value.nameshort}
-              </text>
-            </svg>
+            <CircleText
+              circleSz={this.circleSz}
+              bgColor={this.colors[Math.floor(hashcode(value.name) % this.colors.length)]}
+              showText={value.nameshort}
+            />
           </span>
           <br />
           {value.name}

@@ -1,4 +1,10 @@
-import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Person2group2roleP2G2r } from './person2group2role_p2g2r';
 
 @Entity('person_per', { schema: 'churchcrm' })
@@ -10,7 +16,7 @@ export class PersonPer {
   })
   public PerID: number;
 
-  @OneToMany(() => Person2group2roleP2G2r, (P2G2r) => P2G2r.P2G2rPerID)
+  @OneToMany((type) => Person2group2roleP2G2r, (group) => group.PerID)
   public P2G2r: Person2group2roleP2G2r[];
 
   @Column('varchar', {

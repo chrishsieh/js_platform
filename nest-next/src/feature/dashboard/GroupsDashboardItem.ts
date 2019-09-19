@@ -59,16 +59,15 @@ export class GroupsDashboardItem implements DashboardItemInterface {
       .orWhere('p.per_fam_ID = 0')
       .getCount();
     */
-
     /*
     const personQb = await this.personRepo
     .createQueryBuilder('p')
-    .innerJoinAndSelect('p.P2G2r', 'P2G2r')
-     .getSql();
-    //.getMany();
-    */
+    .innerJoin('p.P2G2r', 'P2G2r')
+    .getSql();
+    // .getMany();
 
-    // console.log('personQb', personQb);
+    console.log('personQb', personQb);
+    */
 
     return {Group: await groupQb, SundaySchoolClasses: await SundaySchoolClassesQb/*, test: await personQb*/};
   }

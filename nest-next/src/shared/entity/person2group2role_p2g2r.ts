@@ -11,8 +11,8 @@ export class Person2group2roleP2G2r {
   })
   public P2G2rPerID: number;
 
-  @ManyToOne(() => PersonPer, (PersonID) => PersonID.P2G2r)
-  public PersonID: PersonPer;
+  @ManyToOne((type) => PersonPer, (person) => person.P2G2r)
+  public PerID: PersonPer;
 
   @Column('mediumint', {
     nullable: false,
