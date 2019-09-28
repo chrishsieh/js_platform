@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import moment from 'moment';
+import { DashboardCount } from '../../shared/interface/dashboardlist';
 import { Familyif } from '../../shared/interface/familylist';
 import { Personif } from '../../shared/interface/personlist';
 import { FamilyDashboardItem } from './FamilyDashboardItem';
@@ -13,15 +14,22 @@ export class DashBoardService {
     private readonly DashboardFamily: FamilyDashboardItem,
     private readonly DashboardGroup: GroupsDashboardItem
   ) {}
-  public async root(): Promise<Familyif & Personif> {
+  public async root(): Promise<Familyif & Personif & DashboardCount> {
     // tslint:disable-next-line: no-console
     const family = this.DashboardFamily.getDashboardItemValue();
     const member = this.DashboardPerson.getDashboardItemValue();
-    console.log(await this.DashboardFamily.getDashboardItemValue().familyCount);
-    console.log(await this.DashboardPerson.getDashboardItemValue().MembersCount);
-    console.log(await this.DashboardGroup.getDashboardItemValue().GroupCount);
+    const GroupCount = await this.DashboardGroup.getDashboardItemValue();
+    // console.log(await this.DashboardFamily.getDashboardItemValue().familyCount);
+    // console.log(await this.DashboardPerson.getDashboardItemValue().MembersCount);
+    // console.log(await this.DashboardGroup.getDashboardItemValue().GroupCount);
 
     return {
+      FamiliesCount: await this.DashboardFamily.getDashboardItemValue()
+        .familyCount,
+      PeopleCount: await this.DashboardPerson.getDashboardItemValue()
+        .MembersCount,
+      SundaySchoolClassCount: GroupCount.Group,
+      GroupsCount: GroupCount.SundaySchoolClasses,
       lastFamilyContent: (await family.LatestFamilies).map((value: any) => {
         const famName = value.FamName ? value.FamName : '';
         const famAddress = value.FamAddress1 ? value.FamAddress1 : '';
@@ -49,16 +57,10 @@ export class DashBoardService {
         };
       }),
       lastPersonContent: (await member.LatestMembers).map((value: any) => {
-        let outDate = '';
+        const outDate = value.PerDateEntered
+          ? moment(value.PerDateEntered).format('MM/DD/YYYY')
+          : '';
         let shortName = '';
-        if (value.PerDateEntered) {
-          outDate =
-            value.PerDateEntered.getMonth() +
-            '/' +
-            value.PerDateEntered.getDate() +
-            '/' +
-            value.PerDateEntered.getFullYear();
-        }
         if (value.PerFirstName) {
           shortName += value.PerFirstName.charAt(0);
         }
@@ -73,16 +75,10 @@ export class DashBoardService {
         };
       }),
       updatedPersonContent: (await member.UpdatedMembers).map((value: any) => {
-        let outDate = '';
+        const outDate = value.PerDateLastEdited
+          ? moment(value.PerDateLastEdited).format('MM/DD/YYYY')
+          : '';
         let shortName = '';
-        if (value.PerDateLastEdited) {
-          outDate =
-            value.PerDateLastEdited.getMonth() +
-            '/' +
-            value.PerDateLastEdited.getDate() +
-            '/' +
-            value.PerDateLastEdited.getFullYear();
-        }
         if (value.PerFirstName) {
           shortName += value.PerFirstName.charAt(0);
         }

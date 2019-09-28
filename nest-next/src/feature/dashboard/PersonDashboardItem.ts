@@ -15,7 +15,7 @@ export class PersonDashboardItem implements DashboardItemInterface {
     private readonly personRepo: Repository<PersonPer>,
 
     @InjectEntityManager()
-    private readonly em: EntityManager,
+    private readonly em: EntityManager
   ) {}
   public getDashboardItemName(): string {
     return 'PersonCount';
@@ -33,16 +33,26 @@ export class PersonDashboardItem implements DashboardItemInterface {
   }
 
   private async getUpdatedMembers(limit: number = 12) {
+    /*
     const familyQb = this.familyRepo
       .createQueryBuilder('f')
-      .select('f.fam_ID')
-      .where('f.fam_DateDeactivated is null');
+      .select('f.FamID')
+      .where('f.FamDateDeactivated is null');
 
     const personQb = await this.personRepo
       .createQueryBuilder('p')
-      .where('p.per_fam_ID IN (' + familyQb.getQuery() + ')')
-      .orWhere('p.per_fam_ID = 0')
-      .orderBy('p.per_DateLastEdited', 'DESC')
+      .where('p.PerFamID IN (' + familyQb.getQuery() + ')')
+      .orWhere('p.PerFamID = 0')
+      .orderBy('p.PerDateLastEdited', 'DESC')
+      .limit(limit)
+      .getMany();
+    */
+
+    const personQb = await this.em
+      .createQueryBuilder(PersonPer, 'p')
+      .leftJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
+      .where('f.FamDateDeactivated is null')
+      .orderBy('p.PerDateLastEdited', 'DESC')
       .limit(limit)
       .getMany();
 
@@ -50,17 +60,28 @@ export class PersonDashboardItem implements DashboardItemInterface {
   }
 
   private async getLatestMembers(limit = 12) {
+    /*
     const familyQb = this.familyRepo
       .createQueryBuilder('f')
-      .select('f.fam_ID')
-      .where('f.fam_DateDeactivated is null');
+      .select('f.FamID')
+      .where('f.FamDateDeactivated is null');
 
     const personQb = await this.personRepo
       .createQueryBuilder('p')
-      .where('p.per_fam_ID IN (' + familyQb.getQuery() + ')')
-      .orWhere('p.per_fam_ID = 0')
-      .andWhere('p.per_DateLastEdited is null')
-      .orderBy('p.per_DateEntered', 'DESC')
+      .where('p.PerFamID IN (' + familyQb.getQuery() + ')')
+      .orWhere('p.PerFamID = 0')
+      .andWhere('p.PerDateLastEdited is null')
+      .orderBy('p.PerDateEntered', 'DESC')
+      .limit(limit)
+      .getMany();
+    */
+
+    const personQb = await this.em
+      .createQueryBuilder(PersonPer, 'p')
+      .leftJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
+      .where('f.FamDateDeactivated is null')
+      .andWhere('p.PerDateLastEdited is null')
+      .orderBy('p.PerDateEntered', 'DESC')
       .limit(limit)
       .getMany();
 
@@ -68,15 +89,23 @@ export class PersonDashboardItem implements DashboardItemInterface {
   }
 
   private async getCountMembers(): Promise<number> {
+    /*
     const familyQb = this.familyRepo
       .createQueryBuilder('f')
-      .select('f.fam_ID')
-      .where('f.fam_DateDeactivated is null');
+      .select('f.FamID')
+      .where('f.FamDateDeactivated is null');
 
     const personQb = await this.personRepo
       .createQueryBuilder('p')
-      .where('p.per_fam_ID IN (' + familyQb.getQuery() + ')')
-      .orWhere('p.per_fam_ID = 0')
+      .where('p.PerFamID IN (' + familyQb.getQuery() + ')')
+      .orWhere('p.PerFamID = 0')
+      .getCount();
+    */
+
+    const personQb = await this.em
+      .createQueryBuilder(PersonPer, 'p')
+      .leftJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
+      .where('f.FamDateDeactivated is null')
       .getCount();
 
     return personQb;

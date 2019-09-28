@@ -32,28 +32,31 @@ export class GroupsDashboardItem implements DashboardItemInterface {
     return PageName === 'Menu';
   }
 
-  public getDashboardItemValue() {
+  public async getDashboardItemValue(): Promise<any> {
+    const Counts =  await this.getCountMembers();
     return {
-      GroupCount: this.getCountMembers(),
+      Group: Counts.Group,
+      SundaySchoolClasses: Counts.SundaySchoolClasses,
+      SundaySchoolKids: Counts.SundaySchoolKidsCount,
     };
   }
 
   private async getCountMembers(): Promise<any> {
-    const groupQb = this.groupRepo
+    const Group = await this.groupRepo
       .createQueryBuilder('g')
-      .where('grp_Type != 4')
+      .where('g.GrpType != 4')
       .getCount();
 
-    const SundaySchoolClassesQb = this.groupRepo
+    const SundaySchoolClasses = await this.groupRepo
       .createQueryBuilder('gSundaySchoolClass')
-      .where('grp_Type = 4')
+      .where('gSundaySchoolClass.GrpType = 4')
       .getCount();
 
     /*
     const familyQb = this.familyRepo
       .createQueryBuilder('f')
-      .select('f.fam_ID')
-      .where('f.fam_DateDeactivated is null');
+      .select('f.FamID')
+      .where('f.FamDateDeactivated is null');
     */
 
     /*
@@ -71,7 +74,7 @@ export class GroupsDashboardItem implements DashboardItemInterface {
       .getMany();
     */
 
-    const SundaySchoolKidsCount = this.em
+    const SundaySchoolKidsCount = await this.em
       .createQueryBuilder(PersonPer, 'p')
       .innerJoin(Person2group2roleP2G2r, 'pg', 'pg.P2G2rPerID = p.PerID')
       .innerJoin(GroupGrp, 'g', 'g.GrpID = pg.P2G2rGrpID')
@@ -82,9 +85,9 @@ export class GroupsDashboardItem implements DashboardItemInterface {
       .getCount();
 
     return {
-      Group: await groupQb,
-      SundaySchoolClasses: await SundaySchoolClassesQb,
-      SundaySchoolKidsCount: await SundaySchoolKidsCount,
+      Group,
+      SundaySchoolClasses,
+      SundaySchoolKidsCount,
     };
   }
 }

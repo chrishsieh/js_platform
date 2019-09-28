@@ -31,16 +31,16 @@ export class FamilyDashboardItem implements DashboardItemInterface {
   private async getUpdatedFamilies(limit: number = 12) {
     const familyQb = await this.familyRepo
       .createQueryBuilder('f')
-      .where('f.fam_DateDeactivated is null')
-      .andWhere('f.fam_DateLastEdited is not null')
+      .where('f.FamDateDeactivated is null')
+      .andWhere('f.FamDateLastEdited is not null')
       .select([
-        'f.fam_ID',
-        'f.fam_Name',
-        'f.fam_Address1',
-        'f.fam_DateEntered',
-        'f.fam_DateLastEdited',
+        'f.FamID',
+        'f.FamName',
+        'f.FamAddress1',
+        'f.FamDateEntered',
+        'f.FamDateLastEdited',
       ])
-      .orderBy('f.fam_DateLastEdited', 'DESC')
+      .orderBy('f.FamDateLastEdited', 'DESC')
       .limit(limit)
       .getMany();
 
@@ -50,15 +50,15 @@ export class FamilyDashboardItem implements DashboardItemInterface {
   private async getLatestFamilies(limit = 12) {
     const familyQb = await this.familyRepo
       .createQueryBuilder('flatest')
-      .where('flatest.fam_DateDeactivated is null')
-      .orderBy('flatest.fam_DateEntered', 'DESC')
+      .where('flatest.FamDateDeactivated is null')
+      .orderBy('flatest.FamDateEntered', 'DESC')
       .limit(limit)
       .select([
-        'flatest.fam_ID',
-        'flatest.fam_Name',
-        'flatest.fam_Address1',
-        'flatest.fam_DateEntered',
-        'flatest.fam_DateLastEdited',
+        'flatest.FamID',
+        'flatest.FamName',
+        'flatest.FamAddress1',
+        'flatest.FamDateEntered',
+        'flatest.FamDateLastEdited',
       ])
       .getMany();
 
@@ -68,7 +68,7 @@ export class FamilyDashboardItem implements DashboardItemInterface {
   private async getCountFamilies(): Promise < number > {
     const familyQb = await this.familyRepo
       .createQueryBuilder('fcount')
-      .where('fcount.fam_DateDeactivated is null')
+      .where('fcount.FamDateDeactivated is null')
       .getCount();
     return familyQb;
   }
