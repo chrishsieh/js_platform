@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import * as React from 'react';
 import { WithTranslation } from 'react-i18next';
-import { withTranslation } from '../../src/i18n';
+import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
 import { FamilyContent } from '../../src/shared/interface/familylist';
 import { PersonContent } from '../../src/shared/interface/personlist';
 import '../churchcrm.scss';
@@ -11,6 +11,7 @@ import SmallBox from '../components/small_box';
 
 interface InitialProps {
   query: {
+    smallBoxs: SmallBoxItem[];
     lastFamilyContent: FamilyContent[];
     updatedFamilyContent: FamilyContent[];
     lastPersonContent: PersonContent[];
@@ -20,6 +21,7 @@ interface InitialProps {
 
 interface Props {
   query: {
+    smallBoxs: SmallBoxItem[];
     lastFamilyContent: FamilyContent[];
     updatedFamilyContent: FamilyContent[];
     lastPersonContent: PersonContent[];
@@ -34,12 +36,51 @@ class Index extends React.Component<Props & WithTranslation> {
   }
 
   public render() {
+    const smallbox = this.props.query.smallBoxs.map((value) => {
+      switch (value.Name) {
+        case 'Families':
+          return {
+            content: value, color: 'small-box bg-aqua',
+            href: '/v2/family', href_string: 'See All Families',
+            icon: 'fa fa-users',
+            id: 'familyCountDashboard',
+          };
+        case 'People':
+          return {
+            content: value, color: 'small-box bg-green',
+            href: '/SelectList?mode=person', href_string: 'See All People',
+            icon: 'fa fa-user',
+            id: 'peopleStatsDashboard',
+          };
+        case 'Sunday School Classes':
+          return {
+            content: value, color: 'small-box bg-yellow',
+            href: '/sundayschool/SundaySchoolDashboard', href_string: 'More Info',
+            icon: 'fa fa-child',
+            id: 'groupStatsSundaySchool',
+          };
+        case 'Groups':
+          return {
+            content: value, color: 'small-box bg-red',
+            href: '/GroupList', href_string: 'More Info',
+            icon: 'fa fa-gg',
+            id: 'groupsCountDashboard',
+          };
+        default:
+          return {
+            content: value, color: 'small-box bg-yellow',
+            href: '/ListEvents', href_string: 'More Info',
+            icon: 'fa fa-gg',
+            id: '',
+          };
+      }
+    });
     return (
       <div>
         <Head>
           <title>ChurchCRM: Welcome to Main St. Cathedral</title>
         </Head>
-        <SmallBox />
+        <SmallBox array={smallbox} />
         <div className="row">
           <div className="col-lg-6">
             <FamilyList
@@ -79,4 +120,4 @@ class Index extends React.Component<Props & WithTranslation> {
   }
 }
 
-export default Index;
+export default Index;;;

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import moment from 'moment';
-import { DashboardCount } from '../../shared/interface/dashboardlist';
+import { SmallBoxif } from '../../shared/interface/dashboardlist';
 import { Familyif } from '../../shared/interface/familylist';
 import { Personif } from '../../shared/interface/personlist';
 import { FamilyDashboardItem } from './FamilyDashboardItem';
@@ -14,22 +14,19 @@ export class DashBoardService {
     private readonly DashboardFamily: FamilyDashboardItem,
     private readonly DashboardGroup: GroupsDashboardItem
   ) {}
-  public async root(): Promise<Familyif & Personif & DashboardCount> {
-    // tslint:disable-next-line: no-console
+  public async root(): Promise<Familyif & Personif & SmallBoxif> {
     const family = this.DashboardFamily.getDashboardItemValue();
     const member = this.DashboardPerson.getDashboardItemValue();
-    const GroupCount = await this.DashboardGroup.getDashboardItemValue();
-    // console.log(await this.DashboardFamily.getDashboardItemValue().familyCount);
-    // console.log(await this.DashboardPerson.getDashboardItemValue().MembersCount);
-    // console.log(await this.DashboardGroup.getDashboardItemValue().GroupCount);
+    const group = await this.DashboardGroup.getDashboardItemValue();
 
     return {
-      FamiliesCount: await this.DashboardFamily.getDashboardItemValue()
-        .familyCount,
-      PeopleCount: await this.DashboardPerson.getDashboardItemValue()
-        .MembersCount,
-      SundaySchoolClassCount: GroupCount.Group,
-      GroupsCount: GroupCount.SundaySchoolClasses,
+      smallBoxs: [
+        { Name: 'Families', Count: await family.familyCount },
+        { Name: 'People', Count: await member.MembersCount },
+        { Name: 'Sunday School Classes', Count: group.SundaySchoolClasses },
+        { Name: 'Groups', Count: group.Group },
+        { Name: 'Attendees Checked In', Count: 1 },
+      ],
       lastFamilyContent: (await family.LatestFamilies).map((value: any) => {
         const famName = value.FamName ? value.FamName : '';
         const famAddress = value.FamAddress1 ? value.FamAddress1 : '';

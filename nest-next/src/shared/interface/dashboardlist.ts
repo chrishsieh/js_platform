@@ -1,6 +1,8 @@
-export interface DashboardCount {
-  FamiliesCount: number;
-  PeopleCount: number;
-  SundaySchoolClassCount: number;
-  GroupsCount: number;
+export interface SmallBoxItem {
+  Name: string;
+  Count: number;
+}
+
+export interface SmallBoxif {
+  smallBoxs: SmallBoxItem[];
 }
