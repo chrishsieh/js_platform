@@ -1,4 +1,5 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Person2group2roleP2G2r } from './person2group2role_p2g2r';
 
 @Entity('group_grp', { schema: 'churchcrm' })
 @Index('grp_ID', ['GrpID'], { unique: true })
@@ -9,6 +10,9 @@ export class GroupGrp {
     name: 'grp_ID',
   })
   public GrpID: number;
+
+  @OneToMany((type) => Person2group2roleP2G2r, (group) => group.GrpID)
+  public P2G2r: Person2group2roleP2G2r[];
 
   @Column('tinyint', {
     nullable: false,

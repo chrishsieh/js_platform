@@ -5,13 +5,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/main.ts",
-    "HMR-dev": "NODE_ENV=development node dist/server",
     "build:clean": "rm -rf .next",
     "build:server": "npx tsc --project tsconfig.server.json && npx babel .next/production-server -d .next/production-server --extensions \".js\"",
     "build:ui": "npx next build",
     "build": "yarn build:clean && yarn build:server && yarn build:ui",
-    "start": "NODE_ENV=production node .next/production-server/main.js",
-    "webpack": "webpack --config webpack.config.js"
+    "start": "NODE_ENV=production node .next/production-server/main.js"
   },
   "dependencies": {
     "@nestjs/common": "^6.5.3",
@@ -58,7 +56,6 @@
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
-    "@types/node": "^12.7.1",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.0",
     "@babel/polyfill": "^7.0.0",
@@ -69,6 +66,7 @@
     "@types/jest": "^23.3.5",
     "@types/joi": "^13.6.1",
     "@types/next": "^8.0.6",
+    "@types/node": "^12.7.1",
     "@types/react": "^16.9.1",
     "@zeit/next-sass": "^1.0.1",
     "babel-plugin-module-resolver": "^3.1.1",
@@ -78,10 +76,7 @@
     "ts-node": "^8.3.0",
     "tsconfig-paths": "^3.6.0",
     "tslint": "^5.11.0",
-    "typescript": "3.5.3",
-    "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5",
-    "webpack-node-externals": "^1.7.2"
+    "typescript": "3.5.3"
   },
   "jest": {
     "moduleNameMapper": {

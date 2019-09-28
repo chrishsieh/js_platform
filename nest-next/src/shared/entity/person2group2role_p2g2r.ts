@@ -1,4 +1,5 @@
-import { Column, Entity, Index, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { GroupGrp } from './group_grp';
 import { PersonPer } from './person_per';
 
 @Entity('person2group2role_p2g2r', { schema: 'churchcrm' })
@@ -12,6 +13,7 @@ export class Person2group2roleP2G2r {
   public P2G2rPerID: number;
 
   @ManyToOne((type) => PersonPer, (person) => person.P2G2r)
+  @JoinColumn({ name: 'p2g2r_per_ID' })
   public PerID: PersonPer;
 
   @Column('mediumint', {
@@ -20,6 +22,10 @@ export class Person2group2roleP2G2r {
     name: 'p2g2r_grp_ID',
   })
   public P2G2rGrpID: number;
+
+  @ManyToOne((type) => GroupGrp, (group) => group.P2G2r)
+  @JoinColumn({ name: 'p2g2r_grp_ID' })
+  public GrpID: GroupGrp;
 
   @PrimaryColumn('mediumint', {
     nullable: false,
