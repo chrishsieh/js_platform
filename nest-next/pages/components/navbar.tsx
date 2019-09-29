@@ -1,5 +1,6 @@
 import * as React from 'react';
 import '../churchcrm.scss';
+import CircleText from './circle_text';
 
 class Navbar extends React.Component<any> {
   public static async getInitialProps() {
@@ -47,22 +48,12 @@ class Navbar extends React.Component<any> {
                 data-toggle="dropdown"
                 title="Your settings and more"
               >
-                <span
-                  // tslint:disable-next-line: jsx-no-multiline-js
-                  style={{
-                    background: '#3B5998',
-                    color: 'white',
-                    padding: '4px',
-                    fontSize: '14px',
-                    height: '14px',
-                    width: '14px',
-                    textAlign: 'center',
-                    textDecoration: 'none',
-                    margin: '5px 10px 0 0',
-                    borderRadius: '50%',
-                  }}
-                >
-                  CA
+                <span style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+                  <CircleText
+                    circleSz={20}
+                    bgColor="#3B5998"
+                    showText="CA"
+                  />
                 </span>
                 <span className="hidden-xs">Church Admin</span>
               </a>
