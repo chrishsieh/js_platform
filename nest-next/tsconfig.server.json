@@ -15,7 +15,8 @@
   "include": [
     "./pages/**/*",
     "./src/**/*",
-    "./static/**/*"
+    "./static/**/*",
+    "./static/locales/**/*"
   ],
   "exclude": [
     "node_modules"
