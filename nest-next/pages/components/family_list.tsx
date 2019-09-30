@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { i18n } from '../../src/i18n';
 import { FamilyContent } from '../../src/shared/interface/familylist';
 
 interface Familyif {
@@ -28,7 +29,7 @@ class FamilyList extends React.Component<Familyif> {
       <div className="box box-solid">
         <div className="box-header">
           <i className={this.props.icon} />
-          <h3 className="box-title">{this.props.title}</h3>
+          <h3 className="box-title">{i18n.t(this.props.title)}</h3>
           <div className="box-tools pull-right">
             <button type="button" className="btn btn-box-tool" data-widget="collapse">
               <i className="fa fa-minus" />
@@ -56,7 +57,7 @@ class FamilyList extends React.Component<Familyif> {
                       colSpan={1}
                       style={{ width: '278px' }}
                     >
-                      Family Name
+                      {i18n.t('Family Name')}
                     </th>
                     <th
                       data-field="address"
@@ -65,7 +66,7 @@ class FamilyList extends React.Component<Familyif> {
                       colSpan={1}
                       style={{ width: '204px' }}
                     >
-                      Address
+                      {i18n.t('Address')}
                     </th>
                     <th
                       data-field="created"
@@ -74,7 +75,7 @@ class FamilyList extends React.Component<Familyif> {
                       colSpan={1}
                       style={{ width: '199px' }}
                     >
-                      Created
+                      {i18n.t('Created')}
                     </th>
                   </tr>
                 </thead>

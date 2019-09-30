@@ -1,9 +1,8 @@
-import {
-  Column,
-  Entity,
-  Index,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+export enum TF_Type {
+  FALSE = 'FALSE',
+  TRUE = 'TRUE',
+}
 
 @Entity('family_fam', { schema: 'churchcrm' })
 @Index('fam_ID', ['FamID'])
@@ -109,14 +108,14 @@ export class FamilyFam {
 
   @Column('smallint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: () => "'0'",
     name: 'fam_EnteredBy',
   })
   public FamEnteredBy: number;
 
   @Column('smallint', {
     nullable: true,
-    default: () => '\'0\'',
+    default: () => "'0'",
     name: 'fam_EditedBy',
   })
   public FamEditedBy: number | null;
@@ -135,8 +134,8 @@ export class FamilyFam {
 
   @Column('enum', {
     nullable: false,
-    default: () => '\'FALSE\'',
-    enum: ['FALSE', 'TRUE'],
+    default: TF_Type.FALSE,
+    enum: TF_Type,
     name: 'fam_SendNewsLetter',
   })
   public FamSendNewsLetter: string;
@@ -149,15 +148,15 @@ export class FamilyFam {
 
   @Column('enum', {
     nullable: false,
-    default: () => '\'FALSE\'',
-    enum: ['FALSE', 'TRUE'],
+    default: TF_Type.FALSE,
+    enum: TF_Type,
     name: 'fam_OkToCanvass',
   })
   public FamOkToCanvass: string;
 
   @Column('smallint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: () => "'0'",
     name: 'fam_Canvasser',
   })
   public FamCanvasser: number;
@@ -176,7 +175,7 @@ export class FamilyFam {
 
   @Column('mediumint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: () => "'0'",
     name: 'fam_Envelope',
   })
   public FamEnvelope: number;
