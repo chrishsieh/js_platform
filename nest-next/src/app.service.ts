@@ -9,10 +9,9 @@ import { PersonDashboardService } from './shared/services/person.dashboard.servi
 export class AppService {
   constructor(
     private readonly personDashboard: PersonDashboardService,
-    private readonly familyDashboard: FamilyDashboardService,
+    private readonly familyDashboard: FamilyDashboardService
   ) {}
   public async root(): Promise<Familyif & Personif> {
-    // tslint:disable-next-line: no-console
     const familyLatest = await this.familyDashboard.getLatestFamilies();
     const familyUpdate = await this.familyDashboard.getUpdatedFamilies();
     const personLatest = await this.personDashboard.getLatestMembers();

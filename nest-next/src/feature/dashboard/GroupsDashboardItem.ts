@@ -78,7 +78,7 @@ export class GroupsDashboardItem implements DashboardItemInterface {
       .createQueryBuilder(PersonPer, 'p')
       .innerJoin(Person2group2roleP2G2r, 'pg', 'pg.P2G2rPerID = p.PerID')
       .innerJoin(GroupGrp, 'g', 'g.GrpID = pg.P2G2rGrpID')
-      .leftJoin(FamilyFam, 'f', 'f.FamID = p.PerfmrID')
+      .leftJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
       .where('f.FamDateDeactivated is null')
       .andWhere('pg.P2G2rRleID = 2')
       .andWhere('g.GrpType = 4')

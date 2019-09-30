@@ -105,7 +105,7 @@ export class PersonDashboardItem implements DashboardItemInterface {
     const personQb = await this.em
       .createQueryBuilder(PersonPer, 'p')
       .leftJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
-      .where('f.FamDateDeactivated is null')
+      .andWhere('f.FamDateDeactivated is null')
       .getCount();
 
     return personQb;

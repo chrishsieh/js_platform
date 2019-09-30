@@ -133,14 +133,14 @@ export class PersonPer {
 
   @Column('tinyint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'per_BirthMonth',
   })
   public PerBirthMonth: number;
 
   @Column('tinyint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'per_BirthDay',
   })
   public PerBirthDay: number;
@@ -159,21 +159,21 @@ export class PersonPer {
 
   @Column('tinyint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'per_Gender',
   })
   public PerGender: number;
 
   @Column('tinyint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'per_fmr_ID',
   })
   public PerfmrID: number;
 
   @Column('tinyint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'per_cls_ID',
   })
   public PerClsID: number;
@@ -198,14 +198,14 @@ export class PersonPer {
 
   @Column('smallint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'per_EnteredBy',
   })
   public PerEnteredBy: number;
 
   @Column('smallint', {
     nullable: true,
-    default: () => '\'0\'',
+    default: 0,
     name: 'per_EditedBy',
   })
   public PerEditedBy: number | null;
@@ -218,7 +218,7 @@ export class PersonPer {
 
   @Column('mediumint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'per_Flags',
   })
   public PerFlags: number;
@@ -245,7 +245,7 @@ export class PersonPer {
 
   @Column('mediumint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'per_fam_ID',
   })
   public PerFamID: number;

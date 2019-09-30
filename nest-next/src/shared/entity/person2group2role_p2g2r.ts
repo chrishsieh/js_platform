@@ -1,16 +1,20 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { GroupGrp } from './group_grp';
 import { PersonPer } from './person_per';
 
 @Entity('person2group2role_p2g2r', { schema: 'churchcrm' })
-@Index('p2g2r_per_ID', ['P2G2rPerID', 'P2G2rGrpID', 'P2G2rRleID'])
 export class Person2group2roleP2G2r {
-  @PrimaryGeneratedColumn()
-  public Id: number;
-
-  @Column('mediumint', {
+  @PrimaryColumn('mediumint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'p2g2r_per_ID',
   })
   public P2G2rPerID: number;
@@ -19,9 +23,9 @@ export class Person2group2roleP2G2r {
   @JoinColumn({ name: 'p2g2r_per_ID' })
   public PerID: PersonPer;
 
-  @Column('mediumint', {
+  @PrimaryColumn('mediumint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'p2g2r_grp_ID',
   })
   public P2G2rGrpID: number;
@@ -30,9 +34,9 @@ export class Person2group2roleP2G2r {
   @JoinColumn({ name: 'p2g2r_grp_ID' })
   public GrpID: GroupGrp;
 
-  @Column('mediumint', {
+  @PrimaryColumn('mediumint', {
     nullable: false,
-    default: () => '\'0\'',
+    default: 0,
     name: 'p2g2r_rle_ID',
   })
   public P2G2rRleID: number;
