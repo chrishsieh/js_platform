@@ -108,14 +108,14 @@ export class FamilyFam {
 
   @Column('smallint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'fam_EnteredBy',
   })
   public FamEnteredBy: number;
 
   @Column('smallint', {
     nullable: true,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'fam_EditedBy',
   })
   public FamEditedBy: number | null;
@@ -156,7 +156,7 @@ export class FamilyFam {
 
   @Column('smallint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'fam_Canvasser',
   })
   public FamCanvasser: number;
@@ -175,7 +175,7 @@ export class FamilyFam {
 
   @Column('mediumint', {
     nullable: false,
-    default: () => "'0'",
+    default: () => '\'0\'',
     name: 'fam_Envelope',
   })
   public FamEnvelope: number;

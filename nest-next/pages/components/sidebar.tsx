@@ -366,7 +366,7 @@ class Sidebar extends React.Component<any> {
             <li className="treeview ">
               <a href="#">
                 <i className="fa fa-bank" />
-                <span>Deposit
+                <span>{i18n.t('Deposit')}
                   <span className="pull-right-container">
                     <small className="label bg-green pull-right" id="iCurrentDeposit">0</small>
                   </span>
@@ -418,7 +418,7 @@ class Sidebar extends React.Component<any> {
             <li className="treeview ">
               <a href="#">
                 <i className="fa fa-money" />
-                <span>Fundraiser<span className="pull-right-container">
+                <span>{i18n.t('Fundraiser')}<span className="pull-right-container">
                   <small className="label pull-right bg-blue" id="iCurrentFundraiser">0</small>
                 </span>
                 </span>
@@ -460,7 +460,7 @@ class Sidebar extends React.Component<any> {
             <li className="treeview ">
               <a href="#">
                 <i className="fa fa-file-pdf-o" />
-                <span>Data/Reports</span>
+                <span>{i18n.t('Data/Reports')}</span>
                 <i className="fa fa-angle-left pull-right" />
               </a>
               <ul className="treeview-menu ">
@@ -482,7 +482,7 @@ class Sidebar extends React.Component<any> {
             <li className="treeview ">
               <a href="#">
                 <i className="fa fa-gears" />
-                <span>Admin</span>
+                <span>{i18n.t('Admin')}</span>
                 <i className="fa fa-angle-left pull-right" />
               </a>
               <ul className="treeview-menu ">

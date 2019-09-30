@@ -20,23 +20,29 @@ module.exports = {
     rules: [
       {
         test: /.tsx?$/,
-        use: 'ts-loader',
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              // transpileOnly: true,
+              configFile: path.resolve(__dirname, './tsconfig.server.json'),
+            },
+          },
+        ],
         exclude: /node_modules/,
       },
     ],
   },
-  mode: 'development',
   resolve: {
     extensions: ['.tsx', '.ts', '.js', 'json'],
     plugins: [
       new TsconfigPathsPlugin({
-        configFile: path.resolve(__dirname, './tsconfig.json'),
+        configFile: path.resolve(__dirname, './tsconfig.server.json'),
       }),
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.WatchIgnorePlugin([/\.js$/, /\.d\.ts$/]),
+    new webpack.HotModuleReplacementPlugin()
   ],
   output: {
     path: path.join(__dirname, 'dist'),
