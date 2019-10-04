@@ -1,4 +1,4 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, Index, PrimaryColumn } from 'typeorm';
 export enum TF_Type {
   FALSE = 'FALSE',
   TRUE = 'TRUE',
@@ -7,9 +7,12 @@ export enum TF_Type {
 @Entity('family_fam', { schema: 'churchcrm' })
 @Index('fam_ID', ['FamID'])
 export class FamilyFam {
-  @PrimaryGeneratedColumn({
+  @Generated('increment')
+  @PrimaryColumn({
     type: 'mediumint',
     name: 'fam_ID',
+    width: 9,
+    unsigned: true,
   })
   public FamID: number;
 
@@ -109,6 +112,7 @@ export class FamilyFam {
   @Column('smallint', {
     nullable: false,
     default: 0,
+    width: 5,
     name: 'fam_EnteredBy',
   })
   public FamEnteredBy: number;
@@ -116,6 +120,8 @@ export class FamilyFam {
   @Column('smallint', {
     nullable: true,
     default: 0,
+    width: 5,
+    unsigned: true,
     name: 'fam_EditedBy',
   })
   public FamEditedBy: number | null;
@@ -157,6 +163,8 @@ export class FamilyFam {
   @Column('smallint', {
     nullable: false,
     default: 0,
+    width: 5,
+    unsigned: true,
     name: 'fam_Canvasser',
   })
   public FamCanvasser: number;

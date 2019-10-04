@@ -16,7 +16,7 @@ import { UserDTOValidationPipe } from './pipes/userDTOValidation.pipe';
       password: 'changeme',
       database: 'churchcrm',
       synchronize: true,
-      logging: false,
+      logging: true,
       entities: [
         ...userEntities, // use entity/index.ts
       ],

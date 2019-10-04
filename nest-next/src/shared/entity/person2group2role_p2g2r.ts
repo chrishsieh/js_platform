@@ -15,28 +15,26 @@ export class Person2group2roleP2G2r {
   @PrimaryColumn('mediumint', {
     nullable: false,
     default: 0,
+    width: 8,
+    unsigned: true,
     name: 'p2g2r_per_ID',
   })
   public P2G2rPerID: number;
 
-  @ManyToOne((type) => PersonPer, (person) => person.P2G2r)
-  @JoinColumn({ name: 'p2g2r_per_ID' })
-  public PerID: PersonPer;
-
   @PrimaryColumn('mediumint', {
     nullable: false,
     default: 0,
+    width: 8,
+    unsigned: true,
     name: 'p2g2r_grp_ID',
   })
   public P2G2rGrpID: number;
 
-  @ManyToOne((type) => GroupGrp, (group) => group.P2G2r)
-  @JoinColumn({ name: 'p2g2r_grp_ID' })
-  public GrpID: GroupGrp;
-
   @PrimaryColumn('mediumint', {
     nullable: false,
     default: 0,
+    width: 8,
+    unsigned: true,
     name: 'p2g2r_rle_ID',
   })
   public P2G2rRleID: number;

@@ -1,23 +1,14 @@
-import {
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { Person2group2roleP2G2r } from './person2group2role_p2g2r';
+import { Column, Entity, Generated, Index, PrimaryColumn } from 'typeorm';
 
 @Entity('person_per', { schema: 'churchcrm' })
 @Index('per_ID', ['PerID'])
 export class PersonPer {
-  @PrimaryGeneratedColumn({
+  @Generated('increment')
+  @PrimaryColumn({
     type: 'mediumint',
     name: 'per_ID',
   })
   public PerID: number;
-
-  @OneToMany((type) => Person2group2roleP2G2r, (group) => group.PerID)
-  public P2G2r: Person2group2roleP2G2r[];
 
   @Column('varchar', {
     nullable: true,
@@ -179,6 +170,13 @@ export class PersonPer {
   public PerClsID: number;
 
   @Column('smallint', {
+    nullable: false,
+    default: 0,
+    name: 'per_fam_ID',
+  })
+  public PerFamID: number;
+
+  @Column('smallint', {
     nullable: true,
     name: 'per_Envelope',
   })
@@ -242,11 +240,4 @@ export class PersonPer {
     name: 'per_LinkedIn',
   })
   public PerLinkedIn: string | null;
-
-  @Column('mediumint', {
-    nullable: false,
-    default: 0,
-    name: 'per_fam_ID',
-  })
-  public PerFamID: number;
 }
