@@ -70,8 +70,7 @@ class Layout extends React.Component<any> {
           </header>
           <Sidebar />
           <div className="content-wrapper">
-            <ContentHeader />
-            <section className="content">{children}</section>
+            {children}
           </div>
           <Footer />
           <ControlSidebar />

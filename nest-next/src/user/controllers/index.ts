@@ -1,5 +1,3 @@
 import { UsersController } from './users.controller';
 
-export const controllersForUser = [
-    UsersController,
-]
+export const controllersForUser = [UsersController];

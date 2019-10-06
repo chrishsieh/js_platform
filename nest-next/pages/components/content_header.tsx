@@ -1,7 +1,11 @@
 import * as React from 'react';
 import '../churchcrm.scss';
 
-class ContentHeader extends React.Component<any> {
+interface ContentHeaderif {
+  content: string;
+}
+
+class ContentHeader extends React.Component<ContentHeaderif> {
   public static async getInitialProps() {
     return {
       namespacesRequired: ['common'],
@@ -10,7 +14,7 @@ class ContentHeader extends React.Component<any> {
   public render() {
     return (
       <section className="content-header">
-        <h1>Welcome to Main St. Cathedral</h1>
+        <h1>{this.props.content}</h1>
       </section>
     );
   }

@@ -48,7 +48,7 @@ class Navbar extends React.Component<any> {
                 data-toggle="dropdown"
                 title="Your settings and more"
               >
-                <span style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+                <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '10px'}}>
                   <CircleText
                     circleSz={20}
                     bgColor="#3B5998"

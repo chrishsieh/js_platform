@@ -5,6 +5,7 @@ import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
 import { FamilyContent } from '../../src/shared/interface/familylist';
 import { PersonContent } from '../../src/shared/interface/personlist';
 import '../churchcrm.scss';
+import ContentHeader from '../components/content_header';
 import FamilyList from '../components/family_list';
 import PersonsList from '../components/persons_list';
 import SmallBox from '../components/small_box';
@@ -77,44 +78,49 @@ class Menu extends React.Component<Props & WithTranslation> {
     });
     return (
       <div>
-        <Head>
-          <title>ChurchCRM: Welcome to Main St. Cathedral</title>
-        </Head>
-        <SmallBox array={smallbox} />
-        <div className="row">
-          <div className="col-lg-6">
-            <FamilyList
-              title="Latest Families"
-              icon="fa fa-user-plus"
-              // tslint:disable-next-line: jsx-no-multiline-js
-              content={this.props.query.lastFamilyContent}
-            />
+        <ContentHeader content="Welcome to Main St. Cathedral" />
+        <section className="content">
+          <div>
+            <Head>
+              <title>ChurchCRM: Welcome to Main St. Cathedral</title>
+            </Head>
+            <SmallBox array={smallbox} />
+            <div className="row">
+              <div className="col-lg-6">
+                <FamilyList
+                  title="Latest Families"
+                  icon="fa fa-user-plus"
+                  // tslint:disable-next-line: jsx-no-multiline-js
+                  content={this.props.query.lastFamilyContent}
+                />
+              </div>
+              <div className="col-lg-6">
+                <FamilyList
+                  title="Updated Families"
+                  icon="fa fa-check"
+                  // tslint:disable-next-line: jsx-no-multiline-js
+                  content={this.props.query.updatedFamilyContent}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-lg-6">
+                <PersonsList
+                  title="Latest Persons"
+                  // tslint:disable-next-line: jsx-no-multiline-js
+                  content={this.props.query.lastPersonContent}
+                />
+              </div>
+              <div className="col-lg-6">
+                <PersonsList
+                  title="Updated Persons"
+                  // tslint:disable-next-line: jsx-no-multiline-js
+                  content={this.props.query.updatedPersonContent}
+                />
+              </div>
+            </div>
           </div>
-          <div className="col-lg-6">
-            <FamilyList
-              title="Updated Families"
-              icon="fa fa-check"
-              // tslint:disable-next-line: jsx-no-multiline-js
-              content={this.props.query.updatedFamilyContent}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-6">
-            <PersonsList
-              title="Latest Persons"
-              // tslint:disable-next-line: jsx-no-multiline-js
-              content={this.props.query.lastPersonContent}
-            />
-          </div>
-          <div className="col-lg-6">
-            <PersonsList
-              title="Updated Persons"
-              // tslint:disable-next-line: jsx-no-multiline-js
-              content={this.props.query.updatedPersonContent}
-            />
-          </div>
-        </div>
+        </section>
       </div>
     );
   }
