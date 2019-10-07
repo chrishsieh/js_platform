@@ -83,86 +83,86 @@ class Sidebar extends React.Component<any> {
                 <li>
                   <a href="/PeopleDashboard">
                     <i className="fa fa-angle-double-right" />
-                    <span>Dashboard</span>
+                    <span>{i18n.t('Dashboard')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/PersonEditor">
                     <i className="fa fa-angle-double-right" />
-                    <span>Add New Person</span>
+                    <span>{i18n.t('Add New Person')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/SelectList">
                     <i className="fa fa-angle-double-right" />
-                    <span>View All Persons</span>
+                    <span>{i18n.t('View All Persons')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/FamilyEditor">
                     <i className="fa fa-angle-double-right" />
-                    <span>Add New Family</span>
+                    <span>{i18n.t('Add New Family')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/v2/family">
                     <i className="fa fa-angle-double-right" />
-                    <span>View Active Families</span>
+                    <span>{i18n.t('View Active Families')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/v2/family">
                     <i className="fa fa-angle-double-right" />
-                    <span>View Inactive Families</span>
+                    <span>{i18n.t('View Inactive Families')}</span>
                   </a>
                 </li>
                 <li className="treeview ">
                   <a href="#">
                     <i className="fa fa-angle-double-right" />
-                    <span>Admin</span>
+                    <span>{i18n.t('Admin')}</span>
                     <i className="fa fa-angle-left pull-right" />
                   </a>
                   <ul className="treeview-menu ">
                     <li>
                       <a href="/OptionManager?mode=classes">
                         <i className="fa fa-angle-double-right" />
-                        <span>Classifications Manager</span>
+                        <span>{i18n.t('Classifications Manager')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/OptionManager?mode=famroles">
                         <i className="fa fa-angle-double-right" />
-                        <span>Family Roles</span>
+                        <span>{i18n.t('Family Roles')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/PropertyList?Type=f">
                         <i className="fa fa-angle-double-right" />
-                        <span>Family Properties</span>
+                        <span>{i18n.t('Family Properties')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/FamilyCustomFieldsEditor">
                         <i className="fa fa-angle-double-right" />
-                        <span>Family Custom Fields</span>
+                        <span>{i18n.t('Family Custom Fields')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/PropertyList?Type=p">
                         <i className="fa fa-angle-double-right" />
-                        <span>People Properties</span>
+                        <span>{i18n.t('People Properties')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/PersonCustomFieldsEditor">
                         <i className="fa fa-angle-double-right" />
-                        <span>Person Custom Fields</span>
+                        <span>{i18n.t('Person Custom Fields')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/VolunteerOpportunityEditor">
                         <i className="fa fa-angle-double-right" />
-                        <span>Volunteer Opportunities</span>
+                        <span>{i18n.t('Volunteer Opportunities')}</span>
                       </a>
                     </li>
                   </ul>
@@ -180,26 +180,26 @@ class Sidebar extends React.Component<any> {
                 <li>
                   <a href="/GroupList">
                     <i className="fa fa-angle-double-right" />
-                    <span>List Groups</span>
+                    <span>{i18n.t('List Groups')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/SelectList?mode=groupassign">
                     <i className="fa fa-angle-double-right" />
-                    <span>Group Assignment Helper</span>
+                    <span>{i18n.t('Group Assignment Helper')}</span>
                   </a>
                 </li>
                 <li className="treeview ">
                   <a href="#">
                     <i className="fa fa-tag" />
-                    <span>Ministry</span>
+                    <span>{i18n.t('Ministry')}</span>
                     <i className="fa fa-angle-left pull-right" />
                   </a>
                   <ul className="treeview-menu ">
                     <li>
                       <a href="/GroupView?GroupID=10">
                         <i className="fa fa-user" />
-                        <span>Worship Service</span>
+                        <span>{i18n.t('Worship Service')}</span>
                       </a>
                     </li>
                   </ul>
@@ -207,26 +207,26 @@ class Sidebar extends React.Component<any> {
                 <li className="treeview ">
                   <a href="#">
                     <i className="fa fa-tag" />
-                    <span>Unassigned</span>
+                    <span>{i18n.t('Unassigned')}</span>
                     <i className="fa fa-angle-left pull-right" />
                   </a>
                   <ul className="treeview-menu ">
                     <li>
                       <a href="/GroupView?GroupID=7">
                         <i className="fa fa-user" />
-                        <span>Boys Scouts</span>
+                        <span>{i18n.t('Boys Scouts')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/GroupView?GroupID=9">
                         <i className="fa fa-user" />
-                        <span>Church Board</span>
+                        <span>{i18n.t('Church Board')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/GroupView?GroupID=8">
                         <i className="fa fa-user" />
-                        <span>Girl Scouts</span>
+                        <span>{i18n.t('Girl Scouts')}</span>
                       </a>
                     </li>
                   </ul>
@@ -234,20 +234,20 @@ class Sidebar extends React.Component<any> {
                 <li className="treeview ">
                   <a href="#">
                     <i className="fa fa-angle-double-right" />
-                    <span>Admin</span>
+                    <span>{i18n.t('Admin')}</span>
                     <i className="fa fa-angle-left pull-right" />
                   </a>
                   <ul className="treeview-menu ">
                     <li>
                       <a href="/PropertyList?Type=g">
                         <i className="fa fa-angle-double-right" />
-                        <span>Group Properties</span>
+                        <span>{i18n.t('Group Properties')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/OptionManager?mode=grptypes">
                         <i className="fa fa-angle-double-right" />
-                        <span>Group Types</span>
+                        <span>{i18n.t('Group Types')}</span>
                       </a>
                     </li>
                   </ul>
@@ -265,13 +265,13 @@ class Sidebar extends React.Component<any> {
                 <li>
                   <a href="/sundayschool/SundaySchoolDashboard">
                     <i className="fa fa-angle-double-right" />
-                    <span>Dashboard</span>
+                    <span>{i18n.t('Dashboard')}</span>
                   </a>
                 </li>
                 <li className="treeview ">
                   <a href="#">
                     <i className="fa fa-tag" />
-                    <span>Classes</span>
+                    <span>{i18n.t('Classes')}</span>
                     <i className="fa fa-angle-left pull-right" />
                   </a>
                   <ul className="treeview-menu ">
@@ -302,13 +302,13 @@ class Sidebar extends React.Component<any> {
                     <li>
                       <a href="sundayschool/SundaySchoolClassView?groupId=5">
                         <i className="fa fa-user" />
-                        <span>High School Class</span>
+                        <span>{i18n.t('High School Class')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/sundayschool/SundaySchoolClassView?groupId=6">
                         <i className="fa fa-user" />
-                        <span>Youth Meeting</span>
+                        <span>{i18n.t('Youth Meeting')}</span>
                       </a>
                     </li>
                   </ul>
@@ -333,31 +333,31 @@ class Sidebar extends React.Component<any> {
                 <li>
                   <a href="/EventEditor">
                     <i className="fa fa-angle-double-right" />
-                    <span>Add Church Event</span>
+                    <span>{i18n.t('Add Church Event')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/ListEvents">
                     <i className="fa fa-angle-double-right" />
-                    <span>List Church Events</span>
+                    <span>{i18n.t('List Church Events')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/EventNames">
                     <i className="fa fa-angle-double-right" />
-                    <span>List Event Types</span>
+                    <span>{i18n.t('List Event Types')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/Checkin">
                     <i className="fa fa-angle-double-right" />
-                    <span>Check-in and Check-out</span>
+                    <span>{i18n.t('Check-in and Check-out')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/EventAttendance">
                     <i className="fa fa-angle-double-right" />
-                    <span>Event Attendance Reports</span>
+                    <span>{i18n.t('Event Attendance Reports')}</span>
                   </a>
                 </li>
               </ul>
@@ -376,38 +376,38 @@ class Sidebar extends React.Component<any> {
                 <li>
                   <a href="/FindDepositSlip">
                     <i className="fa fa-angle-double-right" />
-                    <span>View All Deposits</span>
+                    <span>{i18n.t('View All Deposits')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/FinancialReports">
                     <i className="fa fa-angle-double-right" />
-                    <span>Deposit Reports</span>
+                    <span>{i18n.t('Deposit Reports')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/DepositSlipEditor?DepositSlipID=0">
                     <i className="fa fa-angle-double-right" />
-                    <span>Edit Deposit Slip</span>
+                    <span>{i18n.t('Edit Deposit Slip')}</span>
                   </a>
                 </li>
                 <li className="treeview ">
                   <a href="#">
                     <i className="fa fa-angle-double-right" />
-                    <span>Admin</span>
+                    <span>{i18n.t('Admin')}</span>
                     <i className="fa fa-angle-left pull-right" />
                   </a>
                   <ul className="treeview-menu ">
                     <li>
                       <a href="/ManageEnvelopes">
                         <i className="fa fa-angle-double-right" />
-                        <span>Envelope Manager</span>
+                        <span>{i18n.t('Envelope Manager')}</span>
                       </a>
                     </li>
                     <li>
                       <a href="/DonationFundEditor">
                         <i className="fa fa-angle-double-right" />
-                        <span>Donation Funds</span>
+                        <span>{i18n.t('Donation Funds')}</span>
                       </a>
                     </li>
                   </ul>
@@ -427,31 +427,31 @@ class Sidebar extends React.Component<any> {
                 <li>
                   <a href="/FundRaiserEditor?FundRaiserID=-1">
                     <i className="fa fa-angle-double-right" />
-                    <span>Create New Fundraiser</span>
+                    <span>{i18n.t('Create New Fundraiser')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/FindFundRaiser">
                     <i className="fa fa-angle-double-right" />
-                    <span>View All Fundraisers</span>
+                    <span>{i18n.t('View All Fundraisers')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/FundRaiserEditor">
                     <i className="fa fa-angle-double-right" />
-                    <span>Edit Fundraiser</span>
+                    <span>{i18n.t('Edit Fundraiser')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/AddDonors">
                     <i className="fa fa-angle-double-right" />
-                    <span>Add Donors to Buyer List</span>
+                    <span>{i18n.t('Add Donors to Buyer List')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/PaddleNumList">
                     <i className="fa fa-angle-double-right" />
-                    <span>View Buyers</span>
+                    <span>{i18n.t('View Buyers')}</span>
                   </a>
                 </li>
               </ul>
@@ -467,13 +467,13 @@ class Sidebar extends React.Component<any> {
                 <li>
                   <a href="/CanvassAutomation">
                     <i className="fa fa-angle-double-right" />
-                    <span>Canvass Automation</span>
+                    <span>{i18n.t('Canvass Automation')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/QueryList">
                     <i className="fa fa-angle-double-right" />
-                    <span>Query Menu</span>
+                    <span>{i18n.t('Query Menu')}</span>
                   </a>
                 </li>
               </ul>
@@ -489,61 +489,61 @@ class Sidebar extends React.Component<any> {
                 <li>
                   <a href="/SystemSettings">
                     <i className="fa fa-angle-double-right" />
-                    <span>Edit General Settings</span>
+                    <span>{i18n.t('Edit General Settings')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/UserList">
                     <i className="fa fa-angle-double-right" />
-                    <span>System Users</span>
+                    <span>{i18n.t('System Users')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/PropertyTypeList">
                     <i className="fa fa-angle-double-right" />
-                    <span>Property Types</span>
+                    <span>{i18n.t('Property Types')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/RestoreDatabase">
                     <i className="fa fa-angle-double-right" />
-                    <span>Restore Database</span>
+                    <span>{i18n.t('Restore Database')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/BackupDatabase">
                     <i className="fa fa-angle-double-right" />
-                    <span>Backup Database</span>
+                    <span>{i18n.t('Backup Database')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/CSVImport">
                     <i className="fa fa-angle-double-right" />
-                    <span>CSV Import</span>
+                    <span>{i18n.t('CSV Import')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/CSVExport">
                     <i className="fa fa-angle-double-right" />
-                    <span>CSV Export Records</span>
+                    <span>{i18n.t('CSV Export Records')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/KioskManager">
                     <i className="fa fa-angle-double-right" />
-                    <span>Kiosk Manager</span>
+                    <span>{i18n.t('Kiosk Manager')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/v2/admin/debug">
                     <i className="fa fa-angle-double-right" />
-                    <span>Debug</span>
+                    <span>{i18n.t('Debug')}</span>
                   </a>
                 </li>
                 <li>
                   <a href="/v2/admin/menus">
                     <i className="fa fa-angle-double-right" />
-                    <span>Custom Menus</span>
+                    <span>{i18n.t('Custom Menus')}</span>
                   </a>
                 </li>
               </ul>
@@ -554,5 +554,4 @@ class Sidebar extends React.Component<any> {
     );
   }
 }
-
 export default Sidebar;
