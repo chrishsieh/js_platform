@@ -30,6 +30,7 @@
     "no-unused-variable": true,
     "interface-name": false,
     "no-empty-interface": false,
-    "no-console":false
+    "no-console": false,
+    "max-line-length": false
   }
 }

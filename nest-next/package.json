@@ -10,8 +10,9 @@
     "build:server": "npx tsc --project tsconfig.server.json && npx babel .next/production-server -d .next/production-server --extensions \".js\"",
     "build:ui": "npx next build",
     "build": "yarn build:clean && yarn build:server && yarn build:ui",
-    "start": "NODE_ENV=production node .next/production-server/main.js",
-    "webpack": "webpack --config webpack.dev.js"
+    "start": "NODE_ENV=production node .next/production-server/src/main.js",
+    "webpack": "webpack --config webpack.dev.js",
+    "tsm": "tsm pages"
   },
   "dependencies": {
     "@nestjs/common": "^6.7.2",
@@ -81,6 +82,7 @@
     "tsconfig-paths": "^3.6.0",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "tslint": "^5.20.0",
+    "typed-scss-modules": "^0.0.12",
     "typescript": "^3.6.3",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9",
