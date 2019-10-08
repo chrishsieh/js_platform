@@ -5,7 +5,7 @@
     ],
     "service": "code",
     "workspaceFolder": "/var/www",
-    "shutdownAction": "none",
+    "shutdownAction": "stopCompose",
     "settings": {
         //"workbench.colorTheme": "Quiet Light",
         "npm.enableScriptExplorer": true
