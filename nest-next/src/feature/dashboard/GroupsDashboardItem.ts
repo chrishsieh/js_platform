@@ -6,6 +6,7 @@ import { GroupGrp } from '../../shared/entity/group_grp';
 import { Person2group2roleP2G2r } from '../../shared/entity/person2group2role_p2g2r';
 import { PersonPer } from '../../shared/entity/person_per';
 import { DashboardItemInterface } from '../../shared/interface/dashboard';
+import { count } from 'rxjs/operators';
 
 @Injectable()
 export class GroupsDashboardItem implements DashboardItemInterface {
@@ -92,17 +93,19 @@ export class GroupsDashboardItem implements DashboardItemInterface {
         group by per_Gender ;';
     $rsAdultsGender = RunQuery($sSQL);
     */
+
     const AdultsGenderCount = await this.em
       .createQueryBuilder(PersonPer, 'p')
-      .select('p.per_Gender')
+      .select('SUM(p.per_Gender)', 'numb')
       .innerJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
-      .leftJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
       .where('f.FamDateDeactivated is null')
       .andWhere('p.per_Gender in (1,2)')
-      .andWhere('f.per_fmr_ID not in 3')
+      .andWhere('p.per_fmr_ID not in (3)')
       .groupBy('p.per_Gender')
-      .getCount();
-    console.log(AdultsGenderCount);
+      .getSql();
+      // .getRawAndEntities();
+    console.log('AdultsGenderCount', AdultsGenderCount);
+
     /*
     $sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
           where fam_ID =per_fam_ID and fam_DateDeactivated is  null

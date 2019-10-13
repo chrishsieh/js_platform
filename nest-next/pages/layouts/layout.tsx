@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import '../churchcrm.scss';
+// import '../churchcrm.scss';
 import ControlSidebar from '../components/control_sidebar';
 import Footer from '../components/footer';
 import Logo from '../components/logo';
@@ -43,7 +43,8 @@ class Layout extends React.Component<any> {
             href="/static/dist/css/skins/_all-skins.min.css"
           />
           <link rel="stylesheet" href="/static/plugins/iCheck/flat/blue.css" />
-          <link rel="stylesheet" href="/static/plugins/morris/morris.css" />
+          {/*<link rel="stylesheet" href="/static/plugins/morris/morris.css" />*/}
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" />
           <link
             rel="stylesheet"
             href="/static/plugins/jvectormap/jquery-jvectormap-1.2.2.css"
@@ -80,7 +81,8 @@ class Layout extends React.Component<any> {
         {/*<script dangerouslySetInnerHTML={{ __html: `$.widget.bridge('uibutton', $.ui.button);` }}/>*/}
         <script src="/static/bootstrap/js/bootstrap.min.js" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" />
-        <script src="/static/plugins/morris/morris.min.js" />
+        {/*<script src="/static/plugins/morris/morris.min.js" />*/}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js" />
         <script src="/static/plugins/sparkline/jquery.sparkline.min.js" />
         <script src="/static/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" />
         <script src="/static/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" />

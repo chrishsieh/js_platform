@@ -18,6 +18,7 @@ export class DashBoardService {
     const family = this.DashboardFamily.getDashboardItemValue();
     const member = this.DashboardPerson.getDashboardItemValue();
     const group = await this.DashboardGroup.getDashboardItemValue();
+    console.log(group);
 
     return {
       smallBoxs: [

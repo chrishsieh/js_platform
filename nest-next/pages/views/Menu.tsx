@@ -4,7 +4,6 @@ import { WithTranslation } from 'react-i18next';
 import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
 import { FamilyContent } from '../../src/shared/interface/familylist';
 import { PersonContent } from '../../src/shared/interface/personlist';
-import '../churchcrm.scss';
 import ContentHeader from '../components/content_header';
 import FamilyList from '../components/family_list';
 import PersonsList from '../components/persons_list';

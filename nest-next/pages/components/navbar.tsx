@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../churchcrm.scss';
+// import '../churchcrm.scss';
 import CircleText from './circle_text';
 
 class Navbar extends React.Component<any> {

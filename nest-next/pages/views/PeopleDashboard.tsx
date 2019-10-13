@@ -2,7 +2,6 @@ import Head from 'next/head';
 import * as React from 'react';
 import { WithTranslation } from 'react-i18next';
 import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
-import '../churchcrm.scss';
 import ContentHeader from '../components/content_header';
 import SmallBox from '../components/small_box';
 

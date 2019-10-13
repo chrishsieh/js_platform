@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../churchcrm.scss';
+// import '../churchcrm.scss';
 
 interface ICircleText {
   showText: string;

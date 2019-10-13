@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../churchcrm.scss';
+// import '../churchcrm.scss';
 
 class Logo extends React.Component<any> {
   public static async getInitialProps() {
