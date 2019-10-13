@@ -371,20 +371,7 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
                   <i className="fa fa-address-card-o" />
                   <h3 className="box-title">Gender Demographics</h3>
                   <div className="box-tools pull-right">
-                    <div id="gender-donut-legend" className="chart-legend">
-                      <span style={{ color: 'white', paddingRight: '4px', paddingLeft: '2px', backgroundColor: '#003399' }}>
-                        Men
-                      </span>
-                      <span style={{ color: 'white', paddingRight: '4px', paddingLeft: '2px', backgroundColor: '#9900ff' }}>
-                        Women
-                      </span>
-                      <span style={{ color: 'white', paddingRight: '4px', paddingLeft: '2px', backgroundColor: '#3399ff' }}>
-                        Boys
-                      </span>
-                      <span style={{ color: 'white', paddingRight: '4px', paddingLeft: '2px', backgroundColor: '#009933' }}>
-                        Girls
-                      </span>
-                    </div>
+                    <div id="gender-donut-legend" className="chart-legend"/>
                   </div>
                 </div>
                 {/*<!-- /.box-header -->*/}
@@ -408,6 +395,9 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
             </div>
           </div>
         </section >
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.js" />
+        <script src="/static/js/peopledashboard.js" />
       </div >
     );
   }

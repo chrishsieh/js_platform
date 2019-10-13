@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import { withTranslation } from 'react-i18next';
 import '../churchcrm.scss';
-import ContentHeader from '../components/content_header';
 import ControlSidebar from '../components/control_sidebar';
 import Footer from '../components/footer';
 import Logo from '../components/logo';

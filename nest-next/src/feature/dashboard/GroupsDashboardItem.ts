@@ -84,6 +84,34 @@ export class GroupsDashboardItem implements DashboardItemInterface {
       .andWhere('g.GrpType = 4')
       .getCount();
 
+    /*
+    $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
+        where fam_ID =per_fam_ID and fam_DateDeactivated is  null
+        and per_Gender in (1,2) and
+        per_fmr_ID not in (' . SystemConfig::getValue('sDirRoleChild') . ')
+        group by per_Gender ;';
+    $rsAdultsGender = RunQuery($sSQL);
+    */
+    const AdultsGenderCount = await this.em
+      .createQueryBuilder(PersonPer, 'p')
+      .select('p.per_Gender')
+      .innerJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
+      .leftJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
+      .where('f.FamDateDeactivated is null')
+      .andWhere('p.per_Gender in (1,2)')
+      .andWhere('f.per_fmr_ID not in 3')
+      .groupBy('p.per_Gender')
+      .getCount();
+    console.log(AdultsGenderCount);
+    /*
+    $sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
+          where fam_ID =per_fam_ID and fam_DateDeactivated is  null
+          and per_Gender in (1,2)
+          and per_fmr_ID in (' . SystemConfig::getValue('sDirRoleChild') . ')
+          group by per_Gender ;';
+    $rsKidsGender = RunQuery($sSQL);
+    */
+
     return {
       Group,
       SundaySchoolClasses,
