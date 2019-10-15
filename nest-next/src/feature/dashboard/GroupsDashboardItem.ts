@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
-import { EntityManager, Repository } from 'typeorm';
+import { EntityManager, Repository, MongoEntityManager } from 'typeorm';
 import { FamilyFam } from '../../shared/entity/family_fam';
 import { GroupGrp } from '../../shared/entity/group_grp';
 import { Person2group2roleP2G2r } from '../../shared/entity/person2group2role_p2g2r';
 import { PersonPer } from '../../shared/entity/person_per';
 import { DashboardItemInterface } from '../../shared/interface/dashboard';
-import { count } from 'rxjs/operators';
+import moment from 'moment';
+import { filter, tap, apply, map, countBy, reject, forEach, compose, pipe } from 'ramda';
 
 @Injectable()
 export class GroupsDashboardItem implements DashboardItemInterface {
@@ -34,7 +35,7 @@ export class GroupsDashboardItem implements DashboardItemInterface {
   }
 
   public async getDashboardItemValue(): Promise<any> {
-    const Counts =  await this.getCountMembers();
+    const Counts = await this.getCountMembers();
     return {
       Group: Counts.Group,
       SundaySchoolClasses: Counts.SundaySchoolClasses,
@@ -85,40 +86,49 @@ export class GroupsDashboardItem implements DashboardItemInterface {
       .andWhere('g.GrpType = 4')
       .getCount();
 
-    /*
-    $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
-        where fam_ID =per_fam_ID and fam_DateDeactivated is  null
-        and per_Gender in (1,2) and
-        per_fmr_ID not in (' . SystemConfig::getValue('sDirRoleChild') . ')
-        group by per_Gender ;';
-    $rsAdultsGender = RunQuery($sSQL);
-    */
-
     const AdultsGenderCount = await this.em
       .createQueryBuilder(PersonPer, 'p')
-      .select('SUM(p.per_Gender)', 'numb')
+      .select('COUNT(p.per_Gender)', 'numb')
+      .addSelect('p.per_Gender')
       .innerJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
       .where('f.FamDateDeactivated is null')
       .andWhere('p.per_Gender in (1,2)')
       .andWhere('p.per_fmr_ID not in (3)')
       .groupBy('p.per_Gender')
-      .getSql();
-      // .getRawAndEntities();
-    console.log('AdultsGenderCount', AdultsGenderCount);
+      .getRawMany();
 
-    /*
-    $sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
-          where fam_ID =per_fam_ID and fam_DateDeactivated is  null
-          and per_Gender in (1,2)
-          and per_fmr_ID in (' . SystemConfig::getValue('sDirRoleChild') . ')
-          group by per_Gender ;';
-    $rsKidsGender = RunQuery($sSQL);
-    */
+    const KidsGenderCount = await this.em
+      .createQueryBuilder(PersonPer, 'p')
+      .select('COUNT(p.per_Gender)', 'numb')
+      .addSelect('p.per_Gender')
+      .innerJoin(FamilyFam, 'f', 'f.FamID = p.PerFamID')
+      .where('f.FamDateDeactivated is null')
+      .andWhere('p.per_Gender in (1,2)')
+      .andWhere('p.per_fmr_ID in (3)')
+      .groupBy('p.per_Gender')
+      .getRawMany();
+
+    const PersonAge = await this.em
+      .createQueryBuilder(PersonPer, 'pq')
+      .select('pq.per_BirthYear', 'year')
+      .addSelect('pq.per_BirthMonth', 'month')
+      .addSelect('pq.per_BirthDay', 'day')
+      .getRawMany();
+    // console.log('PersonAge', PersonAge);
+
+    const isDateVaild = (date: any) => moment([date.year, date.month - 1, date.day]).isValid();
+    const nowDate = moment();
+    const conVertAge = (date: any) => nowDate.diff(moment([date.year, date.month - 1, date.day]), 'years');
+    const CountGroup = countBy(Math.floor)(map(conVertAge)(filter(isDateVaild)(PersonAge)));
+    const testGroup = compose(countBy(Math.floor), map(conVertAge))(filter(isDateVaild)(PersonAge));
+    console.log('PersonAge', testGroup);
 
     return {
       Group,
       SundaySchoolClasses,
       SundaySchoolKidsCount,
+      AdultsGenderCount,
+      KidsGenderCount,
     };
   }
 }
