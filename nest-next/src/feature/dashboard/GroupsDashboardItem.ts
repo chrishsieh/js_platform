@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
-import { EntityManager, Repository, MongoEntityManager } from 'typeorm';
+import moment from 'moment';
+import { compose, countBy, filter, map } from 'ramda';
+import { EntityManager, Repository } from 'typeorm';
 import { FamilyFam } from '../../shared/entity/family_fam';
 import { GroupGrp } from '../../shared/entity/group_grp';
 import { Person2group2roleP2G2r } from '../../shared/entity/person2group2role_p2g2r';
 import { PersonPer } from '../../shared/entity/person_per';
 import { DashboardItemInterface } from '../../shared/interface/dashboard';
-import moment from 'moment';
-import { filter, tap, apply, map, countBy, reject, forEach, compose, pipe } from 'ramda';
 
 @Injectable()
 export class GroupsDashboardItem implements DashboardItemInterface {
@@ -40,6 +40,9 @@ export class GroupsDashboardItem implements DashboardItemInterface {
       Group: Counts.Group,
       SundaySchoolClasses: Counts.SundaySchoolClasses,
       SundaySchoolKids: Counts.SundaySchoolKidsCount,
+      AdultsGenderCount: Counts.AdultsGenderCount,
+      KidsGenderCount: Counts.KidsGenderCount,
+      AgeCountGroup: Counts.AgeCountGroup,
     };
   }
 
@@ -119,9 +122,7 @@ export class GroupsDashboardItem implements DashboardItemInterface {
     const isDateVaild = (date: any) => moment([date.year, date.month - 1, date.day]).isValid();
     const nowDate = moment();
     const conVertAge = (date: any) => nowDate.diff(moment([date.year, date.month - 1, date.day]), 'years');
-    const CountGroup = countBy(Math.floor)(map(conVertAge)(filter(isDateVaild)(PersonAge)));
-    const testGroup = compose(countBy(Math.floor), map(conVertAge))(filter(isDateVaild)(PersonAge));
-    console.log('PersonAge', testGroup);
+    const AgeCountGroup = compose(countBy(Math.floor), map(conVertAge))(filter(isDateVaild)(PersonAge));
 
     return {
       Group,
@@ -129,6 +130,7 @@ export class GroupsDashboardItem implements DashboardItemInterface {
       SundaySchoolKidsCount,
       AdultsGenderCount,
       KidsGenderCount,
+      AgeCountGroup,
     };
   }
 }

@@ -11,7 +11,7 @@ export class PeopleDashBoardController {
 
   @Get('PeopleDashboard')
   @Render('PeopleDashboard')
-  public async peopleDashboard(): Promise<SmallBoxif> {
+  public async peopleDashboard(): Promise<SmallBoxif & any> {
     return await this.peopledashboardService.root();
   }
 }

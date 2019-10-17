@@ -11,7 +11,7 @@ export class PeopleDashBoardService {
     private readonly DashboardFamily: FamilyDashboardItem,
     private readonly DashboardGroup: GroupsDashboardItem
   ) {}
-  public async root(): Promise<SmallBoxif> {
+  public async root(): Promise<SmallBoxif & any> {
     const family = this.DashboardFamily.getDashboardItemValue();
     const member = this.DashboardPerson.getDashboardItemValue();
     const group = await this.DashboardGroup.getDashboardItemValue();
@@ -23,6 +23,9 @@ export class PeopleDashBoardService {
         { Name: 'Sunday School Kids', Count: group.SundaySchoolKids },
         { Name: 'Groups', Count: group.Group },
       ],
+      AdultsGenderCount: group.AdultsGenderCount,
+      KidsGenderCount: group.KidsGenderCount,
+      AgeCountGroup: group.AgeCountGroup,
     };
   }
 }
