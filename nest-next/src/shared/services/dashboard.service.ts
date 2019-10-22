@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
-import { family_fam } from '../entity/family_fam';
-import { person_per } from '../entity/person_per';
+import { FamilyFam } from '../entity/family_fam';
+import { PersonPer } from '../entity/person_per';
 
 @Injectable()
 export class DashboardService {
   constructor(
-    @InjectRepository(person_per)
-    private readonly personRepo: Repository<person_per>,
+    @InjectRepository(PersonPer)
+    private readonly personRepo: Repository<PersonPer>,
 
-    @InjectRepository(family_fam)
-    private readonly familyRepo: Repository<family_fam>,
+    @InjectRepository(FamilyFam)
+    private readonly familyRepo: Repository<FamilyFam>,
 
     @InjectEntityManager()
     private readonly em: EntityManager

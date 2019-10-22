@@ -1,4 +1,6 @@
 declare const module: any;
+import * as dotenv from 'dotenv';
+dotenv.config({ path: './.env' }); // Keep at top
 
 import { NestFactory } from '@nestjs/core';
 import { RenderModule, RenderService } from 'nest-next';

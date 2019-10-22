@@ -1,1 +1,7 @@
 /.vagrant
+/nest-next/secrets/*.pem
+/nest-next/dist
+nest-next/secrets/ssl.conf
+nest-next/yarn.lock
+nest-next/.env
+.vscode/settings.json

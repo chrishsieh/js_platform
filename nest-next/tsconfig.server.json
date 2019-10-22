@@ -16,7 +16,7 @@
     "./pages/**/*",
     "./src/**/*",
     "./static/**/*",
-    "./static/locales/**/*"
+    "./static/locales/**/*",
   ],
   "exclude": [
     "node_modules"
