@@ -44,7 +44,7 @@ export class DashBoardService {
         const famName = value.FamName ? value.FamName : '';
         const famAddress = value.FamAddress1 ? value.FamAddress1 : '';
         const famLastEdited = value.FamDateLastEdited
-          ? moment(value.fam_DateLastEdited).format('DD/MM/YY hh:mm a')
+          ? moment(value.FamDateLastEdited).format('DD/MM/YY hh:mm a')
           : '';
         return {
           name: famName,
