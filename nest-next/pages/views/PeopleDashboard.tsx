@@ -395,7 +395,7 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
           </div>
         </section >
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" />
         <script src="/static/js/peopledashboard.js" />
       </div >
     );

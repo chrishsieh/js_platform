@@ -72,12 +72,18 @@ $(document).ready(function() {
   ageValuesX.forEach((value, index) => {
     ageBase[parseInt(value)] = { x: value, y: ageValuesY[index] };
   });
+  ageLabels = [];
+  ageData = [];
+  ageBase.forEach((value) => {
+    ageLabels.push(value.x);
+    ageData.push(value.y);
+  });
   var bar_config = {
-    type: 'line',
+    type: 'bar',
     data: {
       datasets: [
         {
-          data: ageBase,
+          data: ageData,
           backgroundColor: 'rgba(255, 99, 132, 1)',
           label: 'Ages',
         },
@@ -98,12 +104,13 @@ $(document).ready(function() {
         },
       },
       scales: {
-        xAxes: [
-          {
-            type: 'linear',
-            position: 'bottom',
-          },
-        ],
+        xAxes: [{
+          display: true,
+          barPercentage: 1,
+          ticks: {
+            max: 120,
+          }
+       }],
         yAxes: [
           {
             ticks: {
