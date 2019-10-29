@@ -1,39 +1,39 @@
-import {BaseEntity,Column,Entity,Index,JoinColumn,JoinTable,ManyToMany,ManyToOne,OneToMany,OneToOne,PrimaryColumn,PrimaryGeneratedColumn,RelationId} from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
 
 @Entity("list_lst",{schema:"churchcrm" } )
-export class list_lst {
+export class ListLst {
 
     @PrimaryColumn("mediumint",{
         nullable:false,
-        default: () => "'0'",
+        default: 0,
         name:"lst_ID"
         })
-    lst_ID:number;
+    LstID:number;
 
 
-    @Column("mediumint",{
+    @PrimaryColumn("mediumint",{
         nullable:false,
-        default: () => "'0'",
+        default: 0,
         name:"lst_OptionID"
         })
-    lst_OptionID:number;
+    LstOptionID:number;
 
 
     @Column("tinyint",{
         nullable:false,
-        default: () => "'0'",
+        default: 0,
         name:"lst_OptionSequence"
         })
-    lst_OptionSequence:number;
+    LstOptionSequence:number;
 
 
     @Column("varchar",{
         nullable:false,
         length:50,
-        default: () => "''",
+        default: '',
         name:"lst_OptionName"
         })
-    lst_OptionName:string;
+    LstOptionName:string;
 
 }

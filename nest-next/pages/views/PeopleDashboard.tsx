@@ -4,6 +4,7 @@ import { WithTranslation } from 'react-i18next';
 import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
 import ContentHeader from '../components/content_header';
 import SmallBox from '../components/small_box';
+import { i18n } from '../../src/i18n';
 
 interface InitialProps {
   query: {
@@ -235,7 +236,7 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
               <div className="box box-primary">
                 <div className="box-header with-border">
                   <i className="fa fa-pie-chart" />
-                  <h3 className="box-title">Family Roles</h3>
+                  <h3 className="box-title">{i18n.t('Family Roles')}</h3>
                   <div className="box-tools pull-right">
                     <button type="button" className="btn btn-box-tool" data-widget="collapse">
                       <i className="fa fa-minus" />

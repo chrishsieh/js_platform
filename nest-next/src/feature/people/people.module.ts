@@ -7,6 +7,7 @@ import { GroupsDashboardItem } from '../dashboard/GroupsDashboardItem';
 import { PersonDashboardItem } from '../dashboard/PersonDashboardItem';
 import { PeopleDashBoardController } from './people.control';
 import { PeopleDashBoardService } from './people.service';
+import { ListOptionQuery } from './DemoGraphStats';
 
 @Module({
   imports: [SharedModule, TypeOrmModule.forFeature([...userEntities])],
@@ -15,6 +16,7 @@ import { PeopleDashBoardService } from './people.service';
     FamilyDashboardItem,
     PersonDashboardItem,
     GroupsDashboardItem,
+    ListOptionQuery,
   ],
   controllers: [PeopleDashBoardController],
   exports: [PeopleDashBoardService],

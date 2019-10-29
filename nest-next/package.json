@@ -11,7 +11,8 @@
     "build:ui": "npx next build",
     "build": "yarn build:clean && yarn build:server && yarn build:ui",
     "start": "set NODE_ENV=production&&node .next/production-server/src/main.js",
-    "webpack": "webpack --config webpack.dev.js"
+    "webpack": "webpack --config webpack.dev.js",
+    "test": "jest --forceExit --maxWorkers=10 --detectOpenHandles"
   },
   "dependencies": {
     "@nestjs/common": "^6.7.2",

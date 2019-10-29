@@ -5,3 +5,4 @@ nest-next/secrets/ssl.conf
 nest-next/yarn.lock
 nest-next/.env
 .vscode/settings.json
+/nest-next/coverage

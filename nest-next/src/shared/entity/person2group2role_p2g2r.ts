@@ -1,14 +1,4 @@
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  PrimaryColumn,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { GroupGrp } from './group_grp';
-import { PersonPer } from './person_per';
+import { Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('person2group2role_p2g2r', { schema: 'churchcrm' })
 export class Person2group2roleP2G2r {
