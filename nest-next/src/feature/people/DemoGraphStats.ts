@@ -49,14 +49,14 @@ export class ListOptionQuery implements DashboardItemInterface {
     //     .getRawMany();
 
     // const printXPlusFive = async (x: any) => {
-    //     const GenderCount = JSON.parse(JSON.stringify(await this.em
+    //     const GenderCount = await this.em
     //         .createQueryBuilder(PersonPer, 'p')
     //         .select('COUNT(p.per_Gender)', 'numb')
     //         .addSelect('p.per_Gender')
     //         .andWhere('p.per_fmr_ID = :fmr_ID', { fmr_ID: x.OptionId })
     //         .groupBy('p.per_Gender')
     //         .addGroupBy('p.per_fmr_ID')
-    //         .getRawMany()));
+    //         .getRawMany();
     //     return {
     //         OptionName: x.OptionName,
     //         GenderCount
