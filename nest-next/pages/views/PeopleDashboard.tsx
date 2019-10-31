@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import * as React from 'react';
 import { WithTranslation } from 'react-i18next';
+import { i18n } from '../../src/i18n';
 import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
 import ContentHeader from '../components/content_header';
+import CountTable from '../components/count_table';
 import SmallBox from '../components/small_box';
-import { i18n } from '../../src/i18n';
 
 interface InitialProps {
   query: {
@@ -233,143 +234,13 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
           </div>
           <div className="row">
             <div className="col-lg-6">
-              <div className="box box-primary">
-                <div className="box-header with-border">
-                  <i className="fa fa-pie-chart" />
-                  <h3 className="box-title">{i18n.t('Family Roles')}</h3>
-                  <div className="box-tools pull-right">
-                    <button type="button" className="btn btn-box-tool" data-widget="collapse">
-                      <i className="fa fa-minus" />
-                    </button>
-                    <button type="button" className="btn btn-box-tool" data-widget="remove">
-                      <i className="fa fa-times" />
-                    </button>
-                  </div>
-                </div>
-                <div className="box-body no-padding">
-                  <table className="table table-condensed">
-                    <tbody><tr>
-                      <th>Role / Gender</th>
-                      <th>% of People</th>
-                      <th style={{ width: '40px' }}>Count</th>
-                    </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=1&amp;FamilyRole=1">Head of Household - Male</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '14%' }} title="14%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">14</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=2&amp;FamilyRole=1">Head of Household - Female</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '7%' }} title="7%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">7</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=1&amp;FamilyRole=2">Spouse - Male</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '6%' }} title="6%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">6</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=2&amp;FamilyRole=2">Spouse - Female</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '9%' }} title="9%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">9</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=1&amp;FamilyRole=3">Child - Male</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '23%' }} title="23%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">23</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=2&amp;FamilyRole=3">Child - Female</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '19%' }} title="19%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">19</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=1&amp;FamilyRole=4">Other Relative - Male</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '4%' }} title="4%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">4</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=2&amp;FamilyRole=4">Other Relative - Female</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '2%' }} title="2%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">2</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=2&amp;FamilyRole=5">Non Relative - Female</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '1%' }} title="1%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">1</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=1&amp;FamilyRole=0">Unassigned - Male</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '9%' }} title="9%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">9</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=2&amp;FamilyRole=0">Unassigned - Female</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '4%' }} title="4%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">4</span></td>
-                      </tr>
-                      <tr>
-                        <td><a href="v2/people?Gender=0&amp;FamilyRole=0">Unassigned - Unassigned</a></td>
-                        <td>
-                          <div className="progress progress-xs progress-striped active">
-                            <div className="progress-bar progress-bar-success" style={{ width: '2%' }} title="2%" />
-                          </div>
-                        </td>
-                        <td><span className="badge bg-green">2</span></td>
-                      </tr>
-                    </tbody></table>
-                </div>
-              </div>
+              <CountTable />
             </div>
             <div className="col-lg-6">
               <div className="box box-info">
                 <div className="box-header">
-                  <i className="fa fa-address-card-o" />
-                  <h3 className="box-title">Gender Demographics</h3>
+                  <i className="fa fa-pie-chart" />
+                  <h3 className="box-title">{i18n.t('Gender Demographics')}</h3>
                   <div className="box-tools pull-right">
                     <div id="gender-donut-legend" className="chart-legend"/>
                   </div>
@@ -382,7 +253,7 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
               <div className="box box-info">
                 <div className="box-header">
                   <i className="fa fa-birthday-cake" />
-                  <h3 className="box-title">Age Histogram</h3>
+                  <h3 className="box-title">{i18n.t('Age Histogram')}</h3>
                   <div className="box-tools pull-right">
                     <div id="age-stats-bar-legend" className="chart-legend" />
                   </div>
