@@ -4,6 +4,7 @@ import { FamilyDashboardItem } from '../dashboard/FamilyDashboardItem';
 import { GroupsDashboardItem } from '../dashboard/GroupsDashboardItem';
 import { PersonDashboardItem } from '../dashboard/PersonDashboardItem';
 import { ListOptionQuery } from './DemoGraphStats';
+import { splitWhen, gt, prop, takeLastWhile, sortWith, ascend } from 'ramda';
 
 @Injectable()
 export class PeopleDashBoardService {
@@ -12,7 +13,7 @@ export class PeopleDashBoardService {
     private readonly DashboardFamily: FamilyDashboardItem,
     private readonly DashboardGroup: GroupsDashboardItem,
     private readonly DashboardList: ListOptionQuery
-  ) {}
+  ) { }
   public async root(): Promise<SmallBoxif & any> {
     const family = this.DashboardFamily.getDashboardItemValue();
     const member = this.DashboardPerson.getDashboardItemValue();

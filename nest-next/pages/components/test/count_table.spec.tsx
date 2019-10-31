@@ -7,7 +7,7 @@ describe('Pages Components', () => {
     it('should render without throwing an error', () => {
       const wrapMount = mount(<CountTable />);
       // const wrapShallow = shallow(<CountTable />);
-      console.log(wrapMount.debug());
+      // console.log(wrapMount.debug());
       // console.log(wrapShallow.debug());
       // console.log(wrapMount.find({ title: 'Latest Families'}).debug());
       // expect(wrapShallow.find('title').text()).toBe('ChurchCRM: Welcome to Main St. Cathedral');

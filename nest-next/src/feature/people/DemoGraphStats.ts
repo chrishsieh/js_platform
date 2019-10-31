@@ -4,16 +4,17 @@ import { EntityManager } from 'typeorm';
 import { ListLst } from '../../shared/entity/list_lst';
 import { PersonPer } from '../../shared/entity/person_per';
 import { DashboardItemInterface } from '../../shared/interface/dashboard';
+import { sortWith, ascend, prop, takeLastWhile, difference, append, find, partition, propEq, pathEq } from 'ramda';
 
 @Injectable()
 export class ListOptionQuery implements DashboardItemInterface {
   constructor(
     @InjectEntityManager()
     private readonly em: EntityManager
-  ) {}
+  ) { }
 
   public getDashboardItemName(): string {
-    return 'GroupsDisplay';
+    return 'ListGroup';
   }
 
   public shouldInclude(PageName: string): boolean {
@@ -23,12 +24,14 @@ export class ListOptionQuery implements DashboardItemInterface {
   public async getDashboardItemValue(): Promise<any> {
     const Counts = await this.getCountMembers();
     return {
-      GroListGroupup: Counts.ListGroup,
+      Count: Counts.Total,
+      ListGroup: Counts.ListGroup,
     };
   }
 
   private async getCountMembers(): Promise<any> {
-    const ListGroup = await this.em
+    const Total = await this.em.createQueryBuilder(PersonPer, 'p').getCount();
+    const ListGroupData = await this.em
       .createQueryBuilder(PersonPer, 'p')
       .leftJoin(ListLst, 'l', 'l.lst_OptionID = p.per_fmr_ID And l.lst_ID = 2')
       .select('p.per_fmr_ID', 'ID')
@@ -40,6 +43,29 @@ export class ListOptionQuery implements DashboardItemInterface {
       .addGroupBy('Gender')
       .orderBy('ID', 'ASC')
       .getRawMany();
+
+    // Sort by ID and Gender with Null check.
+    let ListGroup;
+    const SplitIdNull = partition(propEq('ID', 0))(ListGroupData);
+    if (SplitIdNull.length === 2) {
+      const SplitGenderNull = partition(propEq('Gender', 0))(SplitIdNull[0]);
+      if(SplitGenderNull.length === 2) {
+        ListGroup = [...SplitIdNull[1], ...SplitGenderNull[1], ...SplitGenderNull[0]];
+      } else {
+        ListGroup = [...SplitIdNull[1], ...SplitGenderNull[0]];
+      }
+    } else {
+      ListGroup = [...SplitIdNull[0]];
+    }
+
+    // const isIDNull = (x: any) => x.ID !== 0;
+    // const paraSort = sortWith([ascend(prop<any>('ID')), ascend(prop<any>('Gender'))]);
+    // const NormalList = paraSort(takeLastWhile(isIDNull, ListGroupData));
+    // const NullList = paraSort(difference(ListGroupData, NormalList));
+    // if (NullList) {
+    //   const NullNull = find(pathEq(['Gender'], 0))(NullList);
+    // }
+    // const ListGroup = append(NullList)(NormalList);
 
     // const ListGroupBase = await this.listlstRepo
     //     .createQueryBuilder('l')
@@ -66,6 +92,7 @@ export class ListOptionQuery implements DashboardItemInterface {
     // console.log(ListGroup);
 
     return {
+      Total,
       ListGroup,
     };
   }
