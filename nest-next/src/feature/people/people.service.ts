@@ -18,7 +18,7 @@ export class PeopleDashBoardService {
     const family = this.DashboardFamily.getDashboardItemValue();
     const member = this.DashboardPerson.getDashboardItemValue();
     const group = await this.DashboardGroup.getDashboardItemValue();
-    const list = await this.DashboardList.getDashboardItemValue();
+    const listGender = await this.DashboardList.getDashboardItemValue();
 
     return {
       smallBoxs: [
@@ -27,6 +27,7 @@ export class PeopleDashBoardService {
         { Name: 'Sunday School Kids', Count: group.SundaySchoolKids },
         { Name: 'Groups', Count: group.Group },
       ],
+      listGender,
       AdultsGenderCount: group.AdultsGenderCount,
       KidsGenderCount: group.KidsGenderCount,
       AgeCountGroup: group.AgeCountGroup,
