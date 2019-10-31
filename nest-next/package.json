@@ -52,8 +52,8 @@
     "passport-jwt": "^4.0.0",
     "popper.js": "^1.15.0",
     "ramda": "^0.26.1",
-    "react": "16.10.1",
-    "react-dom": "16.10.1",
+    "react": "16",
+    "react-dom": "16",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.2",
     "swagger-ui-express": "^4.1.1",
@@ -71,13 +71,18 @@
     "@babel/preset-typescript": "^7.1.0",
     "@nestjs/testing": "^6.7.2",
     "@types/dotenv": "^4.0.3",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^23.3.5",
     "@types/joi": "^13.6.1",
     "@types/next": "^8.0.6",
     "@types/node": "^12.7.1",
     "@types/react": "^16.9.1",
     "@zeit/next-sass": "^1.0.1",
+    "babel-jest": "^24.9.0",
     "babel-plugin-module-resolver": "^3.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.0",
@@ -95,14 +100,28 @@
     "moduleNameMapper": {
       "^@server/(.*)$": "<rootDir>/src/$1"
     },
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "babelConfig": true
+      }
+    },
     "moduleFileExtensions": [
       "js",
       "json",
-      "ts"
+      "ts",
+      "tsx"
     ],
     "rootDir": ".",
-    "testRegex": ".spec.ts$",
+    "testRegex": ".spec.(ts|tsx)$",
     "coverageDirectory": "./coverage",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "enzyme.js"
+    ],
+    "setupFilesAfterEnv": ["<rootDir>/enzyme.js"],
     "preset": "ts-jest/presets/js-with-ts",
     "testMatch": null
   }
