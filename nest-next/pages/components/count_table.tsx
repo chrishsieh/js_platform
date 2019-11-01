@@ -8,42 +8,20 @@ class CountTable extends React.Component<any> {
     };
   }
   public render() {
-    const input = {
-      Title: 'Family Roles',
-      IconType: 'fa fa-address-card',
-      TableName: 'Role / Gender',
-      TableCol_1: '% of People',
-      TableCol_2: 'Count',
-      Count: 100,
-      GroListGroupup: [
-        { ID: 1, Name: 'Head of Household', Gender: 1, Count: '14' },
-        { ID: 1, Name: 'Head of Household', Gender: 2, Count: '7' },
-        { ID: 2, Name: 'Spouse', Gender: 1, Count: '6' },
-        { ID: 2, Name: 'Spouse', Gender: 2, Count: '9' },
-        { ID: 3, Name: 'Child', Gender: 1, Count: '23' },
-        { ID: 3, Name: 'Child', Gender: 2, Count: '19' },
-        { ID: 4, Name: 'Other Relative', Gender: 1, Count: '4' },
-        { ID: 4, Name: 'Other Relative', Gender: 2, Count: '2' },
-        { ID: 5, Name: 'Non Relative', Gender: 2, Count: '1' },
-        { ID: 0, Name: null, Gender: 1, Count: '9' },
-        { ID: 0, Name: null, Gender: 2, Count: '4' },
-        { ID: 0, Name: null, Gender: 0, Count: '2' },
-      ],
-    };
-    const Testbox = input.GroListGroupup.map((value: any) => (
+    const ListGroup = this.props.ListGroup.map((value: any) => (
       // tslint:disable-next-line: jsx-key
-      <tr key={value.ID + ':' + value.Gender}>
+      <tr key={value.link}>
         <td>
-          <a href={`v2/people?Gender=` + value.Gender + `&FamilyRole=` + value.ID}>
-            {value.Name ? value.Name : 'Unassigned'} - {value.Gender === 1 ? 'Male' : value.Gender === 2 ? 'Female' : 'Unassigned'}
+          <a href={value.link}>
+            {value.NameMarge ? value.NameMarge : i18n.t('Unassigned')}
           </a>
         </td>
         <td>
           <div className="progress progress-xs progress-striped active">
             <div
               className="progress-bar progress-bar-success"
-              style={{ width: input.Count > 0 ? value.Count * 100 / input.Count + '%' : '0%' }}
-              title={input.Count > 0 ? value.Count * 100 / input.Count + '%' : '0%'}
+              style={{ width: this.props.Count > 0 ? value.Count * 100 / this.props.Count + '%' : '0%' }}
+              title={this.props.Count > 0 ? value.Count * 100 / this.props.Count + '%' : '0%'}
             />
           </div>
         </td>
@@ -53,8 +31,8 @@ class CountTable extends React.Component<any> {
     return (
       <div className="box box-primary">
         <div className="box-header with-border">
-          <i className={input.IconType} />
-          <h3 className="box-title">{i18n.t(input.Title)}</h3>
+          <i className={this.props.IconType} />
+          <h3 className="box-title">{this.props.Title}</h3>
           <div className="box-tools pull-right">
             <button type="button" className="btn btn-box-tool" data-widget="collapse">
               <i className="fa fa-minus" />
@@ -67,11 +45,11 @@ class CountTable extends React.Component<any> {
         <div className="box-body no-padding">
           <table className="table table-condensed">
             <tbody><tr>
-              <th>{i18n.t(input.TableName)}</th>
-              <th>{i18n.t(input.TableCol_1)}</th>
-              <th style={{ width: '40px' }}>{i18n.t(input.TableCol_2)}</th>
+              <th>{this.props.TableName}</th>
+              <th>{this.props.TableCol_1}</th>
+              <th style={{ width: '60px' }}>{this.props.TableCol_2}</th>
             </tr>
-              {Testbox}
+              {ListGroup}
             </tbody></table>
         </div>
       </div>

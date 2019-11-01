@@ -6,6 +6,7 @@ import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
 import ContentHeader from '../components/content_header';
 import CountTable from '../components/count_table';
 import SmallBox from '../components/small_box';
+import { map, merge } from 'ramda';
 
 interface InitialProps {
   query: {
@@ -16,6 +17,10 @@ interface InitialProps {
 interface Props {
   query: {
     smallBoxs: SmallBoxItem[];
+    listGender: any;
+    AdultsGenderCount: number;
+    KidsGenderCount: number;
+    AgeCountGroup: number;
   };
   namespacesRequired: string[];
 }
@@ -65,26 +70,47 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
           };
       }
     });
-    const RoleGender = {
-      Title: 'Family Roles',
+    const combyName = (x: any) => {
+      if (x.Name === null) {
+        x.Name = 'Unassigned';
+      }
+      return x;
+    };
+    const NameLink = (x: any) => {
+      const link = `v2/people?Gender=` + x.Gender + `&FamilyRole=` + x.ID;
+      if (x.Gender === 1) {
+        x.NameMarge = x.Name + ' - ' + 'Male';
+      } else if (x.Gender === 2) {
+        x.NameMarge = x.Name + ' - ' + 'Female';
+      } else {
+        x.NameMarge = x.Name + ' - ' + 'Unassigned';
+      }
+      x.link = link;
+      return x;
+    };
+    const RoleGender = merge({
+      Title: i18n.t('Family Roles'),
       IconType: 'fa fa-address-card',
-      TableName: 'Role / Gender',
-      TableCol_1: '% of People',
-      TableCol_2: 'Count',
+      TableName: i18n.t('Role / Gender'),
+      TableCol_1: '% ' + i18n.t('of People'),
+      TableCol_2: i18n.t('Count'),
+    })({
+      Count: this.props.query.listGender.Count,
+      ListGroup: map(NameLink)(map(combyName)(this.props.query.listGender.ListGroup)),
+    });
+    const inputArray = {
+      Title: i18n.t('People Classification'),
+      IconType: 'fa fa-bar-chart-o',
+      TableName: i18n.t('Classification'),
+      TableCol_1: '% ' + i18n.t('of People'),
+      TableCol_2: i18n.t('Count'),
       Count: 100,
       ListGroup: [
-        { ID: 1, Name: ['Head of Household', 'Male'], Gender: 1, Count: '14' },
-        { ID: 1, Name: ['Head of Household', 'Female'], Gender: 2, Count: '7' },
-        { ID: 2, Name: ['Spouse', 'Male'], Gender: 1, Count: '6' },
-        { ID: 2, Name: ['Spouse', 'Female'], Gender: 2, Count: '9' },
-        { ID: 3, Name: ['Child', 'Male'], Gender: 1, Count: '23' },
-        { ID: 3, Name: ['Child', 'Female'], Gender: 2, Count: '19' },
-        { ID: 4, Name: ['Other Relative', 'Male'], Gender: 1, Count: '4' },
-        { ID: 4, Name: ['Other Relative', 'Female'], Gender: 2, Count: '2' },
-        { ID: 5, Name: ['Non Relative', 'Female'], Gender: 2, Count: '1' },
-        { ID: 0, Name: ['Unassigned', 'Male'], Gender: 1, Count: '9' },
-        { ID: 0, Name: ['Unassigned', 'Female'], Gender: 2, Count: '4' },
-        { ID: 0, Name: ['Unassigned', 'Unassigned'], Gender: 0, Count: '2' },
+        { NameMarge: 'Member', Count: '27', link: 'v2/people?inActive=false&Classification=1' },
+        { NameMarge: 'Regular Attender', Count: '18', link: 'v2/people?inActive=false&Classification=2' },
+        { NameMarge: 'Non-Attender', Count: '5', link: 'v2/people?inActive=false&Classification=5' },
+        { NameMarge: 'Guest', Count: '4', link: 'v2/people?inActive=false&Classification=3' },
+        { NameMarge: 'Candidate for Membership', Count: '2', link: 'v2/people?inActive=false&Classification=4' },
       ],
     };
     return (
@@ -186,77 +212,12 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="box box-primary">
-                <div className="box-header with-border">
-                  <i className="fa fa-bar-chart-o" />
-                  <h3 className="box-title">People Classification</h3>
-                  <div className="box-tools pull-right">
-                    <button type="button" className="btn btn-box-tool" data-widget="collapse">
-                      <i className="fa fa-minus" />
-                    </button>
-                    <button type="button" className="btn btn-box-tool" data-widget="remove">
-                      <i className="fa fa-times" />
-                    </button>
-                  </div>
-                </div>
-                <table className="table table-condensed">
-                  <tbody><tr>
-                    <th>Classification</th>
-                    <th>% of People</th>
-                    <th style={{ width: '40px' }}>Count</th>
-                  </tr>
-                    <tr>
-                      <td><a href="v2/people?inActive=false&amp;Classification=1">Member</a></td>
-                      <td>
-                        <div className="progress progress-xs progress-striped active">
-                          <div className="progress-bar progress-bar-success" style={{ width: '27%' }} />
-                        </div>
-                      </td>
-                      <td><span className="badge bg-green">27</span></td>
-                    </tr>
-                    <tr>
-                      <td><a href="v2/people?inActive=false&amp;Classification=2">Regular Attender</a></td>
-                      <td>
-                        <div className="progress progress-xs progress-striped active">
-                          <div className="progress-bar progress-bar-success" style={{ width: '18%' }} />
-                        </div>
-                      </td>
-                      <td><span className="badge bg-green">18</span></td>
-                    </tr>
-                    <tr>
-                      <td><a href="v2/people?inActive=false&amp;Classification=5">Non-Attender</a></td>
-                      <td>
-                        <div className="progress progress-xs progress-striped active">
-                          <div className="progress-bar progress-bar-success" style={{ width: '5%' }} />
-                        </div>
-                      </td>
-                      <td><span className="badge bg-green">5</span></td>
-                    </tr>
-                    <tr>
-                      <td><a href="v2/people?inActive=false&amp;Classification=3">Guest</a></td>
-                      <td>
-                        <div className="progress progress-xs progress-striped active">
-                          <div className="progress-bar progress-bar-success" style={{ width: '4%' }} />
-                        </div>
-                      </td>
-                      <td><span className="badge bg-green">4</span></td>
-                    </tr>
-                    <tr>
-                      <td><a href="v2/people?inActive=false&amp;Classification=6">Candidate for Membership</a></td>
-                      <td>
-                        <div className="progress progress-xs progress-striped active">
-                          <div className="progress-bar progress-bar-success" style={{ width: '2%' }} />
-                        </div>
-                      </td>
-                      <td><span className="badge bg-green">2</span></td>
-                    </tr>
-                  </tbody></table>
-              </div>
+            <CountTable {...inputArray} />
             </div>
           </div>
           <div className="row">
             <div className="col-lg-6">
-              <CountTable />
+              <CountTable {...RoleGender} />
             </div>
             <div className="col-lg-6">
               <div className="box box-info">
@@ -264,7 +225,7 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
                   <i className="fa fa-pie-chart" />
                   <h3 className="box-title">{i18n.t('Gender Demographics')}</h3>
                   <div className="box-tools pull-right">
-                    <div id="gender-donut-legend" className="chart-legend"/>
+                    <div id="gender-donut-legend" className="chart-legend" />
                   </div>
                 </div>
                 {/*<!-- /.box-header -->*/}

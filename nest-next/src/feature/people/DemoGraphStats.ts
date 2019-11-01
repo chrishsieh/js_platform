@@ -11,7 +11,7 @@ export class ListOptionQuery implements DashboardItemInterface {
   constructor(
     @InjectEntityManager()
     private readonly em: EntityManager
-  ) { }
+  ) {}
 
   public getDashboardItemName(): string {
     return 'ListGroup';
@@ -50,33 +50,17 @@ export class ListOptionQuery implements DashboardItemInterface {
     if (SplitIdNull.length === 2) {
       const SplitGenderNull = partition(propEq('Gender', 0))(SplitIdNull[0]);
       if (SplitGenderNull.length === 2) {
-        ListGroup = [...SplitIdNull[1], ...SplitGenderNull[1], ...SplitGenderNull[0]];
+        ListGroup = [
+          ...SplitIdNull[1],
+          ...SplitGenderNull[1],
+          ...SplitGenderNull[0],
+        ];
       } else {
         ListGroup = [...SplitIdNull[1], ...SplitGenderNull[0]];
       }
     } else {
       ListGroup = [...SplitIdNull[0]];
     }
-
-    const combyName = (x: any) => {
-      if (x.Name === null) {
-        x.Name = 'Unassigned'
-      }
-      return x
-    };
-    const NameArray = (x: any) => {
-      let a = [x.Name];
-      if (x.Gender === 1) {
-        a.push('Male');
-      } else if (x.Gender === 2) {
-        a.push('Female');
-      } else {
-        a.push('Unassigned');
-      }
-      x.Name = a;
-      return x
-    };
-    map(NameArray)(map(combyName)(ListGroup));
 
     // const isIDNull = (x: any) => x.ID !== 0;
     // const paraSort = sortWith([ascend(prop<any>('ID')), ascend(prop<any>('Gender'))]);
