@@ -13,7 +13,7 @@ class CountTable extends React.Component<any> {
       <tr key={value.link}>
         <td>
           <a href={value.link}>
-            {value.NameMarge ? value.NameMarge : i18n.t('Unassigned')}
+            {value.Name ? (value.Name.split(' - ').length > 1 ? value.Name.split(' - ').reduce((a: string, b: string) => a === '' ? i18n.t(b) : a + ' - ' + i18n.t(b), ''):i18n.t(value.Name)) : i18n.t('Unassigned')}
           </a>
         </td>
         <td>
@@ -32,7 +32,7 @@ class CountTable extends React.Component<any> {
       <div className="box box-primary">
         <div className="box-header with-border">
           <i className={this.props.IconType} />
-          <h3 className="box-title">{this.props.Title}</h3>
+          <h3 className="box-title">{i18n.t(this.props.Title)}</h3>
           <div className="box-tools pull-right">
             <button type="button" className="btn btn-box-tool" data-widget="collapse">
               <i className="fa fa-minus" />
@@ -45,9 +45,9 @@ class CountTable extends React.Component<any> {
         <div className="box-body no-padding">
           <table className="table table-condensed">
             <tbody><tr>
-              <th>{this.props.TableName}</th>
-              <th>{this.props.TableCol_1}</th>
-              <th style={{ width: '60px' }}>{this.props.TableCol_2}</th>
+              <th>{i18n.t(this.props.TableName)}</th>
+              <th>{i18n.t(this.props.TableCol_1)}</th>
+              <th style={{ width: '60px' }}>{i18n.t(this.props.TableCol_2)}</th>
             </tr>
               {ListGroup}
             </tbody></table>

@@ -94,8 +94,6 @@ class Layout extends React.Component<any> {
         <script src="/static/plugins/slimScroll/jquery.slimscroll.min.js" />
         <script src="/static/plugins/fastclick/fastclick.min.js" />
         <script src="/static/dist/js/app.min.js" />
-        <script src="/static/dist/js/pages/dashboard.js" />
-        <script src="/static/dist/js/demo.js" />
       </div>
     );
   }

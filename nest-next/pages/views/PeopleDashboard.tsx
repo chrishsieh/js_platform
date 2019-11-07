@@ -11,6 +11,10 @@ import SmallBox from '../components/small_box';
 interface InitialProps {
   query: {
     smallBoxs: SmallBoxItem[];
+    listGender: any;
+    AdultsGenderCount: number;
+    KidsGenderCount: number;
+    AgeCountGroup: number;
   };
 }
 
@@ -23,15 +27,14 @@ interface Props {
     AgeCountGroup: number;
   };
   namespacesRequired: string[];
+  smallbox: any;
+  RoleGender: any;
+  inputArray: any;
 }
 
 class PeopleDashBoard extends React.Component<Props & WithTranslation> {
   public static getInitialProps({ query }: InitialProps) {
-    return { query, namespacesRequired: ['common'] };
-  }
-
-  public render() {
-    const smallbox = this.props.query.smallBoxs.map((value) => {
+    const smallbox = query.smallBoxs.map((value) => {
       switch (value.Name) {
         case 'Families':
           return {
@@ -79,40 +82,44 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
     const NameLink = (x: any) => {
       const link = `v2/people?Gender=` + x.Gender + `&FamilyRole=` + x.ID;
       if (x.Gender === 1) {
-        x.NameMarge = i18n.t(x.Name) + ' - ' + i18n.t('Male');
+        x.Name = x.Name + ' - Male';
       } else if (x.Gender === 2) {
-        x.NameMarge = i18n.t(x.Name) + ' - ' + i18n.t('Female');
+        x.Name = x.Name + ' - Female';
       } else {
-        x.NameMarge = i18n.t(x.Name) + ' - ' + i18n.t('Unassigned');
+        x.Name = x.Name + ' - Unassigned';
       }
       x.link = link;
       return x;
     };
     const RoleGender = merge({
-      Title: i18n.t('Family Roles'),
+      Title: 'Family Roles',
       IconType: 'fa fa-pie-chart',
-      TableName: i18n.t('Role / Gender'),
-      TableCol_1: '% ' + i18n.t('of People'),
-      TableCol_2: i18n.t('Count'),
+      TableName: 'Role / Gender',
+      TableCol_1: '% of People',
+      TableCol_2: 'Count',
     })({
-      Count: this.props.query.listGender.Count,
-      ListGroup: map(NameLink)(map(combyName)(this.props.query.listGender.ListGroup)),
+      Count: query.listGender.Count,
+      ListGroup: map(NameLink)(map(combyName)(query.listGender.ListGroup)),
     });
     const inputArray = {
-      Title: i18n.t('People Classification'),
+      Title: 'People Classification',
       IconType: 'fa fa-bar-chart-o',
-      TableName: i18n.t('Classification'),
-      TableCol_1: '% ' + i18n.t('of People'),
-      TableCol_2: i18n.t('Count'),
+      TableName: 'Classification',
+      TableCol_1: '% of People',
+      TableCol_2: 'Count',
       Count: 100,
       ListGroup: [
-        { NameMarge: 'Member', Count: '27', link: 'v2/people?inActive=false&Classification=1' },
-        { NameMarge: 'Regular Attender', Count: '18', link: 'v2/people?inActive=false&Classification=2' },
-        { NameMarge: 'Non-Attender', Count: '5', link: 'v2/people?inActive=false&Classification=5' },
-        { NameMarge: 'Guest', Count: '4', link: 'v2/people?inActive=false&Classification=3' },
-        { NameMarge: 'Candidate for Membership', Count: '2', link: 'v2/people?inActive=false&Classification=4' },
+        { Name: 'Member', Count: '27', link: 'v2/people?inActive=false&Classification=1' },
+        { Name: 'Regular Attender', Count: '18', link: 'v2/people?inActive=false&Classification=2' },
+        { Name: 'Non-Attender', Count: '5', link: 'v2/people?inActive=false&Classification=5' },
+        { Name: 'Guest', Count: '4', link: 'v2/people?inActive=false&Classification=3' },
+        { Name: 'Candidate for Membership', Count: '2', link: 'v2/people?inActive=false&Classification=4' },
       ],
     };
+    return { query, namespacesRequired: ['common'], smallbox, RoleGender, inputArray };
+  }
+
+  public render() {
     return (
       < div >
         <ContentHeader content="People Dashboard" />
@@ -166,7 +173,7 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
                 <i className="fa fa-map-pin" />{i18n.t('Update All Family Coordinates')}</a>
             </div>
           </div>
-          <SmallBox array={smallbox} />
+          <SmallBox array={this.props.smallbox} />
           <div className="row">
             <div className="col-lg-6">
               <div className="box box-info">
@@ -212,12 +219,12 @@ class PeopleDashBoard extends React.Component<Props & WithTranslation> {
               </div>
             </div>
             <div className="col-lg-6">
-              <CountTable {...inputArray} />
+              <CountTable {...this.props.inputArray} />
             </div>
           </div>
           <div className="row">
             <div className="col-lg-6">
-              <CountTable {...RoleGender} />
+              <CountTable {...this.props.RoleGender} />
             </div>
             <div className="col-lg-6">
               <div className="box box-info">
