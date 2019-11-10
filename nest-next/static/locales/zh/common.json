@@ -617,10 +617,7 @@
   "Sunday School Kids": "主日學校的孩子",
   "More info": "更多資料",
   "Reports on groups and roles": "報告組和角色",
-  "Report on group and roles selected (it may be a multi-page PDF).": "報告組和角色選擇（它可能是一個多頁的PDF）。",
-  "Generate letters and mailing labels.": "生成信函和郵寄標籤。",
   "US Address Verification Report": "美國地址驗證報告的",
-  "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>_html": "生成報告，將所有美國家庭地址與美國郵政服務標準地址格式進行比較。<br>",
   "Role / Gender": "角色/性別",
   "Count": "計數器",
   "People Classification": "人員分類",
@@ -1982,7 +1979,15 @@
   "Your Church's Twitter Page": "您的教會的Twitter頁面",
   "lookup user images on Google when no local image is present": "當沒有本地圖像時，在谷歌上查找用戶圖像",
   "Self Register": "自助登記",
-  "List families that were created via self registration.": "列出自助註冊創建的家庭清單。",
+  "people": {
+    "report": {
+      "famselfreg": "列出自助註冊創建的家庭清單。",
+      "groupAndroles" : "報告組和角色選擇（它可能是一個多頁的PDF）。",
+      "PrintDirectory": "所有人員的打印目錄，按分配的家庭分組",
+      "Generatelabels": "生成信函和郵寄標籤。",
+      "USAddress": "生成報告，將所有美國家庭地址與美國郵政服務標準地址格式進行比較。"
+    }
+  },
   "Pending Self Verify": "待自助驗證",
   "Self Verify": "自助驗證",
   "Indonesian - Indonesia": "印尼語 - 印尼",
@@ -2087,8 +2092,8 @@
   "People Dashboard": "人員儀錶板",
   "People Functions": "人員功能",
   "People Directory": "人員目錄",
-  "Printable directory of all people, grouped by family where assigned": "所有人員的打印目錄，按分配的家庭分組",
   "% of People": "% 人數",
+  "of People": "人數",
   "System Upgrade": "系統升級",
   "Upgrade Required": "要求升級",
   "Current DB Version: ": "現運作資料庫版本",

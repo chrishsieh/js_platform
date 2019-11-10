@@ -1,6 +1,7 @@
 import NextI18Next from 'next-i18next';
 
 const NextI18NextInstance = new NextI18Next({
+  // debug: true,
   defaultLanguage: 'en',
   otherLanguages: ['zh'],
   fallbackLng: 'en',
