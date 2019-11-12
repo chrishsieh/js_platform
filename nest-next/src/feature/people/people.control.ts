@@ -7,11 +7,18 @@ import { PeopleDashBoardService } from './people.service';
 @UseGuards(SimpleAuthGuard)
 // @UseInterceptors(CacheInterceptor)
 export class PeopleDashBoardController {
-  constructor(private readonly peopledashboardService: PeopleDashBoardService) {}
+  constructor(private readonly peopledashboardService: PeopleDashBoardService) { }
 
   @Get('PeopleDashboard')
   @Render('PeopleDashboard')
   public async peopleDashboard(): Promise<SmallBoxif & any> {
     return await this.peopledashboardService.root();
   }
+
+  @Get('PersonEditor')
+  @Render('PersonEditor')
+  public async PersonEditor(): Promise<any> {
+    return {};
+  }
+
 }
