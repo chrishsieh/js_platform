@@ -55,7 +55,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                 <h3 className="box-title">個人信息</h3>
                 <div className="pull-right">
                   <br />
-                  <input type="submit" className="btn btn-primary" value="保存" name="PersonSubmit" />
+                  {/* <input type="submit" className="btn btn-primary" value="保存" name="PersonSubmit" /> */}
                 </div>
               </div>
               {/* <!-- /.box-header --> */}
@@ -73,7 +73,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                     </div>
                     <div className="col-md-3">
                       <label htmlFor="Title">標題:</label>
-                      <input type="text" name="Title" id="Title" value="" className="form-control" placeholder="先生，夫人，博士，牧師" />
+                      {/* <input type="text" name="Title" id="Title" defaultValue="" className="form-control" placeholder="先生，夫人，博士，牧師" /> */}
                     </div>
                   </div>
                   <p>
@@ -81,19 +81,19 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                   <div className="row">
                     <div className="col-md-4">
                       <label htmlFor="FirstName">名字:</label>
-                      <input type="text" name="FirstName" id="FirstName" value="" className="form-control" />
+                      <input type="text" name="FirstName" id="FirstName" defaultValue="" className="form-control" />
                     </div>
                     <div className="col-md-2">
                       <label htmlFor="MiddleName">中間名:</label>
-                      <input type="text" name="MiddleName" id="MiddleName" value="" className="form-control" />
+                      <input type="text" name="MiddleName" id="MiddleName" defaultValue="" className="form-control" />
                     </div>
                     <div className="col-md-4">
                       <label htmlFor="LastName">姓氐:</label>
-                      <input type="text" name="LastName" id="LastName" value="" className="form-control" />
+                      <input type="text" name="LastName" id="LastName" defaultValue="" className="form-control" />
                     </div>
                     <div className="col-md-1">
                       <label htmlFor="Suffix">後綴:</label>
-                      <input type="text" name="Suffix" id="Suffix" value="" placeholder="Jr.，Sr.，III" className="form-control" />
+                      <input type="text" name="Suffix" id="Suffix" defaultValue="" placeholder="Jr.，Sr.，III" className="form-control" />
                     </div>
                   </div>
                   <p>
@@ -156,12 +156,12 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                     </div>
                     <div className="col-md-2">
                       <label>出生年份:</label>
-                      <input type="text" name="BirthYear" value="0" maxLength={4} size={5} placeholder="yyyy" className="form-control" />
+                      {/* <input type="text" name="BirthYear" value="0" maxLength={4} size={5} placeholder="yyyy" className="form-control" /> */}
                     </div>
                     <div className="col-md-2">
                       <label>隱藏年齡</label>
                       <br />
-                      <input type="checkbox" name="HideAge" value="1" />
+                      {/* <input type="checkbox" name="HideAge" value="1" /> */}
                     </div>
                   </div>
                 </div>
@@ -171,7 +171,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
               <div className="box-header">
                 <h3 className="box-title">家庭資料</h3>
                 <div className="pull-right"><br />
-                  <input type="submit" className="btn btn-primary" value="保存" name="PersonSubmit" />
+                  {/* <input type="submit" className="btn btn-primary" value="保存" name="PersonSubmit" /> */}
                 </div>
               </div>
               {/* <!-- /.box-header --> */}
@@ -200,18 +200,18 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
               <div className="box-header">
                 <h3 className="box-title">聯絡人資料</h3>
                 <div className="pull-right"><br />
-                  <input type="submit" className="btn btn-primary" value="保存" name="PersonSubmit" />
+                  {/* <input type="submit" className="btn btn-primary" value="保存" name="PersonSubmit" /> */}
                 </div>
               </div>
               {/* <!-- /.box-header --> */}
               <div className="box-body">
-                <input type="hidden" name="Address1" value="" />
+                {/* <input type="hidden" name="Address1" value="" />
                 <input type="hidden" name="Address2" value="" />
                 <input type="hidden" name="City" value="Kansas City" />
                 <input type="hidden" name="State" value="MO" />
                 <input type="hidden" name="StateTextbox" value="MO" />
                 <input type="hidden" name="Zip" value="" />
-                <input type="hidden" name="Country" value="United States" />
+                <input type="hidden" name="Country" value="United States" /> */}
                 <div className="row">
                   <div className="form-group col-md-3">
                     <label htmlFor="HomePhone"> 家庭電話:</label>
@@ -219,9 +219,9 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <div className="input-group-addon">
                         <i className="fa fa-phone" />
                       </div>
-                      <input type="text" name="HomePhone" value="" size={30} maxLength={30} className="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" />
+                      {/* <input type="text" name="HomePhone" value="" size={30} maxLength={30} className="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" /> */}
                       <br />
-                      <input type="checkbox" name="NoFormat_HomePhone" value="1" />不要自動格式
+                      {/* <input type="checkbox" name="NoFormat_HomePhone" value="1" />不要自動格式 */}
                     </div>
                   </div>
                   <div className="form-group col-md-3">
@@ -230,8 +230,8 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <div className="input-group-addon">
                         <i className="fa fa-phone" />
                       </div>
-                      <input type="text" name="WorkPhone" value="" size={30} maxLength={30} className="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999 x99999&quot;" data-mask="" im-insert="true" />
-                      <br /><input type="checkbox" name="NoFormat_WorkPhone" value="1" />不要自動格式
+                      {/* <input type="text" name="WorkPhone" value="" size={30} maxLength={30} className="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999 x99999&quot;" data-mask="" im-insert="true" /> */}
+                      {/* <br /><input type="checkbox" name="NoFormat_WorkPhone" value="1" />不要自動格式 */}
                     </div>
                   </div>
                   <div className="form-group col-md-3">
@@ -240,9 +240,9 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <div className="input-group-addon">
                         <i className="fa fa-phone" />
                       </div>
-                      <input type="text" name="CellPhone" value="" size={30} maxLength={30} className="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" />
+                      {/* <input type="text" name="CellPhone" value="" size={30} maxLength={30} className="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" /> */}
                       <br />
-                      <input type="checkbox" name="NoFormat_CellPhone" value="1" />不要自動格式
+                      {/* <input type="checkbox" name="NoFormat_CellPhone" value="1" />不要自動格式 */}
                     </div>
                   </div>
                 </div>
@@ -255,7 +255,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <div className="input-group-addon">
                         <i className="fa fa-envelope" />
                       </div>
-                      <input type="text" name="Email" value="" size={30} maxLength={100} className="form-control" />
+                      {/* <input type="text" name="Email" value="" size={30} maxLength={100} className="form-control" /> */}
                     </div>
                   </div>
                   <div className="form-group col-md-4">
@@ -264,7 +264,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <div className="input-group-addon">
                         <i className="fa fa-envelope" />
                       </div>
-                      <input type="text" name="WorkEmail" value="" size={30} maxLength={100} className="form-control" />
+                      {/* <input type="text" name="WorkEmail" value="" size={30} maxLength={100} className="form-control" /> */}
                     </div>
                   </div>
                 </div>
@@ -275,7 +275,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <div className="input-group-addon">
                         <i className="fa fa-facebook" />
                       </div>
-                      <input type="text" name="Facebook" value="0" size={30} maxLength={100} className="form-control" />
+                      {/* <input type="text" name="Facebook" value="0" size={30} maxLength={100} className="form-control" /> */}
                     </div>
                   </div>
                   <div className="form-group col-md-4">
@@ -284,7 +284,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <div className="input-group-addon">
                         <i className="fa fa-twitter" />
                       </div>
-                      <input type="text" name="Twitter" value="" size={30} maxLength={100} className="form-control" />
+                      {/* <input type="text" name="Twitter" value="" size={30} maxLength={100} className="form-control" /> */}
                     </div>
                   </div>
                   <div className="form-group col-md-4">
@@ -293,7 +293,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <div className="input-group-addon">
                         <i className="fa fa-linkedin" />
                       </div>
-                      <input type="text" name="LinkedIn" value="" size={30} maxLength={100} className="form-control" />
+                      {/* <input type="text" name="LinkedIn" value="" size={30} maxLength={100} className="form-control" /> */}
                     </div>
                   </div>
                 </div>
@@ -303,7 +303,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
               <div className="box-header">
                 <h3 className="box-title">成員信息</h3>
                 <div className="pull-right"><br />
-                  <input type="submit" className="btn btn-primary" value="保存" name="PersonSubmit" />
+                  {/* <input type="submit" className="btn btn-primary" value="保存" name="PersonSubmit" /> */}
                 </div>
               </div>
               {/* <!-- /.box-header --> */}
@@ -328,7 +328,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                         <i className="fa fa-calendar" />
                       </div>
                       {/* <!-- Philippe Logel --> */}
-                      <input type="text" name="MembershipDate" className="form-control date-picker" value="" maxLength={10} id="sel1" size={11} placeholder="yyyy-mm-dd" />
+                      {/* <input type="text" name="MembershipDate" className="form-control date-picker" value="" maxLength={10} id="sel1" size={11} placeholder="yyyy-mm-dd" /> */}
                     </div>
                   </div>
                   <div className="form-group col-md-3 col-lg-3">
@@ -337,7 +337,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <div className="input-group-addon">
                         <i className="fa fa-calendar" />
                       </div>
-                      <input type="text" name="FriendDate" className="form-control date-picker" value="2019-11-11" maxLength={10} id="sel2" size={10} placeholder="yyyy-mm-dd" />
+                      {/* <input type="text" name="FriendDate" className="form-control date-picker" value="2019-11-11" maxLength={10} id="sel2" size={10} placeholder="yyyy-mm-dd" /> */}
                     </div>
                   </div>
                 </div>
