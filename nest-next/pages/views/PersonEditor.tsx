@@ -27,6 +27,49 @@ interface Props {
   namespacesRequired: string[];
 }
 
+type PhoneDetailProps = {
+  name: string;
+  showlabel: string;
+  inputMask: string;
+}
+
+type EmailDetailProps = {
+  name: string;
+  showlabel: string;
+}
+
+const PhonePattern: React.FunctionComponent<PhoneDetailProps> = ({
+  name, showlabel, inputMask
+}) => (
+    <div className="form-group col-md-3">
+      <label htmlFor={name}>{showlabel}</label>
+      <div className="input-group">
+        <div className="input-group-addon">
+          <i className="fa fa-phone" />
+        </div>
+        <input type="text" name={name} defaultValue="" size={30} maxLength={30} className="form-control"
+          data-inputmask={"&quot;mask&quot;: &quot;" + inputMask + "&quot;"} data-mask="" im-insert="true" />
+        <br />
+        <input type="checkbox" name={"NoFormat_" + name} defaultValue="1" />不要自動格式
+      </div>
+    </div>
+  )
+
+const EmailPattern: React.FunctionComponent<EmailDetailProps> = ({
+  name, showlabel
+}) => (
+    <div className="form-group col-md-4">
+      <label htmlFor={name}>{showlabel}</label>
+      <div className="input-group">
+        <div className="input-group-addon">
+          <i className="fa fa-envelope" />
+        </div>
+        <input type="text" name={name} defaultValue="" size={30} maxLength={100} className="form-control" />
+      </div>
+    </div>
+  )
+
+
 class PersonEditor extends React.Component<Props & WithTranslation> {
   public static getInitialProps({ query }: InitialProps) {
     return { query, namespacesRequired: ['common'] };
@@ -213,60 +256,15 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                 <input type="hidden" name="Zip" defaultValue="" />
                 <input type="hidden" name="Country" defaultValue="United States" />
                 <div className="row">
-                  <div className="form-group col-md-3">
-                    <label htmlFor="HomePhone"> 家庭電話:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-phone" />
-                      </div>
-                      <input type="text" name="HomePhone" defaultValue="" size={30} maxLength={30} className="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" />
-                      <br />
-                      <input type="checkbox" name="NoFormat_HomePhone" defaultValue="1" />不要自動格式
-                    </div>
-                  </div>
-                  <div className="form-group col-md-3">
-                    <label htmlFor="WorkPhone">工作電話:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-phone" />
-                      </div>
-                      <input type="text" name="WorkPhone" defaultValue="" size={30} maxLength={30} className="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999 x99999&quot;" data-mask="" im-insert="true" />
-                      <br /><input type="checkbox" name="NoFormat_WorkPhone" defaultValue="1" />不要自動格式
-                    </div>
-                  </div>
-                  <div className="form-group col-md-3">
-                    <label htmlFor="CellPhone">手機:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-phone" />
-                      </div>
-                      <input type="text" name="CellPhone" defaultValue="" size={30} maxLength={30} className="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" />
-                      <br />
-                      <input type="checkbox" name="NoFormat_CellPhone" defaultValue="1" />不要自動格式
-                    </div>
-                  </div>
+                  <PhonePattern name="HomePhone" showlabel="家庭電話:" inputMask="(999) 999-9999" />
+                  <PhonePattern name="WorkPhone" showlabel="工作電話:" inputMask="(999) 999-9999 x99999" />
+                  <PhonePattern name="CellPhone" showlabel="手機:" inputMask="(999) 999-9999" />
                 </div>
                 <p>
                 </p>
                 <div className="row">
-                  <div className="form-group col-md-4">
-                    <label htmlFor="Email">電子郵件:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-envelope" />
-                      </div>
-                      <input type="text" name="Email" defaultValue="" size={30} maxLength={100} className="form-control" />
-                    </div>
-                  </div>
-                  <div className="form-group col-md-4">
-                    <label htmlFor="WorkEmail">工作/其他電子郵件:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-envelope" />
-                      </div>
-                      <input type="text" name="WorkEmail" defaultValue="" size={30} maxLength={100} className="form-control" />
-                    </div>
-                  </div>
+                  <EmailPattern name="Email" showlabel="電子郵件:" />
+                  <EmailPattern name="WorkEmail" showlabel="工作/其他電子郵件:" />
                 </div>
                 <div className="row">
                   <div className="form-group col-md-4">
