@@ -1,14 +1,6 @@
-import Head from 'next/head';
-import { map, merge } from 'ramda';
 import * as React from 'react';
 import { WithTranslation } from 'react-i18next';
-import { i18n } from '../../src/i18n';
 import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
-import ContentHeader from '../components/content_header';
-import CountTable from '../components/count_table';
-import PeopleFun from '../components/people_fun';
-import SmallBox from '../components/small_box';
-import PeopleReport from '../components/people_report';
 
 interface InitialProps {
   query: {
@@ -27,19 +19,25 @@ interface Props {
   namespacesRequired: string[];
 }
 
-type PhoneDetailProps = {
+interface PhoneDetailProps {
   name: string;
   showlabel: string;
   inputMask: string;
 }
 
-type EmailDetailProps = {
+interface EmailDetailProps {
   name: string;
   showlabel: string;
 }
 
+interface SocialDetailProps {
+  name: string;
+  showlabel: string;
+  icon: string;
+}
+
 const PhonePattern: React.FunctionComponent<PhoneDetailProps> = ({
-  name, showlabel, inputMask
+  name, showlabel, inputMask,
 }) => (
     <div className="form-group col-md-3">
       <label htmlFor={name}>{showlabel}</label>
@@ -47,16 +45,25 @@ const PhonePattern: React.FunctionComponent<PhoneDetailProps> = ({
         <div className="input-group-addon">
           <i className="fa fa-phone" />
         </div>
-        <input type="text" name={name} defaultValue="" size={30} maxLength={30} className="form-control"
-          data-inputmask={"&quot;mask&quot;: &quot;" + inputMask + "&quot;"} data-mask="" im-insert="true" />
+        <input
+          type="text"
+          name={name}
+          defaultValue=""
+          size={30}
+          maxLength={30}
+          className="form-control"
+          data-inputmask={'mask: ' + inputMask }
+          data-mask=""
+          im-insert="true"
+        />
         <br />
-        <input type="checkbox" name={"NoFormat_" + name} defaultValue="1" />不要自動格式
+        <input type="checkbox" name={'NoFormat_' + name} defaultValue="1" />不要自動格式
       </div>
     </div>
-  )
+  );
 
 const EmailPattern: React.FunctionComponent<EmailDetailProps> = ({
-  name, showlabel
+  name, showlabel,
 }) => (
     <div className="form-group col-md-4">
       <label htmlFor={name}>{showlabel}</label>
@@ -67,9 +74,21 @@ const EmailPattern: React.FunctionComponent<EmailDetailProps> = ({
         <input type="text" name={name} defaultValue="" size={30} maxLength={100} className="form-control" />
       </div>
     </div>
-  )
+  );
 
-
+const SocialPattern: React.FunctionComponent<SocialDetailProps> = ({
+  name, showlabel, icon,
+}) => (
+    <div className="form-group col-md-4">
+      <label htmlFor={name}>{showlabel}</label>
+      <div className="input-group">
+        <div className="input-group-addon">
+          <i className={'fa ' + icon} />
+        </div>
+        <input type="text" name={name} defaultValue="" size={30} maxLength={100} className="form-control" />
+      </div>
+    </div>
+  );
 class PersonEditor extends React.Component<Props & WithTranslation> {
   public static getInitialProps({ query }: InitialProps) {
     return { query, namespacesRequired: ['common'] };
@@ -91,7 +110,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
             <div className="alert alert-info alert-dismissable">
               <i className="fa fa-info" />
               <button type="button" className="close" data-dismiss="alert" aria-hidden="true">×</button>
-              <strong><span style={{ color: "red" }}>紅色文字</span></strong> 表示繼承自相關的家庭記錄的項目。
+              <strong><span style={{ color: 'red' }}>紅色文字</span></strong> 表示繼承自相關的家庭記錄的項目。
             </div>
             <div className="box box-info clearfix">
               <div className="box-header">
@@ -107,7 +126,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                   <div className="row">
                     <div className="col-md-2">
                       <label>性別:</label>
-                      <select name="Gender" className="form-control" defaultValue={"0"}>
+                      <select name="Gender" className="form-control" defaultValue={'0'}>
                         <option value="0" selected={false}>選擇性別</option>
                         <option value="0-" disabled={true}>-----------------------</option>
                         <option value="1">男</option>
@@ -119,8 +138,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <input type="text" name="Title" id="Title" defaultValue="" className="form-control" placeholder="先生，夫人，博士，牧師" />
                     </div>
                   </div>
-                  <p>
-                  </p>
+                  <p />
                   <div className="row">
                     <div className="col-md-4">
                       <label htmlFor="FirstName">名字:</label>
@@ -139,12 +157,11 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <input type="text" name="Suffix" id="Suffix" defaultValue="" placeholder="Jr.，Sr.，III" className="form-control" />
                     </div>
                   </div>
-                  <p>
-                  </p>
+                  <p />
                   <div className="row">
                     <div className="col-md-2">
                       <label>出生月:</label>
-                      <select name="BirthMonth" className="form-control" defaultValue={"0"}>
+                      <select name="BirthMonth" className="form-control" defaultValue={'0'}>
                         <option value="0" selected={false}>選擇月份</option>
                         <option value="01">一月</option>
                         <option value="02">二月</option>
@@ -162,7 +179,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                     </div>
                     <div className="col-md-2">
                       <label>出生日:</label>
-                      <select name="BirthDay" className="form-control" defaultValue={"0"}>
+                      <select name="BirthDay" className="form-control" defaultValue={'0'}>
                         <option value="0" selected={false}>選擇日期</option>
                         <option value="01">1</option>
                         <option value="02">2</option>
@@ -221,7 +238,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
               <div className="box-body">
                 <div className="form-group col-md-3">
                   <label>家庭角色:</label>
-                  <select name="FamilyRole" className="form-control" defaultValue={"0"}>
+                  <select name="FamilyRole" className="form-control" defaultValue={'0'}>
                     <option value="0" selected={false}>未分配</option>
                     <option value="0-" disabled={true}>-----------------------</option>
                     <option value="1">Head of Household&nbsp;</option><option value="2">Spouse&nbsp;</option><option value="3">Child&nbsp;</option><option value="4">Other Relative&nbsp;</option><option value="5">Non Relative&nbsp;                </option></select>
@@ -232,10 +249,16 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                     <option value="0" selected={false} data-select2-id="2">未分配</option>
                     <option value="-1">創建一個新的家庭（使用姓氏）</option>
                     <option value="0-" disabled={true}>-----------------------</option>
-                    <option value="13">Beck&nbsp; - 6381 Valwood Pkwy / Buffalo, ME</option><option value="14">Berry&nbsp; - 1931 Edwards Rd / Riverside, PA</option><option value="20">Black&nbsp; - 4307 Avondale Ave / Shiloh, CT</option><option value="1">Campbell&nbsp; - 3259 Daisy Dr / Denton, AR</option><option value="17">Cooper&nbsp; - 1782 Daisy Dr / Oxnard, GA</option><option value="9">Diaz&nbsp; - 1158 Harrison Ct / Hialeah, IA</option><option value="6">Dixon&nbsp; - 6730 Mockingbird Hill / Roanoke, IL</option><option value="10">Gordon&nbsp; - 1255 Brown Terrace / Louisville, MI</option><option value="2">Hart&nbsp; - 4878 Valley View Ln / Grand Rapids, ND</option><option value="19">Kennedy&nbsp; - 9481 Wycliff Ave / Long Beach, KY</option><option value="16">Larson&nbsp; - 3866 Edwards Rd / Inglewood, CO</option><option value="3">Lewis&nbsp; - 2379 Northaven Rd / Detroit, WV</option><option value="11">Newman&nbsp; - 5427 Stevens Creek Blvd / Orlando, MN</option><option value="12">Olson&nbsp; - 1272 Shady Ln Dr / Toledo, NE</option><option value="4">Ray&nbsp; - 4212 Parker Rd / Chesapeake, WI</option><option value="18">Riley&nbsp; - 1403 Avondale Ave / Scottsdale, ID</option><option value="5">Smith&nbsp; - 5572 Robinson Rd / Santa Clarita, KY</option><option value="21">Smith&nbsp; - 123 Main St. / Seattle, WA</option><option value="7">Stewart&nbsp; - 7045 Wycliff Ave / Gainesville, SD                </option></select><span className="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style={{ width: "781.5px" }}>
+                    <option value="13">Beck&nbsp; - 6381 Valwood Pkwy / Buffalo, ME</option><option value="14">Berry&nbsp; - 1931 Edwards Rd / Riverside, PA</option><option value="20">Black&nbsp; - 4307 Avondale Ave / Shiloh, CT</option><option value="1">Campbell&nbsp; - 3259 Daisy Dr / Denton, AR</option><option value="17">Cooper&nbsp; - 1782 Daisy Dr / Oxnard, GA</option><option value="9">Diaz&nbsp; - 1158 Harrison Ct / Hialeah, IA</option><option value="6">Dixon&nbsp; - 6730 Mockingbird Hill / Roanoke, IL</option><option value="10">Gordon&nbsp; - 1255 Brown Terrace / Louisville, MI</option><option value="2">Hart&nbsp; - 4878 Valley View Ln / Grand Rapids, ND</option><option value="19">Kennedy&nbsp; - 9481 Wycliff Ave / Long Beach, KY</option><option value="16">Larson&nbsp; - 3866 Edwards Rd / Inglewood, CO</option><option value="3">Lewis&nbsp; - 2379 Northaven Rd / Detroit, WV</option><option value="11">Newman&nbsp; - 5427 Stevens Creek Blvd / Orlando, MN</option><option value="12">Olson&nbsp; - 1272 Shady Ln Dr / Toledo, NE</option><option value="4">Ray&nbsp; - 4212 Parker Rd / Chesapeake, WI</option><option value="18">Riley&nbsp; - 1403 Avondale Ave / Scottsdale, ID</option><option value="5">Smith&nbsp; - 5572 Robinson Rd / Santa Clarita, KY</option><option value="21">Smith&nbsp; - 123 Main St. / Seattle, WA</option><option value="7">Stewart&nbsp; - 7045 Wycliff Ave / Gainesville, SD                </option></select><span className="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style={{ width: '781.5px' }}>
                     <span className="selection">
                       <span className="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-labelledby="select2-famailyId-container">
-                        <span className="select2-selection__rendered" id="select2-famailyId-container" role="textbox" aria-readonly="true" title="未分配">未分配</span><span className="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span className="dropdown-wrapper" aria-hidden="true"></span></span>
+                        <span className="select2-selection__rendered" id="select2-famailyId-container" role="textbox" aria-readonly="true" title="未分配">未分配</span><span className="select2-selection__arrow" role="presentation">
+                          <b role="presentation" />
+                        </span>
+                      </span>
+                    </span>
+                    <span className="dropdown-wrapper" aria-hidden="true" />
+                  </span>
                 </div>
               </div>
             </div>
@@ -260,40 +283,15 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                   <PhonePattern name="WorkPhone" showlabel="工作電話:" inputMask="(999) 999-9999 x99999" />
                   <PhonePattern name="CellPhone" showlabel="手機:" inputMask="(999) 999-9999" />
                 </div>
-                <p>
-                </p>
+                <p />
                 <div className="row">
                   <EmailPattern name="Email" showlabel="電子郵件:" />
                   <EmailPattern name="WorkEmail" showlabel="工作/其他電子郵件:" />
                 </div>
                 <div className="row">
-                  <div className="form-group col-md-4">
-                    <label htmlFor="FacebookID">Facebook:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-facebook" />
-                      </div>
-                      <input type="text" name="Facebook" defaultValue="" size={30} maxLength={100} className="form-control" />
-                    </div>
-                  </div>
-                  <div className="form-group col-md-4">
-                    <label htmlFor="Twitter">Twitter:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-twitter" />
-                      </div>
-                      <input type="text" name="Twitter" defaultValue="" size={30} maxLength={100} className="form-control" />
-                    </div>
-                  </div>
-                  <div className="form-group col-md-4">
-                    <label htmlFor="LinkedIn">LinkedIn:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-linkedin" />
-                      </div>
-                      <input type="text" name="LinkedIn" defaultValue="" size={30} maxLength={100} className="form-control" />
-                    </div>
-                  </div>
+                  <SocialPattern name="Facebook" showlabel="Facebook:" icon="fa-facebook" />
+                  <SocialPattern name="Twitter" showlabel="Twitter:" icon="fa-twitter" />
+                  <SocialPattern name="LinkedIn" showlabel="LinkedIn:" icon="fa-linkedin" />
                 </div>
               </div>
             </div>
@@ -309,7 +307,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                 <div className="row">
                   <div className="form-group col-md-3 col-lg-3">
                     <label>分類:</label>
-                    <select name="Classification" className="form-control" defaultValue={"0"}>
+                    <select name="Classification" className="form-control" defaultValue={'0'}>
                       <option value="0" selected={false}>未分配</option>
                       <option value="0-" disabled={true}>-----------------------</option>
                       <option value="1">Member&nbsp;</option>
