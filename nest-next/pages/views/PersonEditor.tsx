@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { WithTranslation } from 'react-i18next';
 import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
+import moment from 'moment';
 
 interface InitialProps {
   query: {
@@ -36,6 +37,14 @@ interface SocialDetailProps {
   icon: string;
 }
 
+interface DateDetailProps {
+  name: string;
+  showlabel: string;
+  defaultValue: string;
+  id: string;
+  size: number;
+}
+
 const PhonePattern: React.FunctionComponent<PhoneDetailProps> = ({
   name, showlabel, inputMask,
 }) => (
@@ -52,7 +61,7 @@ const PhonePattern: React.FunctionComponent<PhoneDetailProps> = ({
           size={30}
           maxLength={30}
           className="form-control"
-          data-inputmask={'mask: ' + inputMask }
+          data-inputmask={'mask: ' + inputMask}
           data-mask=""
           im-insert="true"
         />
@@ -89,6 +98,22 @@ const SocialPattern: React.FunctionComponent<SocialDetailProps> = ({
       </div>
     </div>
   );
+
+const DatePattern: React.FunctionComponent<DateDetailProps> = ({
+  name, showlabel, defaultValue, id, size
+}) => (
+    <div className="form-group col-md-3 col-lg-3">
+      <label>{showlabel}</label>
+      <div className="input-group">
+        <div className="input-group-addon">
+          <i className="fa fa-calendar" />
+        </div>
+        {/* <!-- Philippe Logel --> */}
+        <input type="text" name={name} className="form-control date-picker" defaultValue={defaultValue} maxLength={10} id={id} size={size} placeholder="yyyy-mm-dd" />
+      </div>
+    </div>
+  );
+
 class PersonEditor extends React.Component<Props & WithTranslation> {
   public static getInitialProps({ query }: InitialProps) {
     return { query, namespacesRequired: ['common'] };
@@ -317,25 +342,8 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                       <option value="4">Non-Attender (staff)&nbsp;                </option>
                     </select>
                   </div>
-                  <div className="form-group col-md-3 col-lg-3">
-                    <label>會員日期:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-calendar" />
-                      </div>
-                      {/* <!-- Philippe Logel --> */}
-                      <input type="text" name="MembershipDate" className="form-control date-picker" defaultValue="" maxLength={10} id="sel1" size={11} placeholder="yyyy-mm-dd" />
-                    </div>
-                  </div>
-                  <div className="form-group col-md-3 col-lg-3">
-                    <label>友情日期:</label>
-                    <div className="input-group">
-                      <div className="input-group-addon">
-                        <i className="fa fa-calendar" />
-                      </div>
-                      <input type="text" name="FriendDate" className="form-control date-picker" defaultValue="2019-11-11" maxLength={10} id="sel2" size={10} placeholder="yyyy-mm-dd" />
-                    </div>
-                  </div>
+                  <DatePattern name="MembershipDate" showlabel="會員日期:" defaultValue="" id="sel1" size={12} />
+                  <DatePattern name="FriendDate" showlabel="友情日期:" defaultValue={moment().format('YYYY-MM-DD')} id="sel2" size={12} />
                 </div>
               </div>
             </div>
