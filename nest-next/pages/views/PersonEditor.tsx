@@ -1,7 +1,8 @@
+import moment from 'moment';
 import * as React from 'react';
 import { WithTranslation } from 'react-i18next';
+import { i18n } from '../../src/i18n';
 import { SmallBoxItem } from '../../src/shared/interface/dashboardlist';
-import moment from 'moment';
 
 interface InitialProps {
   query: {
@@ -18,6 +19,13 @@ interface Props {
     AgeCountGroup: number;
   };
   namespacesRequired: string[];
+}
+
+interface NameDetailProps {
+  width: string;
+  name: string;
+  showlabel: string;
+  placeholder: string;
 }
 
 interface PhoneDetailProps {
@@ -44,6 +52,15 @@ interface DateDetailProps {
   id: string;
   size: number;
 }
+
+const NamePattern: React.FunctionComponent<NameDetailProps> = ({
+  width, name, showlabel, placeholder,
+}) => (
+    <div className={'col-md-' + width}>
+      <label htmlFor={name}>{showlabel}</label>
+      <input type="text" name={name} id={name} defaultValue="" placeholder={placeholder} className="form-control" />
+    </div>
+  );
 
 const PhonePattern: React.FunctionComponent<PhoneDetailProps> = ({
   name, showlabel, inputMask,
@@ -127,19 +144,24 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
     return (
       < div >
         <section className="content-header">
-          <h1>人編輯器</h1>
+          <h1>{i18n.t('person_editor.person_editor', 'Person Editor')}</h1>
         </section>
         {/* <!-- Main content --> */}
         <section className="content">
-          <form method="post" action="PersonEditor.php?PersonID=0" name="PersonEditor">
+          <form method="post" action="PersonEditor?PersonID=0" name="PersonEditor">
             <div className="alert alert-info alert-dismissable">
               <i className="fa fa-info" />
               <button type="button" className="close" data-dismiss="alert" aria-hidden="true">×</button>
-              <strong><span style={{ color: 'red' }}>紅色文字</span></strong> 表示繼承自相關的家庭記錄的項目。
+              <strong>
+                <span style={{ color: 'red' }}>
+                  {i18n.t('person_editor.red_text', 'Red text')}
+                </span>
+              </strong>
+              {i18n.t('person_editor.highlight_string', 'indicates items inherited from the associated family record.')}
             </div>
             <div className="box box-info clearfix">
               <div className="box-header">
-                <h3 className="box-title">個人信息</h3>
+                <h3 className="box-title">{i18n.t('person_editor.personal_info', 'Personal Info')}</h3>
                 <div className="pull-right">
                   <br />
                   <input type="submit" className="btn btn-primary" value="保存" name="PersonSubmit" />
@@ -152,35 +174,20 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                     <div className="col-md-2">
                       <label>性別:</label>
                       <select name="Gender" className="form-control" defaultValue={'0'}>
-                        <option value="0" selected={false}>選擇性別</option>
+                        <option value="0">選擇性別</option>
                         <option value="0-" disabled={true}>-----------------------</option>
                         <option value="1">男</option>
                         <option value="2">女</option>
                       </select>
                     </div>
-                    <div className="col-md-3">
-                      <label htmlFor="Title">標題:</label>
-                      <input type="text" name="Title" id="Title" defaultValue="" className="form-control" placeholder="先生，夫人，博士，牧師" />
-                    </div>
+                    <NamePattern width="3" name="Title" showlabel="標題:" placeholder={i18n.t('person_editor.person_title', 'Mr., Mrs., Dr., Rev.')} />
                   </div>
                   <p />
                   <div className="row">
-                    <div className="col-md-4">
-                      <label htmlFor="FirstName">名字:</label>
-                      <input type="text" name="FirstName" id="FirstName" defaultValue="" className="form-control" />
-                    </div>
-                    <div className="col-md-2">
-                      <label htmlFor="MiddleName">中間名:</label>
-                      <input type="text" name="MiddleName" id="MiddleName" defaultValue="" className="form-control" />
-                    </div>
-                    <div className="col-md-4">
-                      <label htmlFor="LastName">姓氐:</label>
-                      <input type="text" name="LastName" id="LastName" defaultValue="" className="form-control" />
-                    </div>
-                    <div className="col-md-1">
-                      <label htmlFor="Suffix">後綴:</label>
-                      <input type="text" name="Suffix" id="Suffix" defaultValue="" placeholder="Jr.，Sr.，III" className="form-control" />
-                    </div>
+                    <NamePattern width="4" name="FirstName" showlabel="名字:" placeholder="" />
+                    <NamePattern width="2" name="MiddleName" showlabel="中間名:" placeholder="" />
+                    <NamePattern width="4" name="LastName" showlabel="姓氏:" placeholder="" />
+                    <NamePattern width="1" name="Suffix" showlabel="後綴:" placeholder={i18n.t('person_editor.person_suffix', 'Jr.，Sr.，III')} />
                   </div>
                   <p />
                   <div className="row">

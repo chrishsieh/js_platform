@@ -662,16 +662,18 @@
   "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!": "警告：通過刪除此領域，，你會irrevokably失去所有的個人數據分配給這個領域！",
   "No custom person fields have been added yet": "目前沒有自定義的人字段添加",
   "Person-View Side": "人觀看側",
-  "Person Editor": "人編輯器",
   "You must enter a Last Name if no Family is selected.": "您必須輸入姓氏，如果沒有家庭選擇。",
   "Not a valid Friend Date": "不是一個有效的好友日期",
   "Not a valid Membership Date": "不是一個有效的會員日期",
   "Work Email is Not Valid": "工作電子郵件是無效的",
-  "Red text": "紅色文字",
-  "indicates items inherited from the associated family record.": "表示繼承自相關的家庭記錄的項目。",
-  "Personal Info": "個人信息",
-  "Mr., Mrs., Dr., Rev.": "先生，夫人，博士，牧師",
-  "Jr., Sr., III": "Jr.，Sr.，III",
+  "person_editor": {
+    "person_editor": "人編輯器",
+    "red_text": "紅色文字",
+    "highlight_string" : "表示繼承自相關的家庭記錄的項目。",
+    "personal_info": "個人信息",
+    "person_title": "先生，夫人，博士，牧師",
+    "person_suffix": "Jr.，Sr.，III"
+  },
   "Birth Month": "出生月",
   "Select Month": "選擇月份",
   "Birth Day": "出生日",
@@ -1982,7 +1984,7 @@
   "people": {
     "report": {
       "famselfreg": "列出自助註冊創建的家庭清單。",
-      "groupAndroles" : "報告組和角色選擇（它可能是一個多頁的PDF）。",
+      "groupAndroles": "報告組和角色選擇（它可能是一個多頁的PDF）。",
       "PrintDirectory": "所有人員的打印目錄，按分配的家庭分組",
       "Generatelabels": "生成信函和郵寄標籤。",
       "USAddress": "生成報告，將所有美國家庭地址與美國郵政服務標準地址格式進行比較。"
