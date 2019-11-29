@@ -21,6 +21,15 @@ interface Props {
   namespacesRequired: string[];
 }
 
+interface SelectDetailProps {
+  width: string;
+  name: string;
+  showlabel: string;
+  defaultSelect: string;
+  splitLine?: boolean;
+  listArray: string[];
+}
+
 interface NameDetailProps {
   width: string;
   name: string;
@@ -52,6 +61,34 @@ interface DateDetailProps {
   id: string;
   size: number;
 }
+
+interface ListDetailProps {
+  index: number;
+  value: string;
+}
+
+const SplitPattern: React.FunctionComponent = () => (
+  <option value="0-" disabled={true}>-----------------------</option>
+);
+
+const ListPattern: React.FunctionComponent<ListDetailProps> = ({
+  index, value,
+}) => (
+    <option value={index.toString()}>{value}</option>
+  );
+
+const SelectPattern: React.FunctionComponent<SelectDetailProps> = ({
+  width, name, showlabel, defaultSelect, splitLine, listArray,
+}) => (
+    <div className={width}>
+      <label>{showlabel}</label>
+      <select name={name} className="form-control" defaultValue={'0'}>
+        <option value="0" selected={false}>{defaultSelect}</option>
+        {splitLine ? (<SplitPattern />) : ''}
+        {listArray.map((value, index) => (<ListPattern key={index} index={index + 1} value={value} />))}
+      </select>
+    </div>
+  );
 
 const NamePattern: React.FunctionComponent<NameDetailProps> = ({
   width, name, showlabel, placeholder,
@@ -117,7 +154,7 @@ const SocialPattern: React.FunctionComponent<SocialDetailProps> = ({
   );
 
 const DatePattern: React.FunctionComponent<DateDetailProps> = ({
-  name, showlabel, defaultValue, id, size
+  name, showlabel, defaultValue, id, size,
 }) => (
     <div className="form-group col-md-3 col-lg-3">
       <label>{showlabel}</label>
@@ -171,15 +208,7 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
               <div className="box-body">
                 <div className="form-group">
                   <div className="row">
-                    <div className="col-md-2">
-                      <label>性別:</label>
-                      <select name="Gender" className="form-control" defaultValue={'0'}>
-                        <option value="0">選擇性別</option>
-                        <option value="0-" disabled={true}>-----------------------</option>
-                        <option value="1">男</option>
-                        <option value="2">女</option>
-                      </select>
-                    </div>
+                    <SelectPattern width="col-md-2" name="Gender" showlabel="性別:" defaultSelect="選擇性別" splitLine={true} listArray={['男', '女']} />
                     <NamePattern width="3" name="Title" showlabel="標題:" placeholder={i18n.t('person_editor.person_title', 'Mr., Mrs., Dr., Rev.')} />
                   </div>
                   <p />
@@ -191,61 +220,22 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
                   </div>
                   <p />
                   <div className="row">
-                    <div className="col-md-2">
-                      <label>出生月:</label>
-                      <select name="BirthMonth" className="form-control" defaultValue={'0'}>
-                        <option value="0" selected={false}>選擇月份</option>
-                        <option value="01">一月</option>
-                        <option value="02">二月</option>
-                        <option value="03">三月</option>
-                        <option value="04">四月</option>
-                        <option value="05">五月</option>
-                        <option value="06">六月</option>
-                        <option value="07">七月</option>
-                        <option value="08">八月</option>
-                        <option value="09">九月</option>
-                        <option value="10">十月</option>
-                        <option value="11">十一月</option>
-                        <option value="12">十二月</option>
-                      </select>
-                    </div>
-                    <div className="col-md-2">
-                      <label>出生日:</label>
-                      <select name="BirthDay" className="form-control" defaultValue={'0'}>
-                        <option value="0" selected={false}>選擇日期</option>
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                      </select>
-                    </div>
+                    <SelectPattern
+                      width="col-md-2"
+                      name="BirthMonth"
+                      showlabel="出生月:"
+                      defaultSelect="選擇月份"
+                      splitLine={false}
+                      listArray={['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']}
+                    />
+                    <SelectPattern
+                      width="col-md-2"
+                      name="BirthDay"
+                      showlabel="出生日:"
+                      defaultSelect="選擇日期"
+                      splitLine={false}
+                      listArray={Array.from(Array(31), (e, i) => (i + 1).toString())}
+                    />
                     <div className="col-md-2">
                       <label>出生年份:</label>
                       <input type="text" name="BirthYear" defaultValue="0" maxLength={4} size={5} placeholder="yyyy" className="form-control" />
@@ -268,13 +258,14 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
               </div>
               {/* <!-- /.box-header --> */}
               <div className="box-body">
-                <div className="form-group col-md-3">
-                  <label>家庭角色:</label>
-                  <select name="FamilyRole" className="form-control" defaultValue={'0'}>
-                    <option value="0" selected={false}>未分配</option>
-                    <option value="0-" disabled={true}>-----------------------</option>
-                    <option value="1">Head of Household&nbsp;</option><option value="2">Spouse&nbsp;</option><option value="3">Child&nbsp;</option><option value="4">Other Relative&nbsp;</option><option value="5">Non Relative&nbsp;                </option></select>
-                </div>
+                <SelectPattern
+                  width="form-group col-md-3"
+                  name="FamilyRole"
+                  showlabel="家庭角色:"
+                  defaultSelect="未分配"
+                  splitLine={true}
+                  listArray={['Head of Household', 'Spouse', 'Child', 'Other Relative', 'Non Relative']}
+                />
                 <div className="form-group col-md-6">
                   <label>家庭:</label>
                   <select name="Family" id="famailyId" className="form-control select2-hidden-accessible" data-select2-id="famailyId" tabIndex={-1} aria-hidden="true">
@@ -337,18 +328,14 @@ class PersonEditor extends React.Component<Props & WithTranslation> {
               {/* <!-- /.box-header --> */}
               <div className="box-body">
                 <div className="row">
-                  <div className="form-group col-md-3 col-lg-3">
-                    <label>分類:</label>
-                    <select name="Classification" className="form-control" defaultValue={'0'}>
-                      <option value="0" selected={false}>未分配</option>
-                      <option value="0-" disabled={true}>-----------------------</option>
-                      <option value="1">Member&nbsp;</option>
-                      <option value="2">Regular Attender&nbsp;</option>
-                      <option value="3">Guest&nbsp;</option>
-                      <option value="5">Non-Attender&nbsp;</option>
-                      <option value="4">Non-Attender (staff)&nbsp;                </option>
-                    </select>
-                  </div>
+                  <SelectPattern
+                    width="form-group col-md-3 col-lg-3"
+                    name="Classification"
+                    showlabel="分類:"
+                    defaultSelect="未分配"
+                    splitLine={true}
+                    listArray={['Member', 'Regular Attender', 'Guest', 'Non-Attender (staff)', 'Non-Attender']}
+                  />
                   <DatePattern name="MembershipDate" showlabel="會員日期:" defaultValue="" id="sel1" size={12} />
                   <DatePattern name="FriendDate" showlabel="友情日期:" defaultValue={moment().format('YYYY-MM-DD')} id="sel2" size={12} />
                 </div>
