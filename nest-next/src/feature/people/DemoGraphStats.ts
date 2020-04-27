@@ -46,7 +46,7 @@ export class ListOptionQuery implements DashboardItemInterface {
 
     // Sort by ID and Gender with Null check.
     let ListGroup;
-    const SplitIdNull = partition(propEq('ID', 0))(ListGroupData);
+    const SplitIdNull: Readonly<any> = partition(propEq('ID', 0))(ListGroupData);
     if (SplitIdNull.length === 2) {
       const SplitGenderNull = partition(propEq('Gender', 0))(SplitIdNull[0]);
       if (SplitGenderNull.length === 2) {

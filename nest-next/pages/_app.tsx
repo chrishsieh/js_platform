@@ -1,6 +1,6 @@
 import App from 'next/app';
 import * as React from 'react';
-import { appWithTranslation } from '../src/i18n';
+// import { appWithTranslation } from '../src/i18n';
 import Layout from './layouts/layout';
 
 class MyApps extends App {
@@ -14,5 +14,5 @@ class MyApps extends App {
   }
 }
 
-export default appWithTranslation(MyApps);
-// export default MyApps;
+// export default appWithTranslation(MyApps);
+export default MyApps;

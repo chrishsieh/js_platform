@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
 import CountTable from '../count_table';
