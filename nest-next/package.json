@@ -29,7 +29,7 @@
     "@types/passport-jwt": "^3.0.1",
     "blueimp-md5": "^2.10.0",
     "cache-manager": "^2.9.0",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "class-validator": "^0.9.1",
     "cors": "^2.8.5",
     "dotenv": "^6.1.0",
